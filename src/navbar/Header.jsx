@@ -55,13 +55,11 @@ const Header = ({ timeline, ease }) => {
   const handleDocumentClick = (e) => {
     if (userAccessRef.current && !userAccessRef.current.contains(e.target)) {
       handleUserclick();
-      console.log("clicked");
     }
   };
   function handleMenuClick(e) {
     if (humburgerRef.current && !humburgerRef.current.contains(e.target)) {
       handleHamburgerClick();
-      console.log("clicked");
     }
   }
 
@@ -76,16 +74,16 @@ const Header = ({ timeline, ease }) => {
           <div className="hidden md:flex ms-auto me-3 m-1">
             <ul className="flex items-center">
               {
-                headerElements.map((element)=>{
+                headerElements.map((element,i)=>{
                   return(
-                    <li class="relative mx-1 p-2 flex items-center text-primary group">
+                    <li key={i} className="relative mx-1 p-2 flex items-center text-primary group">
                     <span className="mx-2">{element.item}</span>
-                    <span class="transition duration-300 flex group-hover:hidden">
+                    <span className="transition duration-300 flex group-hover:hidden">
                       <RxCaretDown size={25} />
                     </span>
-                    <span class="transform -transition-transform duration-700 hidden group-hover:flex">
+                    <span className="transform -transition-transform duration-700 hidden group-hover:flex">
                       <RxCaretUp size={25} />
-                      <div class="absolute  right-0 top-full  w-[200px]  bg-white border border-gray-300 rounded-lg  transform -transition-transform duration-700 ease-in-out group-hover:block">
+                      <div className="absolute  right-0 top-full  w-[200px]  bg-white border border-gray-300 rounded-lg  transform -transition-transform duration-700 ease-in-out group-hover:block">
                         <p>Content goes here...</p>
                         <p>Content goes here...</p>
                         <p>Content goes here...</p>
@@ -145,13 +143,13 @@ const Header = ({ timeline, ease }) => {
         </div>
       )}
       {hamburger ? (
-        <div className="fixed top-0 right-[-100%] h-full w-full bg-orange-400/50 text-white transform -transition-transform duration-1000 ease-in-out ">
+        <div className="fixed top-0 right-[-100%] h-full w-full bg-other/30 text-white transform -transition-transform duration-1000 ease-in-out ">
           <div className="h-full flex items-center justify-center transform -transition-transform duration-1000 ease-in-out ">
             <Menu/>
           </div>
         </div>
       ) : (
-        <div className="fixed top-0 right-0 z-40 h-full w-full bg-orange-400/50 text-white transform -transition-transform duration-1000 ease-in-out">
+        <div className="fixed top-0 right-0 z-40 h-full w-full bg-other/30 text-white transform -transition-transform duration-1000 ease-in-out">
           <div className="h-full flex items-center justify-end">
             <Menu />
           </div>
