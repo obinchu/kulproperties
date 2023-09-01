@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+    outline:1px solid red;
+}
+
+@font-face {
+    font-family: 'Acumin Pro Regular';
+    src: url('../fonts/FontsFree-Net-Acumin-Pro-Book.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+}
+
+/* @layer base {
+    button {
+      @apply rounded-3xl text-white font-medium p-2 bg-orange-400
+    }
+  
+  } */
+  
+  @layer utilities {
+  
+    /* Chrome, Safari and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+  
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      /* IE and Edge */
+      scrollbar-width: none;
+      /* Firefox */
+    }
+  }
