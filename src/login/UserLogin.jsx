@@ -21,9 +21,9 @@ const UserLogin = forwardRef((props,ref) => {
                         <span className='mx-auto text-3xl mt-2'>Sign In</span>
                         <FormInput placeholder={"Email"} type={"text"} />
                         <Password placeholder={"Password"} />
-                        <button className='w-[76%] lg:w-[70%] bg-orange-500 font-medium hover:font-bold rounded p-2 text-white mx-auto'>Sign In</button>
+                        <button className='w-[76%] lg:w-[70%] bg-secondary font-medium hover:font-bold rounded p-2 text-white mx-auto'>Sign In</button>
                         <span className='w-[76%] lg:w-70% mx-auto text-center my-2'><Link>forgot password?</Link></span>
-                        <span className='w-[76%] lg:w-70% mx-auto text-center'>Not a member?<span onClick={handleSignUp} to="/churchproject/signup" className='text-orange-400 hover:text-orange-500 mx-1 hover:font-semibold hover:cursor-pointer'>Sign Up</span></span>
+                        <span className='w-[76%] lg:w-70% mx-auto text-center'>Not a member?<span onClick={handleSignUp} to="/churchproject/signup" className='text-primary hover:text-secondary mx-1 hover:font-semibold hover:cursor-pointer'>Sign Up</span></span>
                 </div>
                
             </form>
@@ -38,8 +38,8 @@ const UserLogin = forwardRef((props,ref) => {
                         <FormInput placeholder={"Phone"} type={"number"} />
                         <Password placeholder={"Password"}/>
                         <Password placeholder={"Confirm Password"}/>
-                        <button className='w-[76%] lg:w-[70%] bg-orange-500 text-white font-medium hover:font-bold rounded mx-auto p-2'>CREATE</button>
-                        <span className='w-[76%] lg:w-70% mx-auto mt-2 text-center'>Have an Account??<span onClick={handleSignUp} to="/churchproject/signup" className='text-orange-400 hover:text-orange-500 mx-1 hover:font-semibold hover:cursor-pointer'>Sign In</span></span>
+                        <button className='w-[76%] lg:w-[70%] bg-secondary text-white font-medium hover:font-bold rounded mx-auto p-2'>CREATE</button>
+                        <span className='w-[76%] lg:w-70% mx-auto mt-2 text-center'>Have an Account?<span onClick={handleSignUp} to="/churchproject/signup" className='text-primary hover:text-secondary mx-1 hover:font-semibold hover:cursor-pointer'>Sign In</span></span>
                 </div>
                
             </form>

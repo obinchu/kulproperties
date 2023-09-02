@@ -143,7 +143,7 @@ const Header = ({ timeline, ease }) => {
         </div>
       )}
       {hamburger ? (
-        <div className="fixed top-0 right-[-100%] h-full w-full bg-other/30 text-white transform -transition-transform duration-1000 ease-in-out ">
+        <div className="fixed top-0 right-[-100%] z-40 h-full w-full bg-other/30 text-white transform -transition-transform duration-1000 ease-in-out ">
           <div className="h-full flex items-center justify-center transform -transition-transform duration-1000 ease-in-out ">
             <Menu/>
           </div>
