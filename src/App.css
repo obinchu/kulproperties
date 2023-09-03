@@ -3,12 +3,9 @@
 @tailwind utilities;
 
 *{
-    /* outline:1px solid red; */
+    outline:1px solid red;
 }
-body {
-  transform: scale(1.0); /* Set the scale to 1.0 (100%) */
-  transform-origin: top left; /* Set the transform origin to the top left corner */
-}
+
 @font-face {
     font-family: 'Acumin Pro Regular';
     src: url('../fonts/FontsFree-Net-Acumin-Pro-Book.ttf') format('truetype');
