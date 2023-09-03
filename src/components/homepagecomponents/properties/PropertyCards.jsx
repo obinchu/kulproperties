@@ -21,21 +21,21 @@ const PropertyCards = () => {
     
     
       return (
-        <div className='w-full max-h-[100%] md:h-[87%] flex flex-col rounded text-sm text-primary'>
+        <div className='w-full h-full md:h-[87%] flex flex-col rounded text-sm text-primary'>
           <div className='flex flex-col relative w-full max-w-6xl m-auto h-full rounded'>
-            <div className='flex w-full max-h-[100%] md:h-[100%] overflow-x-scroll no-scrollbar rounded p-1'>
+            <div className='flex w-full h-full overflow-x-scroll no-scrollbar rounded p-1'>
               {HouseDetails.map((details, index) => (
                 <div className="flex flex-shrink-0 w-[90%] md:w-[30%]  rounded-md flex-col mx-2">
                 <div
                   key={index}
-                  className='flex w-full max-h-[60%] md:h-[60%]  rounded-t-md bg-cover bg-center bg-no-repeat' style={{ backgroundImage: `url(${import.meta.env.BASE_URL}${details.image})` }}
+                  className='flex w-full h-[60%]  rounded-t-md bg-cover bg-center bg-no-repeat' style={{ backgroundImage: `url(${import.meta.env.BASE_URL}${details.image})` }}
                 >
                   <div className="flex flex-col p-2 w-full h-full justify-between" style={{ background: `linear-gradient(rgba(255, 255, 255, 0.1), rgba(0,0,0,0.3))` }}>
                     <span className='rounded p-1 w-[23%] text-base justify-center bg-red-500 text-white flex'>{details.Status}</span>
                     <span className=' text-white font-medium text-xl'>KES {details.Price}</span>
                     </div>  
                 </div>
-                <div className="flex flex-col bg-white w-full rounded-b-md max-h-[40%] md:h-[40%] p-2 md:p-4">
+                <div className="flex flex-col bg-white w-full rounded-b-md h-[40%] p-2 md:p-4">
                     <span className='items-center  flex text-base text-red-500'>{details.Type}</span>
                     <span className='items-center  flex text-lg font-medium'>Renovated {details.Type}</span>
                     <div className='flex items-center'>
