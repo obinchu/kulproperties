@@ -7,14 +7,14 @@ import { CiLocationOn } from "react-icons/ci";
 
 const Footer = () => {
   return (
-    <div className="w-full h-[95vh] md:h-[50vh] text-sm bg-primary text-white flex flex-col ">
-    <div className='block md:flex md:max-w-7xl w-full h-[85%] md:h-[75%] m-auto  p-2 border-b-2 border-white'>
+    <div className="w-full max-h-[95vh] md:h-[50vh] text-sm bg-primary text-white flex flex-col ">
+    <div className='block md:flex md:max-w-7xl w-full mmax-h-[85%] md:h-[75%] m-auto  p-2 border-b-2 border-white'>
       <div className="flex flex-col w-full mx-1 ">
-        <div className="flex flex-col h-[30%]">
+        <div className="flex flex-col max-h-[30%]">
         <span className="text-xl font-medium">KUL PROPERTIES</span>
         <p className="mt-2">Let us guide you every step of the way in making your dream home a reality.</p>
         </div>
-        <div className="flex flex-col h-[50%] justify-center">
+        <div className="flex flex-col max-h-[50%] justify-center">
         <span className="flex my-2"><CiLocationOn className="me-1" size={20}/> East Wing Court, Kenyatta Road, Kenya.</span>
         <span className="flex my-2"><BsTelephone  className="me-1" size={20}/>+254-7-46-895-735</span>
         <span className="flex my-2"><PiEnvelopeSimpleThin className="me-1" size={20}/>info@kulproperties.com</span>

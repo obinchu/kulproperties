@@ -23,7 +23,7 @@ const PropertyCards = () => {
       return (
         <div className='w-full h-full md:h-[87%] flex flex-col rounded text-sm text-primary'>
           <div className='flex flex-col relative w-full max-w-6xl m-auto h-full rounded'>
-            <div className='flex w-full h-full overflow-x-scroll no-scrollbar rounded p-1'>
+            <div className='flex w-full max-h-[100%] overflow-x-scroll no-scrollbar rounded p-1'>
               {HouseDetails.map((details, index) => (
                 <div className="flex flex-shrink-0 w-[90%] md:w-[30%]  rounded-md flex-col mx-2">
                 <div
