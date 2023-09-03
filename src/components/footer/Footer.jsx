@@ -26,15 +26,15 @@ const Footer = () => {
         <span className="text-xl font-medium">Quick Links</span>
       <div className="flex  w-full ">
       <div className="flex flex-col w-full mx-2">
-        <span className="py-2 border-b border-dotted hover:font-semibold hover:cursor-pointer">About</span>
-        <span className="py-2 border-b border-dotted hover:font-semibold hover:cursor-pointer">Blog</span>
-        <span className="py-2 border-b border-dotted hover:font-semibold hover:cursor-pointer">All Products</span>
+        <span className="py-2  hover:font-semibold hover:cursor-pointer">About</span>
+        <span className="py-2  hover:font-semibold hover:cursor-pointer">Blog</span>
+        <span className="py-2  hover:font-semibold hover:cursor-pointer">All Products</span>
         <span className="py-2 hover:font-semibold cursor-pointer">Locations</span>
       </div>
       <div className="flex flex-col w-full ">
-        <span className="py-2 border-b border-dotted hover:font-semibold cursor-pointer">Order Tracking</span>
-        <span className="py-2 border-b border-dotted hover:font-semibold cursor-pointer">Wish List</span>
-        <span className="py-2 border-b border-dotted hover:font-semibold cursor-pointer">Login</span>
+        <span className="py-2  hover:font-semibold cursor-pointer">Order Tracking</span>
+        <span className="py-2  hover:font-semibold cursor-pointer">Wish List</span>
+        <span className="py-2  hover:font-semibold cursor-pointer">Login</span>
         <span className="py-2 hover:font-semibold cursor-pointer">My Account</span>
       </div>
       </div>

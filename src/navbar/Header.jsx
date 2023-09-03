@@ -5,6 +5,7 @@ import {RxCaretDown,RxCaretUp} from 'react-icons/rx'
 import { LiaPlayCircle, LiaDonateSolid } from "react-icons/lia";
 import UserLogin from "../login/UserLogin";
 import Menu from "../components/menu/Menu";
+import styles from './Header.module.css';
 const Header = ({ timeline, ease }) => {
   const [hamburger, setHamburger] = useState(true);
   const [userAccess, setUserAccess] = useState(false);
@@ -76,18 +77,35 @@ const Header = ({ timeline, ease }) => {
               {
                 headerElements.map((element,i)=>{
                   return(
-                    <li key={i} className="relative mx-1 p-2 flex items-center text-primary group">
+                    <li key={i} className="relative mx-1 p-2 flex items-center text-primary group hover:cursor-pointer">
                     <span className="mx-2">{element.item}</span>
                     <span className="transition duration-300 flex group-hover:hidden">
                       <RxCaretDown size={25} />
                     </span>
-                    <span className="transform -transition-transform duration-700 hidden group-hover:flex">
+                    <span className="transform -transition-transform duration-700 hidden group-hover:flex relative hover:cursor-pointer">
                       <RxCaretUp size={25} />
-                      <div className="absolute  right-0 top-full  w-[200px]  bg-white border border-gray-300 rounded-lg  transform -transition-transform duration-700 ease-in-out group-hover:block">
+                      {/* <div className="absolute  right-0 top-full  w-[200px]  bg-white border border-gray-300 rounded-lg  transform -transition-transform duration-700 ease-in-out group-hover:block">
                         <p>Content goes here...</p>
                         <p>Content goes here...</p>
                         <p>Content goes here...</p>
-                      </div>
+                      </div> */}
+                      <ul className="bg-transparent absolute top-full w-[200px] h-[300px] right-1  ">
+                      <ul className={`bg-white mt-8 rounded ${styles.dropdown}`}>
+                        <li>hello</li>
+                        <li>hello</li>
+                        <li>hello</li>
+                        <li>hello</li>
+                        <li>hello</li>
+                        <li>hello</li>
+                        <li>hello</li>
+                        <li>hello</li>
+                        <li>hello</li>
+                        <li>hello</li>
+                        <li>hello</li>
+                        <li>hello</li>
+                      </ul> 
+                      </ul>
+
                       
                     </span>
                    
