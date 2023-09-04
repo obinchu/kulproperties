@@ -14,33 +14,54 @@ const Menu = ({ action }) => {
   const closeCaret = () => {
     setOpen(null);
   };
+
   const headerElements = [
     { item: "Home", path: "" },
-    { item: "Listing", more: ["All", "Resdential", "Commercial", "Rental"] },
+    {
+      item: "Listing",
+      more: [
+        {
+          name: "All",
+          path: "listings",
+        },
+        {
+          name: "Residential",
+          path: "listings",
+        },
+        {
+          name: "Commercial",
+          path: "listings",
+        },
+        {
+          name: "Rental",
+          path: "listings",
+        },
+      ],
+    },
     { item: "Property" },
     {
       item: "Pages",
       more: [
-        "About Us",
-        "Contact Us",
-        "FAQs",
-        "Login/Register",
-        "Terms & Conditions",
+        { name: "About Us" },
+        { name: "Contact Us" },
+        { name: "FAQs" },
+        { name: "Login/Register" },
+        { name: "Terms & Conditions" },
       ],
     },
     {
       item: "Services",
       more: [
-        "Building & Construction",
-        "Archtectural Designs",
-        "Structural Designs",
-        "Renovations",
-        "Landscaping",
-        "Interior Designs",
-        "Remodelling Extensions",
-        "Construction Project",
-        "Management",
-        "Consultancy",
+        { name: "Building & Construction" },
+        { name: "Archtectural Designs" },
+        { name: "Structural Designs" },
+        { name: "Renovations" },
+        { name: "Landscaping" },
+        { name: "Interior Designs" },
+        { name: "Remodelling Extensions" },
+        { name: "Construction Project" },
+        { name: "Management" },
+        { name: "Consultancy" },
       ],
     },
     { item: "Blog" },
@@ -51,7 +72,7 @@ const Menu = ({ action }) => {
       <div className="w-full block h-full p-2   ">
         <div className="flex flex-col h-[100%]  my-auto  border-b- w-full overflow-y-auto ">
           <div className="  text-base h-full m-auto  w-full  ">
-            {headerElements.map((element, i,) => {
+            {headerElements.map((element, i) => {
               return (
                 <div className="flex flex-col h-[80%">
                   <li
@@ -74,7 +95,7 @@ const Menu = ({ action }) => {
                       {element.item}
                     </Link>
                     {element.more && element.more.length > 0 && (
-                      <span  onClick={() => handleCaret(i)}>
+                      <span onClick={() => handleCaret(i)}>
                         {open == i ? (
                           <span className="transition duration-300 flex ">
                             <RxCaretUp size={25} />
@@ -88,19 +109,21 @@ const Menu = ({ action }) => {
                     )}
                   </li>
                   {element.more && element.more.length > 0 && open === i && (
-  <ul className="flex flex-col mx-2 p-2">
-    {element.more.map((item, index) => (
-      <li
-        key={index} // Assign a unique key to each <li>
-        onClick={() => action(item)}
-        className={`m-1 text-base text-start p-2 hover:font-medium`}
-      >
-        {item}
-      </li>
-    ))}
-  </ul>
-)}
-
+                    <ul className="flex flex-col mx-2 p-2">
+                      {element.more.map((item, index) => (
+                        <Link
+                        onClick={action}
+                          to={`/kulproperties/${item.path}`}
+                          key={index}
+                          className={`m-1 text-base text-start flex flex-col p-2 hover:font-medium 
+                                   
+                                  `}
+                        >
+                          {item.name}
+                        </Link>
+                      ))}
+                    </ul>
+                  )}
                 </div>
               );
             })}

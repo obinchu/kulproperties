@@ -72,32 +72,49 @@ const Header = ({ timeline, ease }) => {
     { item: "Home", path: "" },
     {
       item: "Listing",
-      more: ["All", "Resdential", "Commercial", "Rental"],
+      more: [
+        {
+          name: "All",
+          path: "listings",
+        },
+        {
+          name: "Residential",
+          path: "listings",
+        },
+        {
+          name: "Commercial",
+          path: "listings",
+        },
+        {
+          name: "Rental",
+          path: "listings",
+        },
+      ],
     },
     { item: "Property" },
     {
       item: "Pages",
       more: [
-        "About Us",
-        "Contact Us",
-        "FAQs",
-        "Login/Register",
-        "Terms & Conditions",
+        {name:"About Us",},
+        {name:"Contact Us",},
+        {name:"FAQs",},
+        {name:"Login/Register",},
+        {name:"Terms & Conditions",},
       ],
     },
     {
       item: "Services",
       more: [
-        "Building & Construction",
-        "Archtectural Designs",
-        "Structural Designs",
-        "Renovations",
-        "Landscaping",
-        "Interior Designs",
-        "Remodelling Extensions",
-        "Construction Project",
-        "Management",
-        "Consultancy",
+        { name: "Building & Construction" },
+        { name: "Archtectural Designs" },
+        { name: "Structural Designs" },
+        { name: "Renovations" },
+        { name: "Landscaping" },
+        { name: "Interior Designs" },
+        { name: "Remodelling Extensions" },
+        { name: "Construction Project" },
+        { name: "Management" },
+        { name: "Consultancy" },
       ],
     },
     { item: "Blog" },
@@ -139,16 +156,17 @@ const Header = ({ timeline, ease }) => {
                               className={`bg-white mt-8 rounded ${styles.dropdown}`}
                             >
                               {element.more.map((item, index) => (
-                                <li
+                                <Link
+                                  to={`/kulproperties/${item.path}`}
                                   key={index}
-                                  className={`m-1 text-base p-2 hover:font-medium ${
+                                  className={`m-1 text-base flex flex-col p-2 hover:font-medium ${
                                     index !== element.more.length - 1
                                       ? "border-b"
                                       : ""
                                   }`}
                                 >
-                                  {item}
-                                </li>
+                                  {item.name}
+                                </Link>
                               ))}
                             </ul>
                           </ul>
