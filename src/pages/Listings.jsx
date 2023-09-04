@@ -109,7 +109,7 @@ const Listings = () => {
     setCurrentPage(pageNumbers);
   };
   return (
-    <div className="w-full h-[300vh]  md:h-[140vh] flex bg-other text-sm">
+    <div className="w-full h-[290vh]  md:h-[140vh] flex bg-other text-sm">
       <div className="flex md:max-w-6xl w-full h-[100%] m-auto rounded p-2 justify-center items-center">
         <div className=" w-full flex flex-col  h-[95%] mt-auto m-auto  justify-between">
           <div className="flex w-full h-[3%] md:h-[10%] p-2">
@@ -146,12 +146,12 @@ const Listings = () => {
                   <span className="mx-2 w-[50%]">sort order</span>
                 </div>
               </div>
-              <div className="flex flex-col h-[97%] md:h-[95%]">
+              <div className="flex w-full flex-col h-[97%] md:h-[95%]">
               <div className="grid grid-cols-1 md:grid-cols-2 w-full h-[90%] md:grid-rows-2 grid-rows-4 md:gap-1 gap-5 py-2 md:p-2">
                   {currentProperty.map((details, index) => (
                     <div
                       key={index}
-                      className="flex flex-shrink w-[90%] md:w-[95%]  md:h-[90%]    rounded-md flex-col mx-auto md:mx-2"
+                      className="flex flex-shrink w-[100%] md:w-[95%]  md:h-[90%]    rounded-md flex-col mx-auto md:mx-2"
                     >
                       <div
                         key={index}
