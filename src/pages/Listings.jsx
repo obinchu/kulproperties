@@ -202,7 +202,7 @@ const Listings = () => {
                     <select
                       value={value}
                       onChange={handleChange}
-                      className={`w-[75%] p-2 rounded my-2 md:w-[85%]   border ${
+                      className={`w-[85%] p-2 rounded my-2   border ${
                         isActive ? "border-orange-400" : "border-gray-300"
                       } focus:outline-none focus:border-orange-400 bg-transparent`}
                     >
@@ -227,7 +227,7 @@ const Listings = () => {
                     <select
                       value={bathroom}
                       onChange={handlebathroom}
-                      className={`p-2 rounded m-1 md:w-[85%]  md:mx-2 border ${
+                      className={`p-2 rounded m-1 w-[85%]  md:mx-2 border ${
                         isActive ? "border-orange-400" : "border-gray-300"
                       } focus:outline-none focus:border-orange-400 bg-transparent `}
                     >
@@ -243,7 +243,7 @@ const Listings = () => {
                     <select
                       value={bedroom}
                       onChange={handlebedroom}
-                      className={`p-2 rounded m-1  md:mx-2 md:w-[85%] border ${
+                      className={`p-2 rounded m-1  md:mx-2 w-[85%] border ${
                         isActive ? "border-orange-400" : "border-gray-300"
                       } focus:outline-none focus:border-orange-400 bg-transparent`}
                     >
@@ -259,7 +259,7 @@ const Listings = () => {
                     <select
                       value={year}
                       onChange={handleyear}
-                      className={`p-2 rounded m-1 md:w-[85%] md:mx-2 border ${
+                      className={`p-2 rounded m-1 w-[85%] md:mx-2 border ${
                         isActive ? "border-orange-400" : "border-gray-300"
                       } focus:outline-none focus:border-orange-400 bg-transparent`}
                     >
@@ -316,7 +316,132 @@ const Listings = () => {
                 </span>
                 <div className="justify-center items-center flex w-[60%] ">
                   <span className="mx-2 w-[50%]">status</span>
-                  <span className="mx-2 w-[50%]">sort order</span>
+                  <span  onClick={()=>setAdvanced(!advanced)}  className="mx-2 w-[50%]">sort order</span>
+                  {advanced && 
+                   <div className='w-full fixed overflow-y-auto  md:relative top-0 left-0 z-30   h-full flex rounded bg-white'>
+                  <div className='h-[100%] mt-[15%] md:mt-0 md:h-[60%] '>
+                  <div className="flex">
+                  <span  onClick={()=>setAdvanced(false)}  className="m-2  ms-auto p-1">close</span>
+                    </div>
+                     <form
+                  action=""
+                  className="w-full h-[100%] mt-[20%]] "
+                >
+                  <FilterInput placeholder={"search..."} type={"input"} />
+                  <FilterLocation placeholder={"Location"} />
+                  <div className="flex w-full  justify-center">
+                    <select
+                      value={value}
+                      onChange={handleChange}
+                      className={`w-[95%] p-2 rounded my-2    border ${
+                        isActive ? "border-orange-400" : "border-gray-300"
+                      } focus:outline-none focus:border-orange-400 bg-transparent`}
+                    >
+                      <option
+                        className="items-center justify-center"
+                        value="property"
+                      >
+                        Property Type
+                      </option>
+                      {realEstatePropertyTypes.map((item) => (
+                        <option key={item} value={item}>
+                          {item}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                  
+                  <div className="flex w-full  justify-center">
+                    <select
+                      value={bathroom}
+                      onChange={handlebathroom}
+                      className={`p-2 rounded m-1 w-[95%]  md:mx-2 border ${
+                        isActive ? "border-orange-400" : "border-gray-300"
+                      } focus:outline-none focus:border-orange-400 bg-transparent `}
+                    >
+                      <option value="bathroom">Bathroom</option>
+                      {numbers.map((item) => (
+                        <option key={item} value={item}>
+                          {item}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                  <div className="flex w-full  justify-center">
+                    <select
+                      value={bedroom}
+                      onChange={handlebedroom}
+                      className={`p-2 rounded m-1  md:mx-2 w-[95%] border ${
+                        isActive ? "border-orange-400" : "border-gray-300"
+                      } focus:outline-none focus:border-orange-400 bg-transparent`}
+                    >
+                      <option value="bedroom">Bedrooms</option>
+                      {number.map((item) => (
+                        <option key={item} value={item}>
+                          {item}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                  <div className="flex w-full  justify-center">
+                    <select
+                      value={year}
+                      onChange={handleyear}
+                      className={`p-2 rounded m-1 w-[95%] md:mx-2 border ${
+                        isActive ? "border-orange-400" : "border-gray-300"
+                      } focus:outline-none focus:border-orange-400 bg-transparent`}
+                    >
+                      <option value="year">Year built</option>
+                      {years.map((item) => (
+                        <option key={item} value={item}>
+                          {item}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                  <div className="flex w-full p-2  justify-center">
+                    <FormInput placeholder={"Min Price"} type={"number"} />
+                    <FormInput placeholder={"Max Price"} type={"number"} />
+                  </div>
+                  <div className="flex w-full p-2  justify-center">
+                    <FormInput placeholder={"Min Area"} type={"number"} />
+                    <FormInput placeholder={"Max Area"} type={"number"} />
+                  </div>
+                  <div className="flex w-full justify-center">
+                    <div className="flex-col w-full md:w-[80%] p-2 md:p-0  justify-center items-center  flex">
+                      <div className=" w-full flex flex-col rounded bg-white  p-2 ">
+                        <div className="h-[90%] w-full  ">
+                          <div className="w-full flex">
+                            <span className="text-lg text-primary font-medium md:m-2 md:my-4">
+                              Amenities
+                            </span>
+                          </div>
+
+                          <div className="grid w-full h-[100%] grid-cols-2  grid-rows-6  gap-2 p-1">
+                            {amenities.map((item) => (
+                              <div
+                                key={item}
+                                className="flex text-primary/50 items-center text-sm"
+                              >
+                                <input
+                                  className="w-5 h-5 mx-2"
+                                  type="checkbox"
+                                />
+                                <label htmlFor="">{item}</label>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                      <button className="w-[80%] flex p-2 bg-secondary px-4 m-auto text-white justify-center items-center rounded md:m-1">
+                        Search
+                      </button>
+                    </div>
+                  </div>
+                </form>
+                     </div>
+                    
+                    </div>}
                 </div>
               </div>
               <div className="flex w-full flex-col h-[97%] md:h-[95%]">
