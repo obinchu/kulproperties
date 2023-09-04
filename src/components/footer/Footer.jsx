@@ -7,7 +7,7 @@ import { CiLocationOn } from "react-icons/ci";
 
 const Footer = () => {
   return (
-    <div className="w-full max-h-[95vh] md:h-[50vh] text-sm bg-primary text-white flex flex-col ">
+    <div className="w-full bottom-0 left-0 max-h-[95vh] md:h-[50vh] text-sm bg-primary text-white flex flex-col ">
     <div className='block md:flex md:max-w-7xl w-full mmax-h-[85%] md:h-[75%] m-auto  p-2 border-b-2 border-white'>
       <div className="flex flex-col w-full mx-1 ">
         <div className="flex flex-col max-h-[30%]">

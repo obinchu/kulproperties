@@ -75,7 +75,7 @@ const Filter = () => {
         <button className='p-3 m-2 px-8 rounded bg-white text-primary'>Rent</button>
         <button className='p-3 m-2 px-8 rounded bg-white text-primary'>Sell</button>
     </div>
-    <div className="block md:flex w-full max-h-[90%] md:h-[15vh] rounded bg-white">
+    <div className="block md:flex w-full h-[90%] md:h-[15vh] rounded bg-white">
         <form action="" className='block m-aut0 md:flex  w-full items-center justify-evenly'>
             <div className='block md:flex w-full md:w-[60%] py-2 md:p-0'>
             <FormInput placeholder={"search..."} type={"input"}/>
@@ -93,7 +93,7 @@ const Filter = () => {
       Property Type
     </option>
     {realEstatePropertyTypes.map(item => (
-      <option value={item}>{item}</option>
+      <option key={item} value={item}>{item}</option>
     ))}
   </select>
 </label>
@@ -122,7 +122,7 @@ const Filter = () => {
 
             <div className="grid w-full h-[100%] grid-cols-2 md:grid-cols-4 grid-rows-6 md:grid-rows-3 gap-2 p-2">
                 {amenities.map(item=>
-                         <div className='flex text-primary/50 items-center p-2'>
+                         <div key={item} className='flex text-primary/50 items-center p-2'>
                          <input className='w-5 h-5 mx-2' type='checkbox'/>
                          <label htmlFor="">{item}</label>
                          </div>
@@ -141,7 +141,7 @@ const Filter = () => {
         >
             <option value="bathroom">Bathroom</option>
             {numbers.map(item=>
-                <option value={item}>{item}</option>
+                <option key={item} value={item}>{item}</option>
                 )}
             
             </select>
@@ -151,7 +151,7 @@ const Filter = () => {
         >
             <option value="bedroom">Bedrooms</option>
             {number.map(item=>
-                <option value={item}>{item}</option>
+                <option key={item} value={item}>{item}</option>
                 )}
             </select>
             <select value={year} onChange={handleyear}  className={`p-2 rounded m-1 md:w-[25%] md:mx-2 border ${
@@ -160,7 +160,7 @@ const Filter = () => {
         >
              <option value="year">Year built</option>
             {years.map(item=>
-                <option value={item}>{item}</option>
+                <option key={item} value={item}>{item}</option>
                 )}
             </select>
             

@@ -25,7 +25,7 @@ const PropertyCards = () => {
           <div className='flex flex-col relative w-full max-w-6xl m-auto h-full rounded'>
             <div className='flex w-full h-full overflow-x-scroll no-scrollbar rounded p-1'>
               {HouseDetails.map((details, index) => (
-                <div className="flex flex-shrink-0 w-[90%] md:w-[30%]  rounded-md flex-col mx-2">
+                <div key={index} className="flex flex-shrink-0 w-[90%] md:w-[30%]  rounded-md flex-col mx-2">
                 <div
                   key={index}
                   className='flex w-full h-[60%]  rounded-t-md bg-cover bg-center bg-no-repeat' style={{ backgroundImage: `url(${import.meta.env.BASE_URL}${details.image})` }}

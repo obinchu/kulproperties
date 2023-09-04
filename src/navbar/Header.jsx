@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
-import { BiUser,BiPlus } from "react-icons/bi";
-import {RxCaretDown,RxCaretUp} from 'react-icons/rx'
+import { BiUser, BiPlus } from "react-icons/bi";
+import { RxCaretDown, RxCaretUp } from "react-icons/rx";
 import { LiaPlayCircle, LiaDonateSolid } from "react-icons/lia";
 import UserLogin from "../login/UserLogin";
 import Menu from "../components/menu/Menu";
-import styles from './Header.module.css';
+import styles from "./Header.module.css";
+import { Link } from "react-router-dom";
 const Header = ({ timeline, ease }) => {
   const [hamburger, setHamburger] = useState(true);
   const [userAccess, setUserAccess] = useState(false);
@@ -23,6 +24,9 @@ const Header = ({ timeline, ease }) => {
   function openMenu() {
     setHamburger(!hamburger);
     setGive(true);
+  }
+  function closeMenu() {
+    setHamburger(true);
   }
   function handleGive() {
     setHamburger(true);
@@ -64,66 +68,100 @@ const Header = ({ timeline, ease }) => {
     }
   }
 
-  const headerElements = [{item:"Home"},{item:"Listing"},{item:"Property"},{item:"Pages"},{item:"Blog"},]
+  const headerElements = [
+    { item: "Home", path: "" },
+    {
+      item: "Listing",
+      more: ["All", "Resdential", "Commercial", "Rental"],
+    },
+    { item: "Property" },
+    {
+      item: "Pages",
+      more: [
+        "About Us",
+        "Contact Us",
+        "FAQs",
+        "Login/Register",
+        "Terms & Conditions",
+      ],
+    },
+    {
+      item: "Services",
+      more: [
+        "Building & Construction",
+        "Archtectural Designs",
+        "Structural Designs",
+        "Renovations",
+        "Landscaping",
+        "Interior Designs",
+        "Remodelling Extensions",
+        "Construction Project",
+        "Management",
+        "Consultancy",
+      ],
+    },
+    { item: "Blog" },
+  ];
   return (
     <div className="flex flex-col w-full items-center  ">
       <div className="flex fixed p-2 mx-auto w-full z-50 bg-white  backdrop-blur-sm md:p-3 text-black shadow-lg text-sm">
         <div className="w-full flex mx-auto max-w-7xl justify-between">
           <div className="flex items-center p-1">
-           <span className="text-xl font-medium text-primary">KUL PROPERTIES</span>
+            <span className="text-xl font-medium text-primary">
+              KUL PROPERTIES
+            </span>
           </div>
           <div className="hidden md:flex ms-auto me-3 m-1">
             <ul className="flex items-center">
-              {
-                headerElements.map((element,i)=>{
-                  return(
-                    <li key={i} className="relative mx-1 p-2 flex items-center text-primary group hover:cursor-pointer">
-                    <span className="mx-2">{element.item}</span>
-                    <span className="transition duration-300 flex group-hover:hidden">
-                      <RxCaretDown size={25} />
-                    </span>
-                    <span className="transform -transition-transform duration-700 hidden group-hover:flex relative hover:cursor-pointer">
-                      <RxCaretUp size={25} />
-                      {/* <div className="absolute  right-0 top-full  w-[200px]  bg-white border border-gray-300 rounded-lg  transform -transition-transform duration-700 ease-in-out group-hover:block">
-                        <p>Content goes here...</p>
-                        <p>Content goes here...</p>
-                        <p>Content goes here...</p>
-                      </div> */}
-                      <ul className="bg-transparent absolute top-full w-[200px] h-[300px] right-1  ">
-                      <ul className={`bg-white mt-8 rounded ${styles.dropdown}`}>
-                        <li>hello</li>
-                        <li>hello</li>
-                        <li>hello</li>
-                        <li>hello</li>
-                        <li>hello</li>
-                        <li>hello</li>
-                        <li>hello</li>
-                        <li>hello</li>
-                        <li>hello</li>
-                        <li>hello</li>
-                        <li>hello</li>
-                        <li>hello</li>
-                      </ul> 
-                      </ul>
+              {headerElements.map((element, i) => {
+                return (
+                  <li
+                    key={i}
+                    className="relative mx-1 p-2 flex items-center text-primary group hover:cursor-pointer"
+                  >
+                    <Link
+                      to={`/kulproperties/${element.path}`}
+                      className="mx-2"
+                    >
+                      {element.item}
+                    </Link>
 
-                      
-                    </span>
-                   
+                    {element.more && element.more.length > 0 && (
+                      <span>
+                        <span className="transition duration-300 flex group-hover:hidden">
+                          <RxCaretDown size={25} />
+                        </span>
+                        <span className="transform -transition-transform duration-700 hidden group-hover:flex relative hover:cursor-pointer">
+                          <RxCaretUp size={25} />
+
+                          <ul className="bg-transparent absolute top-full w-[200px] h-[300px] right-1  ">
+                            <ul
+                              className={`bg-white mt-8 rounded ${styles.dropdown}`}
+                            >
+                              {element.more.map((item, index) => (
+                                <li
+                                  key={index}
+                                  className={`m-1 text-base p-2 hover:font-medium ${
+                                    index !== element.more.length - 1
+                                      ? "border-b"
+                                      : ""
+                                  }`}
+                                >
+                                  {item}
+                                </li>
+                              ))}
+                            </ul>
+                          </ul>
+                        </span>
+                      </span>
+                    )}
                   </li>
-                  
-                  
-                  
-                  )
-                })
-              }
-            
-
-              <li className="mx-1 flex items-center text-primary"><span>Contact us</span></li>
+                );
+              })}
             </ul>
           </div>
-          
+
           <div className="flex">
-           
             <div
               onClick={handleUserclick}
               className="flex m-1  hover:cursor-pointer text-primary hover:text-primary ease-in-out items-center "
@@ -132,7 +170,7 @@ const Header = ({ timeline, ease }) => {
               <span className="hidden md:flex my-auto mx-1">Account</span>
             </div>
             <button className="hidden md:flex m-1  hover:cursor-pointer text-white rounded p-1 hover:bg-primary ease-in-out items-center bg-secondary">
-              <BiPlus size={25}/>
+              <BiPlus size={25} />
               <span className="mx-1">Create Listing</span>
             </button>
             <section
@@ -163,17 +201,16 @@ const Header = ({ timeline, ease }) => {
       {hamburger ? (
         <div className="fixed top-0 right-[-100%] z-40 h-full w-full bg-other/30 text-white transform -transition-transform duration-1000 ease-in-out ">
           <div className="h-full flex items-center justify-center transform -transition-transform duration-1000 ease-in-out ">
-            <Menu/>
+            <Menu action={closeMenu} />
           </div>
         </div>
       ) : (
         <div className="fixed top-0 right-0 z-40 h-full w-full bg-other/30 text-white transform -transition-transform duration-1000 ease-in-out">
           <div className="h-full flex items-center justify-end">
-            <Menu />
+            <Menu action={closeMenu} />
           </div>
         </div>
       )}
-      
     </div>
   );
 };
