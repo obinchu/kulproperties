@@ -9,39 +9,43 @@ import Pagination from "../features/Pagination";
 import FilterInput from "../login/form/FilterInput";
 import FilterLocation from "../login/form/FilterLocation";
 import FormInput from "../login/form/FormInput";
-import { MdOutlineMoreVert } from "react-icons/md";
+import {GoFilter} from "react-icons/go"
+import MobileFilter from "../components/listing/MobileFilter";
+import ListingFilter from "../components/listing/ListingFilter";
+import {AiOutlineClose} from 'react-icons/ai'
+
 
 const Listings = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [PropertyPerPage] = useState(4);
-  const [value, setValue] = useState("property");
+  // const [value, setValue] = useState("property");
   const [advanced, setAdvanced] = useState(false);
-  const [isActive, setIsActive] = useState(false);
-  const [bathroom, setBathroom] = useState("bathroom");
-  const [bedroom, setBedroom] = useState("bedroom");
-  const [year, setYear] = useState("year");
+  // const [isActive, setIsActive] = useState(false);
+  // const [bathroom, setBathroom] = useState("bathroom");
+  // const [bedroom, setBedroom] = useState("bedroom");
+  // const [year, setYear] = useState("year");
 
-  const handleInputChange = (event) => {
-    setIsActive(event.target.value.length > 0);
-  };
+  // const handleInputChange = (event) => {
+  //   setIsActive(event.target.value.length > 0);
+  // };
 
-  const handleChange = (event) => {
-    setValue(event.target.value);
-    setArea(event.target.value);
-    setIsActive(event.target.value.length > 0);
-  };
-  const handlebathroom = (event) => {
-    setBathroom(event.target.value);
-    setIsActive(event.target.value.length > 0);
-  };
-  const handlebedroom = (event) => {
-    setBedroom(event.target.value);
-    setIsActive(event.target.value.length > 0);
-  };
-  const handleyear = (event) => {
-    setYear(event.target.value);
-    setIsActive(event.target.value.length > 0);
-  };
+  // const handleChange = (event) => {
+  //   setValue(event.target.value);
+  //   setArea(event.target.value);
+  //   setIsActive(event.target.value.length > 0);
+  // };
+  // const handlebathroom = (event) => {
+  //   setBathroom(event.target.value);
+  //   setIsActive(event.target.value.length > 0);
+  // };
+  // const handlebedroom = (event) => {
+  //   setBedroom(event.target.value);
+  //   setIsActive(event.target.value.length > 0);
+  // };
+  // const handleyear = (event) => {
+  //   setYear(event.target.value);
+  //   setIsActive(event.target.value.length > 0);
+  // };
 
   const HouseDetails = [
     {
@@ -159,7 +163,7 @@ const Listings = () => {
     "Commercial Property",
     "Industrial",
   ];
-
+ 
   const indexOfLastProperty = currentPage * PropertyPerPage;
   const indexOfFirstProperty = indexOfLastProperty - PropertyPerPage;
   const currentProperty = HouseDetails.slice(
@@ -190,125 +194,7 @@ const Listings = () => {
             </div>
           </div>
           <div className="flex w-full h-[97%] md:h-[90%] justify-between p-2">
-            <div className="hidden md:flex flex-col w-full  md:w-[32%] h-full ">
-              <div className="flex w-full rounded p-2 h-full">
-                <form
-                  action=""
-                  className="bg-white h-[90%] py-4 w-full rounded"
-                >
-                  <FilterInput placeholder={"search..."} type={"input"} />
-                  <FilterLocation placeholder={"Location"} />
-                  <div className="flex w-full  justify-center">
-                    <select
-                      value={value}
-                      onChange={handleChange}
-                      className={`w-[85%] p-2 rounded my-2   border ${
-                        isActive ? "border-orange-400" : "border-gray-300"
-                      } focus:outline-none focus:border-orange-400 bg-transparent`}
-                    >
-                      <option
-                        className="items-center justify-center"
-                        value="property"
-                      >
-                        Property Type
-                      </option>
-                      {realEstatePropertyTypes.map((item) => (
-                        <option key={item} value={item}>
-                          {item}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                  <div className="flex w-full p-2  justify-center">
-                    <FormInput placeholder={"Min Price"} type={"number"} />
-                    <FormInput placeholder={"Max Price"} type={"number"} />
-                  </div>
-                  <div className="flex w-full  justify-center">
-                    <select
-                      value={bathroom}
-                      onChange={handlebathroom}
-                      className={`p-2 rounded m-1 w-[85%]  md:mx-2 border ${
-                        isActive ? "border-orange-400" : "border-gray-300"
-                      } focus:outline-none focus:border-orange-400 bg-transparent `}
-                    >
-                      <option value="bathroom">Bathroom</option>
-                      {numbers.map((item) => (
-                        <option key={item} value={item}>
-                          {item}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                  <div className="flex w-full  justify-center">
-                    <select
-                      value={bedroom}
-                      onChange={handlebedroom}
-                      className={`p-2 rounded m-1  md:mx-2 w-[85%] border ${
-                        isActive ? "border-orange-400" : "border-gray-300"
-                      } focus:outline-none focus:border-orange-400 bg-transparent`}
-                    >
-                      <option value="bedroom">Bedrooms</option>
-                      {number.map((item) => (
-                        <option key={item} value={item}>
-                          {item}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                  <div className="flex w-full  justify-center">
-                    <select
-                      value={year}
-                      onChange={handleyear}
-                      className={`p-2 rounded m-1 w-[85%] md:mx-2 border ${
-                        isActive ? "border-orange-400" : "border-gray-300"
-                      } focus:outline-none focus:border-orange-400 bg-transparent`}
-                    >
-                      <option value="year">Year built</option>
-                      {years.map((item) => (
-                        <option key={item} value={item}>
-                          {item}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                  <div className="flex w-full p-2  justify-center">
-                    <FormInput placeholder={"Min Area"} type={"number"} />
-                    <FormInput placeholder={"Max Area"} type={"number"} />
-                  </div>
-                  <div className="flex w-full justify-center">
-                    <div className="flex-col w-full md:w-[80%] p-2 md:p-0  justify-center items-center  flex">
-                      <div className=" w-full flex flex-col rounded bg-white  p-2 ">
-                        <div className="h-[90%] w-full  ">
-                          <div className="w-full flex">
-                            <span className="text-lg text-primary font-medium md:m-2 md:my-4">
-                              Amenities
-                            </span>
-                          </div>
-
-                          <div className="grid w-full h-[100%] grid-cols-2  grid-rows-6  gap-2 p-1">
-                            {amenities.map((item) => (
-                              <div
-                                key={item}
-                                className="flex text-primary/50 items-center text-sm"
-                              >
-                                <input
-                                  className="w-5 h-5 mx-2"
-                                  type="checkbox"
-                                />
-                                <label htmlFor="">{item}</label>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-                      <button className="w-[80%] flex p-2 bg-secondary px-4 m-auto text-white justify-center items-center rounded md:m-1">
-                        Search
-                      </button>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </div>
+              <ListingFilter/>
             <div className="flex flex-col w-full md:w-[65%] h-full justify-between p-1 ">
               <div className="flex w-full  p-1 rouded h-[2.5%] md:h-[5%] my-1 justify-between bg-white rounded">
                 <span className="items-center p-1 w-[40%] flex">
@@ -316,132 +202,18 @@ const Listings = () => {
                 </span>
                 <div className="justify-center items-center flex w-[60%] ">
                   <span className="mx-2 w-[50%]">status</span>
-                  <span  onClick={()=>setAdvanced(!advanced)}  className="mx-2 w-[50%]">sort order</span>
+                  <span  onClick={()=>setAdvanced(!advanced)}  className="mx-2 w-[50%] items-center ms-auto flex md:hidden"><GoFilter size={25}/>Filter</span>
                   {advanced && 
-                   <div className='w-full fixed overflow-y-auto  md:relative top-0 left-0 z-30   h-full flex rounded bg-white'>
-                  <div className='h-[100%] mt-[15%] md:mt-0 md:h-[60%] '>
-                  <div className="flex">
-                  <span  onClick={()=>setAdvanced(false)}  className="m-2  ms-auto p-1">close</span>
-                    </div>
-                     <form
-                  action=""
-                  className="w-full h-[100%] mt-[20%]] "
-                >
-                  <FilterInput placeholder={"search..."} type={"input"} />
-                  <FilterLocation placeholder={"Location"} />
-                  <div className="flex w-full  justify-center">
-                    <select
-                      value={value}
-                      onChange={handleChange}
-                      className={`w-[95%] p-2 rounded my-2    border ${
-                        isActive ? "border-orange-400" : "border-gray-300"
-                      } focus:outline-none focus:border-orange-400 bg-transparent`}
-                    >
-                      <option
-                        className="items-center justify-center"
-                        value="property"
-                      >
-                        Property Type
-                      </option>
-                      {realEstatePropertyTypes.map((item) => (
-                        <option key={item} value={item}>
-                          {item}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                  
-                  <div className="flex w-full  justify-center">
-                    <select
-                      value={bathroom}
-                      onChange={handlebathroom}
-                      className={`p-2 rounded m-1 w-[95%]  md:mx-2 border ${
-                        isActive ? "border-orange-400" : "border-gray-300"
-                      } focus:outline-none focus:border-orange-400 bg-transparent `}
-                    >
-                      <option value="bathroom">Bathroom</option>
-                      {numbers.map((item) => (
-                        <option key={item} value={item}>
-                          {item}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                  <div className="flex w-full  justify-center">
-                    <select
-                      value={bedroom}
-                      onChange={handlebedroom}
-                      className={`p-2 rounded m-1  md:mx-2 w-[95%] border ${
-                        isActive ? "border-orange-400" : "border-gray-300"
-                      } focus:outline-none focus:border-orange-400 bg-transparent`}
-                    >
-                      <option value="bedroom">Bedrooms</option>
-                      {number.map((item) => (
-                        <option key={item} value={item}>
-                          {item}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                  <div className="flex w-full  justify-center">
-                    <select
-                      value={year}
-                      onChange={handleyear}
-                      className={`p-2 rounded m-1 w-[95%] md:mx-2 border ${
-                        isActive ? "border-orange-400" : "border-gray-300"
-                      } focus:outline-none focus:border-orange-400 bg-transparent`}
-                    >
-                      <option value="year">Year built</option>
-                      {years.map((item) => (
-                        <option key={item} value={item}>
-                          {item}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                  <div className="flex w-full p-2  justify-center">
-                    <FormInput placeholder={"Min Price"} type={"number"} />
-                    <FormInput placeholder={"Max Price"} type={"number"} />
-                  </div>
-                  <div className="flex w-full p-2  justify-center">
-                    <FormInput placeholder={"Min Area"} type={"number"} />
-                    <FormInput placeholder={"Max Area"} type={"number"} />
-                  </div>
-                  <div className="flex w-full justify-center">
-                    <div className="flex-col w-full md:w-[80%] p-2 md:p-0  justify-center items-center  flex">
-                      <div className=" w-full flex flex-col rounded bg-white  p-2 ">
-                        <div className="h-[90%] w-full  ">
-                          <div className="w-full flex">
-                            <span className="text-lg text-primary font-medium md:m-2 md:my-4">
-                              Amenities
-                            </span>
-                          </div>
-
-                          <div className="grid w-full h-[100%] grid-cols-2  grid-rows-6  gap-2 p-1">
-                            {amenities.map((item) => (
-                              <div
-                                key={item}
-                                className="flex text-primary/50 items-center text-sm"
-                              >
-                                <input
-                                  className="w-5 h-5 mx-2"
-                                  type="checkbox"
-                                />
-                                <label htmlFor="">{item}</label>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-                      <button className="w-[80%] flex p-2 bg-secondary px-4 m-auto text-white justify-center items-center rounded md:m-1">
-                        Search
-                      </button>
-                    </div>
-                  </div>
-                </form>
+                   <div className='w-full md:hidden fixed overflow-y-auto  md:relative top-0 left-0 z-50   h-full flex rounded bg-white'>
+                   <div className='h-[100%]  md:mt-0 md:h-[60%] '>
+                   <div className="flex">
+                   <span  onClick={()=>setAdvanced(false)}  className="m-2  mx-auto p-1"><AiOutlineClose size={25}/></span>
                      </div>
-                    
-                    </div>}
+                      <MobileFilter/>
+
+                     </div>
+                     </div>
+                  }
                 </div>
               </div>
               <div className="flex w-full flex-col h-[97%] md:h-[95%]">
