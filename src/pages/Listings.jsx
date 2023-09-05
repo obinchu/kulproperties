@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { FiGrid } from "react-icons/fi";
 import { TiThListOutline } from "react-icons/ti";
 import { CiLocationOn } from "react-icons/ci";
@@ -6,167 +6,27 @@ import { BiBed } from "react-icons/bi";
 import { MdOutlineBathtub } from "react-icons/md";
 import { TfiRulerAlt2 } from "react-icons/tfi";
 import Pagination from "../features/Pagination";
-import FilterInput from "../login/form/FilterInput";
-import FilterLocation from "../login/form/FilterLocation";
-import FormInput from "../login/form/FormInput";
+
 import {GoFilter} from "react-icons/go"
 import MobileFilter from "../components/listing/MobileFilter";
 import ListingFilter from "../components/listing/ListingFilter";
 import {AiOutlineClose} from 'react-icons/ai'
+import { AppContext } from "../App";
+import { Link } from "react-router-dom";
+
 
 
 const Listings = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [PropertyPerPage] = useState(4);
-  // const [value, setValue] = useState("property");
   const [advanced, setAdvanced] = useState(false);
-  // const [isActive, setIsActive] = useState(false);
-  // const [bathroom, setBathroom] = useState("bathroom");
-  // const [bedroom, setBedroom] = useState("bedroom");
-  // const [year, setYear] = useState("year");
+ 
+ const propertyDetails = useContext(AppContext)
 
-  // const handleInputChange = (event) => {
-  //   setIsActive(event.target.value.length > 0);
-  // };
-
-  // const handleChange = (event) => {
-  //   setValue(event.target.value);
-  //   setArea(event.target.value);
-  //   setIsActive(event.target.value.length > 0);
-  // };
-  // const handlebathroom = (event) => {
-  //   setBathroom(event.target.value);
-  //   setIsActive(event.target.value.length > 0);
-  // };
-  // const handlebedroom = (event) => {
-  //   setBedroom(event.target.value);
-  //   setIsActive(event.target.value.length > 0);
-  // };
-  // const handleyear = (event) => {
-  //   setYear(event.target.value);
-  //   setIsActive(event.target.value.length > 0);
-  // };
-
-  const HouseDetails = [
-    {
-      County: "Kajiado",
-      Country: "Kenya",
-      Type: "Condo",
-      Location: "Kitengela",
-      Beds: "3",
-      Baths: "3",
-      Size: 5600,
-      Price: "1300000",
-      Status: "For Sale",
-      image: "./assets/images/house.jpg",
-    },
-    {
-      County: "Kajiado",
-      Country: "Kenya",
-      Type: "Apartment",
-      Location: "Kitengela",
-      Beds: "3",
-      Baths: "3",
-      Size: 5600,
-      Price: "1300000",
-      Status: "For Sale",
-      image: "./assets/images/house1.jpg",
-    },
-    {
-      County: "Kajiado",
-      Country: "Kenya",
-      Type: "Flat",
-      Location: "Kitengela",
-      Beds: "3",
-      Baths: "3",
-      Size: 5600,
-      Price: "1300000",
-      Status: "For Sale",
-      image: "./assets/images/house2.jpg",
-    },
-    {
-      County: "Kajiado",
-      Country: "Kenya",
-      Type: "Condo",
-      Location: "Kitengela",
-      Beds: "3",
-      Baths: "3",
-      Size: 5600,
-      Price: "1300000",
-      Status: "For Sale",
-      image: "./assets/images/house3.jpg",
-    },
-    {
-      County: "Kajiado",
-      Country: "Kenya",
-      Type: "Condo",
-      Location: "Kitengela",
-      Beds: "3",
-      Baths: "3",
-      Size: 5600,
-      Price: "1300000",
-      Status: "For Sale",
-      image: "./assets/images/house4.jpg",
-    },
-    {
-      County: "Kajiado",
-      Country: "Kenya",
-      Type: "Condo",
-      Location: "Kitengela",
-      Beds: "3",
-      Baths: "3",
-      Size: 5600,
-      Price: "1300000",
-      Status: "For Sale",
-      image: "./assets/images/house5.jpg",
-    },
-    {
-      County: "Kajiado",
-      Country: "Kenya",
-      Type: "Condo",
-      Location: "Kitengela",
-      Beds: "3",
-      Baths: "3",
-      Size: 5600,
-      Price: "1300000",
-      Status: "For Sale",
-      image: "./assets/images/house6.jpg",
-    },
-  ];
-  const amenities = [
-    "Kitchen appliances",
-    "Laundry facilities",
-    "Garage or parking space",
-    "Outdoor space ",
-    "Security system",
-    "Fireplace",
-    "Walk-in closets",
-    "Hardwood floors",
-    "Energy-efficient features",
-    "Swimming pool",
-    "Home office space",
-    "WiFi",
-  ];
-  const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-  const number = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-  const years = [1999, 2000, 2001, 2002, 2005, 2010, 2019];
-  const realEstatePropertyTypes = [
-    "Single-Family Home",
-    "Condominium (Condo)",
-    "Townhouse",
-    "Duplex",
-    "Apartment Building",
-    "Multi-Family Home",
-    "Mobile Home",
-    "Vacation Home",
-    "Co-op (Cooperative)",
-    "Commercial Property",
-    "Industrial",
-  ];
  
   const indexOfLastProperty = currentPage * PropertyPerPage;
   const indexOfFirstProperty = indexOfLastProperty - PropertyPerPage;
-  const currentProperty = HouseDetails.slice(
+  const currentProperty = propertyDetails[0].properties.slice(
     indexOfFirstProperty,
     indexOfLastProperty
   );
@@ -198,7 +58,7 @@ const Listings = () => {
             <div className="flex flex-col w-full md:w-[65%] h-full justify-between p-1 ">
               <div className="flex w-full  p-1 rouded h-[2.5%] md:h-[5%] my-1 justify-between bg-white rounded">
                 <span className="items-center p-1 w-[40%] flex">
-                  {HouseDetails.length} results
+                  {propertyDetails[0].properties.length} results
                 </span>
                 <div className="justify-center items-center flex w-[60%] ">
                   <span className="mx-2 w-[50%] md:w-full h-full items-center  justify-end flex">status</span>
@@ -219,7 +79,8 @@ const Listings = () => {
               <div className="flex w-full flex-col h-[97%] md:h-[95%]">
                 <div className="grid grid-cols-1 md:grid-cols-2 w-full h-[100%] md:grid-rows-2 grid-rows-4 md:gap-1 gap-5 py-2 md:p-2">
                   {currentProperty.map((details, index) => (
-                    <div
+                    <Link
+                    to={`/kulproperties/propertydetails/${details.id}`} 
                       key={index}
                       className="flex flex-shrink w-[100%] md:w-[95%]  md:h-[90%]    rounded-md flex-col mx-auto md:mx-2"
                     >
@@ -228,7 +89,7 @@ const Listings = () => {
                         className="flex w-full h-[60%]  rounded-t-md bg-cover bg-center bg-no-repeat"
                         style={{
                           backgroundImage: `url(${import.meta.env.BASE_URL}${
-                            details.image
+                            details.cover_image
                           })`,
                         }}
                       >
@@ -239,54 +100,51 @@ const Listings = () => {
                           }}
                         >
                           <span className="rounded p-1 w-[23%] text-base justify-center bg-red-500 text-white flex">
-                            {details.Status}
+                            {details.status}
                           </span>
                           <span className=" text-white font-medium text-xl">
-                            KES {details.Price}
+                            KES {details.unit.price}
                           </span>
                         </div>
                       </div>
                       <div className="flex flex-col bg-white w-full rounded-b-md h-[40%] p-2 md:p-4">
                         <span className="items-center  flex text-base text-red-500">
-                          {details.Type}
+                          {details.property_type}
                         </span>
                         <span className="items-center  flex text-lg font-medium">
-                          Renovated {details.Type}
+                        {details.title}
+                         
                         </span>
                         <div className="flex items-center">
                           <span>
                             <CiLocationOn size={20} />
                           </span>
-                          <span className="ms-1">{details.Location},</span>
-                          <span className="ms-1">{details.County},</span>
-                          <span className="ms-1">{details.Country}</span>
+                          <span className="ms-1">{details.location}</span>
+                          
                         </div>
                         <div className="grid grid-cols-2 grid-rows-2 gap-2 py-2">
                           <span className="flex items-center">
                             <BiBed size={25} />
-                            {details.Beds}Bedrooms
+                            {details.unit.bedrooms}Bedrooms
                           </span>
                           <span className="flex items-center">
                             <MdOutlineBathtub size={25} />
-                            {details.Baths}Bathrooms
+                            {details.unit.bathrooms}Bathrooms
                           </span>
                           <span className="flex items-center">
                             <TfiRulerAlt2 size={25} />
-                            {details.Size}Sq ft
+                            {details.unit.area}Sq ft
                           </span>
-                          <span className="flex items-center">
-                            <BiBed size={25} />
-                            {details.Beds}Bedrooms
-                          </span>
+                         
                         </div>
                       </div>
-                    </div>
+                    </Link>
                   ))}
                 </div>
                 <div className="w-full flex mx-auto mt-auto md:mt-0 container p-1 m-1">
                   <Pagination
                     PropertyPerPage={PropertyPerPage}
-                    totalProperties={HouseDetails.length}
+                    totalProperties={propertyDetails[0].properties.length}
                     currentPage={currentPage}
                     setPage={setPage}
                   />

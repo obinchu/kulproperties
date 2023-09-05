@@ -1,7 +1,8 @@
-import React,{useState} from 'react'
+import React,{useState,useContext} from 'react'
 import FormInput from '../../login/form/FormInput'
 import FilterInput from '../../login/form/FilterInput'
 import FilterLocation from '../../login/form/FilterLocation'
+import { AppContext } from '../../App'
 
 
 const MobileFilter = () => {
@@ -36,20 +37,17 @@ const MobileFilter = () => {
     };
   
    
-    const amenities = [
-      "Kitchen appliances",
-      "Laundry facilities",
-      "Garage or parking space",
-      "Outdoor space ",
-      "Security system",
-      "Fireplace",
-      "Walk-in closets",
-      "Hardwood floors",
-      "Energy-efficient features",
-      "Swimming pool",
-      "Home office space",
-      "WiFi",
-    ];
+    const propertyDetails = useContext(AppContext)
+   
+    const amenities = new Set();
+
+    propertyDetails[0].properties.forEach((property) => {
+      property.amenities.forEach((amenity) => {
+        amenities.add(amenity);
+      });
+    });
+    
+  const uniqueAmenities =   [...amenities]
     const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     const number = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     const years = [1999, 2000, 2001, 2002, 2005, 2010, 2019];
@@ -163,7 +161,7 @@ const MobileFilter = () => {
             </div>
 
             <div className="grid w-full h-[100%] grid-cols-2  grid-rows-6  gap-2 p-1">
-              {amenities.map((item) => (
+              {uniqueAmenities.map((item) => (
                 <div
                   key={item}
                   className="flex text-primary/50 items-center text-sm"

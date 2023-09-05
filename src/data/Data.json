@@ -1,0 +1,207 @@
+[
+   {
+    "properties":[
+        {
+            "id": 1,
+            "title": "New Apartments Rongai",
+            "location": "Rongai , kenya",
+            "property_type": "apartment",
+            "description": "Are you looking to live amongst the bustle of Nairobi? Or maybe you prefer to wake up to sea views in Mombasa? With over 7,500+ listings for sale, BuyRentKenya can match you with a property to call home. Get exclusive insights into popular neighbourhoods such as Karen, Westlands and Kiambu Road. Filter down to what's important for you. Looking only for 3 bed houses in Nairobi? Or do you long for a lovely townhouse rather than a Nairobi apartment? We can guide you to the best places to invest.",
+            "status": "rent",
+            "cover_image": "./assets/images/house.jpg",
+            "likes": 1,
+            "features": [
+                "hardwood floors",
+                "en suite"
+            ],
+            "amenities": [
+                "parking",
+                "hospital",
+                "school around"
+            ],
+            "unit": {
+                "area": "2000.00",
+                "bedrooms": 3,
+                "bathrooms": 2,
+                "price": "20000.00"
+            }
+        },
+        {
+            "id": 2,
+            "title": "Renovated Condo",
+            "location": "westlands , kenya",
+            "property_type": "condo",
+            "description": "Are you looking to live amongst the bustle of Nairobi? Or maybe you prefer to wake up to sea views in Mombasa? With over 7,500+ listings for sale, BuyRentKenya can match you with a property to call home. Get exclusive insights into popular neighbourhoods such as Karen, Westlands and Kiambu Road. Filter down to what's important for you. Looking only for 3 bed houses in Nairobi? Or do you long for a lovely townhouse rather than a Nairobi apartment? We can guide you to the best places to invest.",
+            "status": "rent",
+            "cover_image": "./assets/images/house1.jpg",
+            "likes": 1,
+            "features": [
+                "hardwood floors",
+                "en suite"
+            ],
+            "amenities": [
+                "parking",
+                "hospital",
+                "school around"
+            ],
+            "unit": {
+                "area": "4000.00",
+                "bedrooms": 2,
+                "bathrooms": 2,
+                "price": "30000.00"
+            }
+        },
+        {
+            "id": 3,
+            "title": "Renovated Condo",
+            "location": "westlands , kenya",
+            "property_type": "condo",
+            "description": "Are you looking to live amongst the bustle of Nairobi? Or maybe you prefer to wake up to sea views in Mombasa? With over 7,500+ listings for sale, BuyRentKenya can match you with a property to call home. Get exclusive insights into popular neighbourhoods such as Karen, Westlands and Kiambu Road. Filter down to what's important for you. Looking only for 3 bed houses in Nairobi? Or do you long for a lovely townhouse rather than a Nairobi apartment? We can guide you to the best places to invest.",
+            "status": "rent",
+            "cover_image": "./assets/images/house2.jpg",
+            "likes": 1,
+            "features": [
+                "hardwood floors",
+                "en suite"
+            ],
+            "amenities": [
+                "parking",
+                "hospital",
+                "school around"
+            ],
+            "unit": {
+                "area": "4000.00",
+                "bedrooms": 2,
+                "bathrooms": 2,
+                "price": "30000.00"
+            }
+        },
+        {
+            "id": 4,
+            "title": "Renovated Condo",
+            "location": "westlands , kenya",
+            "property_type": "condo",
+            "description": "Are you looking to live amongst the bustle of Nairobi? Or maybe you prefer to wake up to sea views in Mombasa? With over 7,500+ listings for sale, BuyRentKenya can match you with a property to call home. Get exclusive insights into popular neighbourhoods such as Karen, Westlands and Kiambu Road. Filter down to what's important for you. Looking only for 3 bed houses in Nairobi? Or do you long for a lovely townhouse rather than a Nairobi apartment? We can guide you to the best places to invest.",
+            "status": "rent",
+            "cover_image": "./assets/images/house3.jpg",
+            "likes": 1,
+            "features": [
+                "hardwood floors",
+                "en suite"
+            ],
+            "amenities": [
+                "parking",
+                "hospital",
+                "school around"
+            ],
+            "unit": {
+                "area": "4000.00",
+                "bedrooms": 2,
+                "bathrooms": 2,
+                "price": "30000.00"
+            }
+        },
+        {
+            "id": 5,
+            "title": "Renovated Condo",
+            "location": "westlands , kenya",
+            "property_type": "condo",
+            "description": "Are you looking to live amongst the bustle of Nairobi? Or maybe you prefer to wake up to sea views in Mombasa? With over 7,500+ listings for sale, BuyRentKenya can match you with a property to call home. Get exclusive insights into popular neighbourhoods such as Karen, Westlands and Kiambu Road. Filter down to what's important for you. Looking only for 3 bed houses in Nairobi? Or do you long for a lovely townhouse rather than a Nairobi apartment? We can guide you to the best places to invest.",
+            "status": "sell",
+            "cover_image": "./assets/images/house4.jpg",
+            "likes": 1,
+            "features": [
+                "hardwood floors",
+                "en suite"
+            ],
+            "amenities": [
+                "parking",
+                "hospital",
+                "school around",
+                "WiFi"
+            ],
+            "unit": {
+                "area": "4000.00",
+                "bedrooms": 2,
+                "bathrooms": 2,
+                "price": "30000.00"
+            }
+        },
+        {
+            "id": 6,
+            "title": "Renovated Condo",
+            "location": "westlands , kenya",
+            "property_type": "condo",
+            "description": "Are you looking to live amongst the bustle of Nairobi? Or maybe you prefer to wake up to sea views in Mombasa? With over 7,500+ listings for sale, BuyRentKenya can match you with a property to call home. Get exclusive insights into popular neighbourhoods such as Karen, Westlands and Kiambu Road. Filter down to what's important for you. Looking only for 3 bed houses in Nairobi? Or do you long for a lovely townhouse rather than a Nairobi apartment? We can guide you to the best places to invest.",
+            "status": "rent",
+            "cover_image": "./assets/images/house4.jpg",
+            "likes": 1,
+            "features": [
+                "hardwood floors",
+                "en suite"
+            ],
+            "amenities": [
+                "parking",
+                "hospital",
+                "school around"
+            ],
+            "unit": {
+                "area": "4000.00",
+                "bedrooms": 2,
+                "bathrooms": 2,
+                "price": "30000.00"
+            }
+        },
+        {
+            "id": 7,
+            "title": "Renovated Condo",
+            "location": "westlands , kenya",
+            "property_type": "condo",
+            "description": "Are you looking to live amongst the bustle of Nairobi? Or maybe you prefer to wake up to sea views in Mombasa? With over 7,500+ listings for sale, BuyRentKenya can match you with a property to call home. Get exclusive insights into popular neighbourhoods such as Karen, Westlands and Kiambu Road. Filter down to what's important for you. Looking only for 3 bed houses in Nairobi? Or do you long for a lovely townhouse rather than a Nairobi apartment? We can guide you to the best places to invest.",
+            "status": "rent",
+            "cover_image": "./assets/images/house3.jpg",
+            "likes": 1,
+            "features": [
+                "hardwood floors",
+                "en suite"
+            ],
+            "amenities": [
+                "parking",
+                "hospital",
+                "school around"
+            ],
+            "unit": {
+                "area": "4000.00",
+                "bedrooms": 2,
+                "bathrooms": 2,
+                "price": "30000.00"
+            }
+        },
+        {
+            "id": 8,
+            "title": "Renovated Condo",
+            "location": "westlands , kenya",
+            "property_type": "condo",
+            "description": "Are you looking to live amongst the bustle of Nairobi? Or maybe you prefer to wake up to sea views in Mombasa? With over 7,500+ listings for sale, BuyRentKenya can match you with a property to call home. Get exclusive insights into popular neighbourhoods such as Karen, Westlands and Kiambu Road. Filter down to what's important for you. Looking only for 3 bed houses in Nairobi? Or do you long for a lovely townhouse rather than a Nairobi apartment? We can guide you to the best places to invest.",
+            "status": "rent",
+            "cover_image": "./assets/images/house3.jpg",
+            "likes": 1,
+            "features": [
+                "hardwood floors",
+                "en suite"
+            ],
+            "amenities": [
+                "parking",
+                "hospital",
+                "school around"
+            ],
+            "unit": {
+                "area": "4000.00",
+                "bedrooms": 2,
+                "bathrooms": 2,
+                "price": "30000.00"
+            }
+        }
+    ]
+   }
+]
