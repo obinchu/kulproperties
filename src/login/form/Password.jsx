@@ -23,8 +23,8 @@ const Password = ({placeholder}) => {
       <div className="relative flex w-[80%] mx-auto">
         <input
           className={`p-2 rounded m-1 w-full mx-auto border ${
-            isActive ? 'border-orange-400' : 'border-gray-300'
-          } focus:outline-none focus:border-orange-400`}
+            isActive ? 'border-primary' : 'border-gray-300'
+          } focus:outline-none focus:border-primary`}
           type={showPassword ? 'text' : 'password'}
           id="password"
           value={password}
@@ -33,7 +33,7 @@ const Password = ({placeholder}) => {
         <label
           className={`absolute left-2 top-3.5 text-base transition-all transform origin-top ${
             isActive
-              ? 'text-orange-400 bg-white text-sm -translate-y-5 -translate-x-1/10 px-1 duration-300'
+              ? 'text-primary bg-white text-sm -translate-y-5 -translate-x-1/10 px-1 duration-300'
               : 'text-gray-400'
           }`}
           htmlFor="password"
@@ -48,7 +48,7 @@ const Password = ({placeholder}) => {
           {!active ? (
             <AiOutlineEyeInvisible className="" size={20} />
           ) : (
-            <FaEye className="text-orange-400" size={20} />
+            <FaEye className="text-primary" size={20} />
           )}
         </label>
       </div>

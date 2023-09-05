@@ -8,7 +8,6 @@ const MobileFilter = () => {
 
 
     const [value, setValue] = useState("property");
-    const [advanced, setAdvanced] = useState(false);
     const [isActive, setIsActive] = useState(false);
     const [bathroom, setBathroom] = useState("bathroom");
     const [bedroom, setBedroom] = useState("bedroom");
@@ -36,92 +35,7 @@ const MobileFilter = () => {
       setIsActive(event.target.value.length > 0);
     };
   
-    const HouseDetails = [
-      {
-        County: "Kajiado",
-        Country: "Kenya",
-        Type: "Condo",
-        Location: "Kitengela",
-        Beds: "3",
-        Baths: "3",
-        Size: 5600,
-        Price: "1300000",
-        Status: "For Sale",
-        image: "./assets/images/house.jpg",
-      },
-      {
-        County: "Kajiado",
-        Country: "Kenya",
-        Type: "Apartment",
-        Location: "Kitengela",
-        Beds: "3",
-        Baths: "3",
-        Size: 5600,
-        Price: "1300000",
-        Status: "For Sale",
-        image: "./assets/images/house1.jpg",
-      },
-      {
-        County: "Kajiado",
-        Country: "Kenya",
-        Type: "Flat",
-        Location: "Kitengela",
-        Beds: "3",
-        Baths: "3",
-        Size: 5600,
-        Price: "1300000",
-        Status: "For Sale",
-        image: "./assets/images/house2.jpg",
-      },
-      {
-        County: "Kajiado",
-        Country: "Kenya",
-        Type: "Condo",
-        Location: "Kitengela",
-        Beds: "3",
-        Baths: "3",
-        Size: 5600,
-        Price: "1300000",
-        Status: "For Sale",
-        image: "./assets/images/house3.jpg",
-      },
-      {
-        County: "Kajiado",
-        Country: "Kenya",
-        Type: "Condo",
-        Location: "Kitengela",
-        Beds: "3",
-        Baths: "3",
-        Size: 5600,
-        Price: "1300000",
-        Status: "For Sale",
-        image: "./assets/images/house4.jpg",
-      },
-      {
-        County: "Kajiado",
-        Country: "Kenya",
-        Type: "Condo",
-        Location: "Kitengela",
-        Beds: "3",
-        Baths: "3",
-        Size: 5600,
-        Price: "1300000",
-        Status: "For Sale",
-        image: "./assets/images/house5.jpg",
-      },
-      {
-        County: "Kajiado",
-        Country: "Kenya",
-        Type: "Condo",
-        Location: "Kitengela",
-        Beds: "3",
-        Baths: "3",
-        Size: 5600,
-        Price: "1300000",
-        Status: "For Sale",
-        image: "./assets/images/house6.jpg",
-      },
-    ];
+   
     const amenities = [
       "Kitchen appliances",
       "Laundry facilities",
@@ -165,8 +79,8 @@ const MobileFilter = () => {
         value={value}
         onChange={handleChange}
         className={`w-[95%] p-2 rounded my-2    border ${
-          isActive ? "border-orange-400" : "border-gray-300"
-        } focus:outline-none focus:border-orange-400 bg-transparent`}
+          isActive ? "border-primary" : "border-gray-300"
+        } focus:outline-none focus:border-primary bg-transparent`}
       >
         <option
           className="items-center justify-center"
@@ -187,8 +101,8 @@ const MobileFilter = () => {
         value={bathroom}
         onChange={handlebathroom}
         className={`p-2 rounded m-1 w-[95%]  md:mx-2 border ${
-          isActive ? "border-orange-400" : "border-gray-300"
-        } focus:outline-none focus:border-orange-400 bg-transparent `}
+          isActive ? "border-primary" : "border-gray-300"
+        } focus:outline-none focus:border-primary bg-transparent `}
       >
         <option value="bathroom">Bathroom</option>
         {numbers.map((item) => (
@@ -203,8 +117,8 @@ const MobileFilter = () => {
         value={bedroom}
         onChange={handlebedroom}
         className={`p-2 rounded m-1  md:mx-2 w-[95%] border ${
-          isActive ? "border-orange-400" : "border-gray-300"
-        } focus:outline-none focus:border-orange-400 bg-transparent`}
+          isActive ? "border-primary" : "border-gray-300"
+        } focus:outline-none focus:border-primary bg-transparent`}
       >
         <option value="bedroom">Bedrooms</option>
         {number.map((item) => (
@@ -219,8 +133,8 @@ const MobileFilter = () => {
         value={year}
         onChange={handleyear}
         className={`p-2 rounded m-1 w-[95%] md:mx-2 border ${
-          isActive ? "border-orange-400" : "border-gray-300"
-        } focus:outline-none focus:border-orange-400 bg-transparent`}
+          isActive ? "border-primary" : "border-gray-300"
+        } focus:outline-none focus:border-primary bg-transparent`}
       >
         <option value="year">Year built</option>
         {years.map((item) => (

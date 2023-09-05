@@ -34,92 +34,7 @@ const ListingFilter = () => {
       setIsActive(event.target.value.length > 0);
     };
   
-    const HouseDetails = [
-      {
-        County: "Kajiado",
-        Country: "Kenya",
-        Type: "Condo",
-        Location: "Kitengela",
-        Beds: "3",
-        Baths: "3",
-        Size: 5600,
-        Price: "1300000",
-        Status: "For Sale",
-        image: "./assets/images/house.jpg",
-      },
-      {
-        County: "Kajiado",
-        Country: "Kenya",
-        Type: "Apartment",
-        Location: "Kitengela",
-        Beds: "3",
-        Baths: "3",
-        Size: 5600,
-        Price: "1300000",
-        Status: "For Sale",
-        image: "./assets/images/house1.jpg",
-      },
-      {
-        County: "Kajiado",
-        Country: "Kenya",
-        Type: "Flat",
-        Location: "Kitengela",
-        Beds: "3",
-        Baths: "3",
-        Size: 5600,
-        Price: "1300000",
-        Status: "For Sale",
-        image: "./assets/images/house2.jpg",
-      },
-      {
-        County: "Kajiado",
-        Country: "Kenya",
-        Type: "Condo",
-        Location: "Kitengela",
-        Beds: "3",
-        Baths: "3",
-        Size: 5600,
-        Price: "1300000",
-        Status: "For Sale",
-        image: "./assets/images/house3.jpg",
-      },
-      {
-        County: "Kajiado",
-        Country: "Kenya",
-        Type: "Condo",
-        Location: "Kitengela",
-        Beds: "3",
-        Baths: "3",
-        Size: 5600,
-        Price: "1300000",
-        Status: "For Sale",
-        image: "./assets/images/house4.jpg",
-      },
-      {
-        County: "Kajiado",
-        Country: "Kenya",
-        Type: "Condo",
-        Location: "Kitengela",
-        Beds: "3",
-        Baths: "3",
-        Size: 5600,
-        Price: "1300000",
-        Status: "For Sale",
-        image: "./assets/images/house5.jpg",
-      },
-      {
-        County: "Kajiado",
-        Country: "Kenya",
-        Type: "Condo",
-        Location: "Kitengela",
-        Beds: "3",
-        Baths: "3",
-        Size: 5600,
-        Price: "1300000",
-        Status: "For Sale",
-        image: "./assets/images/house6.jpg",
-      },
-    ];
+ 
     const amenities = [
       "Kitchen appliances",
       "Laundry facilities",
@@ -164,8 +79,8 @@ const ListingFilter = () => {
             value={value}
             onChange={handleChange}
             className={`w-[85%] p-2 rounded my-2   border ${
-              isActive ? "border-orange-400" : "border-gray-300"
-            } focus:outline-none focus:border-orange-400 bg-transparent`}
+              isActive ? "border-primary" : "border-gray-300"
+            } focus:outline-none focus:border-primary bg-transparent`}
           >
             <option
               className="items-center justify-center"
@@ -186,8 +101,8 @@ const ListingFilter = () => {
             value={bathroom}
             onChange={handlebathroom}
             className={`p-2 rounded m-1 w-[85%]  md:mx-2 border ${
-              isActive ? "border-orange-400" : "border-gray-300"
-            } focus:outline-none focus:border-orange-400 bg-transparent `}
+              isActive ? "border-primary" : "border-gray-300"
+            } focus:outline-none focus:border-primary bg-transparent `}
           >
             <option value="bathroom">Bathroom</option>
             {numbers.map((item) => (
@@ -203,8 +118,8 @@ const ListingFilter = () => {
             value={bedroom}
             onChange={handlebedroom}
             className={`p-2 rounded m-1  md:mx-2 w-[85%] border ${
-              isActive ? "border-orange-400" : "border-gray-300"
-            } focus:outline-none focus:border-orange-400 bg-transparent`}
+              isActive ? "border-primary" : "border-gray-300"
+            } focus:outline-none focus:border-primary bg-transparent`}
           >
             <option value="bedroom">Bedrooms</option>
             {number.map((item) => (
@@ -219,8 +134,8 @@ const ListingFilter = () => {
             value={year}
             onChange={handleyear}
             className={`p-2 rounded m-1 w-[85%] md:mx-2 border ${
-              isActive ? "border-orange-400" : "border-gray-300"
-            } focus:outline-none focus:border-orange-400 bg-transparent`}
+              isActive ? "border-primary" : "border-gray-300"
+            } focus:outline-none focus:border-primary bg-transparent`}
           >
             <option value="year">Year built</option>
             {years.map((item) => (
