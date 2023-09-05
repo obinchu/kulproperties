@@ -90,8 +90,9 @@ const Header = ({ timeline, ease }) => {
           path: "listings",
         },
       ],
+
     },
-    { item: "Property" },
+    { item: "Property",path: "listings" },
     {
       item: "Pages",
       more: [

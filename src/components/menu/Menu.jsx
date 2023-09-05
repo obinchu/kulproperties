@@ -38,7 +38,8 @@ const Menu = ({ action }) => {
         },
       ],
     },
-    { item: "Property" },
+    { item: "Property",path: "listings" },
+
     {
       item: "Pages",
       more: [
