@@ -1,5 +1,6 @@
 import React from 'react'
 import PropertyCards from './PropertyCards'
+import { Link } from 'react-router-dom'
 
 const Properties = () => {
   return (
@@ -11,7 +12,7 @@ const Properties = () => {
     </div>
     <div className="flex flex-col h-[80%] mt-3 items-center">
       <PropertyCards/>
-      <span className='m-auto mt-4  border border-primary rounded text-primary rouded p-2 text-base hover:bg-primary hover:text-white hover:cursor-pointer'>Explore Properties</span>
+      <Link to="/kulproperties/listings" className='m-auto mt-4  border border-primary rounded text-primary rouded p-2 text-base hover:bg-primary hover:text-white hover:cursor-pointer'>Explore Properties</Link>
     </div>
   </div>
 </div>

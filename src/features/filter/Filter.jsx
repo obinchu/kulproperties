@@ -75,7 +75,7 @@ const Filter = () => {
         <button className='p-3 m-2 px-8 rounded bg-white text-primary'>Rent</button>
         <button className='p-3 m-2 px-8 rounded bg-white text-primary'>Sell</button>
     </div>
-    <div className="block md:flex w-full h-[90%] md:h-[15vh] rounded bg-white">
+    <div className="block md:flex w-[90%] mx-auto md:w-full h-[90%] md:h-[15vh] rounded bg-white">
         <form action="" className='block m-aut0 md:flex  w-full items-center justify-evenly'>
             <div className='block md:flex w-full md:w-[60%] py-2 md:p-0'>
             <FormInput placeholder={"search..."} type={"input"}/>
