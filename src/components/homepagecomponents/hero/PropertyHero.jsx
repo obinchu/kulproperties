@@ -5,10 +5,10 @@ import { useParams } from 'react-router-dom'
 const PropertyHero = () => {
     const { id } = useParams();
     const propertyDetails = useContext(AppContext)
-    console.log(propertyDetails[0].properties[0].title)
+    // console.log(propertyDetails[0].properties[0].title)
 
   const selectedItem = propertyDetails[0].properties.find((item) => item.id == id);
-  console.log(selectedItem.id)
+//   console.log(selectedItem.id)
   const imageUrl = `${import.meta.env.BASE_URL}/${selectedItem.cover_image}`;
 
     return (

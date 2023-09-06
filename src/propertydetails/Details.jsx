@@ -6,10 +6,10 @@ const Details = () => {
     const { id } = useParams();
 
     const propertyDetails = useContext(AppContext)
-    console.log(propertyDetails[0].properties[0].title)
+    // console.log(propertyDetails[0].properties[0].title)
 
   const selectedItem = propertyDetails[0].properties.find((item) => item.id == id);
-  console.log(selectedItem.id)
+//   console.log(selectedItem.id)
 
 
   return (

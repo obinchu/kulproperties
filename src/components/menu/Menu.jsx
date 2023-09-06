@@ -114,7 +114,8 @@ const Menu = ({ action }) => {
                       {element.more.map((item, index) => (
                         <Link
                         onClick={action}
-                          to={`/kulproperties/${item.path}`}
+                    to={`/kulproperties/${item.path}`}
+                      
                           key={index}
                           className={`m-1 text-base text-start flex flex-col p-2 hover:font-medium 
                                    
