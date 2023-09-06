@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef,useContext } from "react";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { BiUser, BiPlus } from "react-icons/bi";
 import { RxCaretDown, RxCaretUp } from "react-icons/rx";
-import { LiaPlayCircle, LiaDonateSolid } from "react-icons/lia";
+import { AppContext } from "../App";
 import UserLogin from "../login/UserLogin";
 import Menu from "../components/menu/Menu";
 import styles from "./Header.module.css";
@@ -67,29 +67,26 @@ const Header = ({ timeline, ease }) => {
       handleHamburgerClick();
     }
   }
+  const propertyDetails = useContext(AppContext)
+ 
+  const categories = new Set();
 
+ 
+propertyDetails[0].properties.forEach((property) => {
+  categories.add(property.category);
+});
+
+  const uniqueCategories =   [...categories]
   const headerElements = [
     { item: "Home", path: "" },
     {
       item: "Listing",
-      more: [
-        {
-          name: "All",
-          path: "listings",
-        },
-        {
-          name: "Residential",
-          path: "listings",
-        },
-        {
-          name: "Commercial",
-          path: "listings",
-        },
-        {
-          name: "Rental",
-          path: "listings",
-        },
-      ],
+      more: uniqueCategories.map((category) => ({
+        name: category,
+        path: category,
+      })),
+      
+      
 
     },
     { item: "Property",path: "listings" },

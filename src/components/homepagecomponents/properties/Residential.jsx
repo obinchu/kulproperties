@@ -7,26 +7,22 @@ import { Link } from 'react-router-dom';
 import { AppContext } from '../../../App';
 import { AiOutlineHeart } from 'react-icons/ai';
 import { FcLike } from 'react-icons/fc';
+import Residential from './Residential';
 
-const PropertyCards = () => {
-  const [liked, setLiked] = useState({});
+const Residential = () => {
+    const [liked, setLiked] = useState({});
 
-  const propertyData = useContext(AppContext);
-
-  const handleLikeClick = (e, id) => {
-    e.preventDefault();
-    setLiked((prevLiked) => ({
-      ...prevLiked,
-      [id]: !prevLiked[id],
-    }));
-  };
-
+    const propertyData = useContext(AppContext);
+  
+    const handleLikeClick = (e, id) => {
+      e.preventDefault();
+      setLiked((prevLiked) => ({
+        ...prevLiked,
+        [id]: !prevLiked[id],
+      }));
+    };
   return (
-    <div className='w-full h-full md:h-[87%] flex flex-col rounded text-sm text-primary'>
-      <div className='flex flex-col relative w-full max-w-6xl m-auto h-full rounded'>
-        <div className='flex w-full h-full overflow-x-scroll no-scrollbar rounded p-1'>
-          {propertyData[0].properties.map((details, index) => (
-            details.category =='residential' && <Link
+    <Link
               to={`/kulproperties/propertydetails/${details.id}`}
               key={index}
               className='flex flex-shrink-0 w-[90%] md:w-[30%] rounded-md flex-col mx-2'
@@ -88,11 +84,7 @@ const PropertyCards = () => {
                 </div>
               </div>
             </Link>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-};
+  )
+}
 
-export default PropertyCards;
+export default Residential

@@ -1,0 +1,86 @@
+[
+    {
+        "County": "Kajiado",
+        "Country": "Kenya",
+        "Type": "Condo",
+        "Location": "Kitengela",
+        "Beds": 3,
+        "Baths": 3,
+        "Size": 5600,
+        "Price": 1300000,
+        "Status": "For Sale",
+        "image": "./assets/images/house.jpg"
+      },
+      {
+        "County": "Kajiado",
+        "Country": "Kenya",
+        "Type": "Apartment",
+        "Location": "Kitengela",
+        "Beds": 3,
+        "Baths": 3,
+        "Size": 5600,
+        "Price": 1300000,
+        "Status": "For Sale",
+        "image": "./assets/images/house1.jpg"
+      },
+      {
+        "County": "Kajiado",
+        "Country": "Kenya",
+        "Type": "Flat",
+        "Location": "Kitengela",
+        "Beds": 3,
+        "Baths": 3,
+        "Size": 5600,
+        "Price": 1300000,
+        "Status": "For Sale",
+        "image": "./assets/images/house2.jpg"
+      },
+      {
+        "County": "Kajiado",
+        "Country": "Kenya",
+        "Type": "Condo",
+        "Location": "Kitengela",
+        "Beds": 3,
+        "Baths": 3,
+        "Size": 5600,
+        "Price": 1300000,
+        "Status": "For Sale",
+        "image": "./assets/images/house3.jpg"
+      },
+      {
+        "County": "Kajiado",
+        "Country": "Kenya",
+        "Type": "Condo",
+        "Location": "Kitengela",
+        "Beds": 3,
+        "Baths": 3,
+        "Size": 5600,
+        "Price": 1300000,
+        "Status": "For Sale",
+        "image": "./assets/images/house4.jpg"
+      },
+      {
+        "County": "Kajiado",
+        "Country": "Kenya",
+        "Type": "Condo",
+        "Location": "Kitengela",
+        "Beds": 3,
+        "Baths": 3,
+        "Size": 5600,
+        "Price": 1300000,
+        "Status": "For Sale",
+        "image": "./assets/images/house5.jpg"
+      },
+      {
+        "County": "Kajiado",
+        "Country": "Kenya",
+        "Type": "Condo",
+        "Location": "Kitengela",
+        "Beds": 3,
+        "Baths": 3,
+        "Size": 5600,
+        "Price": 1300000,
+        "Status": "For Sale",
+        "image": "./assets/images/house6.jpg"
+      }
+]

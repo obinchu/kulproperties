@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
+import { AppContext } from "../../App";
 import { Link } from "react-router-dom";
 import { RxCaretDown, RxCaretUp } from "react-icons/rx";
 import { BiPlus } from "react-icons/bi";
@@ -15,39 +16,37 @@ const Menu = ({ action }) => {
     setOpen(null);
   };
 
+  const propertyDetails = useContext(AppContext)
+ 
+  const categories = new Set();
+
+ 
+propertyDetails[0].properties.forEach((property) => {
+  categories.add(property.category);
+});
+
+  const uniqueCategories =   [...categories]
   const headerElements = [
     { item: "Home", path: "" },
     {
       item: "Listing",
-      more: [
-        {
-          name: "All",
-          path: "listings",
-        },
-        {
-          name: "Residential",
-          path: "listings",
-        },
-        {
-          name: "Commercial",
-          path: "listings",
-        },
-        {
-          name: "Rental",
-          path: "listings",
-        },
-      ],
+      more: uniqueCategories.map((category) => ({
+        name: category,
+        path: category,
+      })),
+      
+      
+
     },
     { item: "Property",path: "listings" },
-
     {
       item: "Pages",
       more: [
-        { name: "About Us" },
-        { name: "Contact Us" },
-        { name: "FAQs" },
-        { name: "Login/Register" },
-        { name: "Terms & Conditions" },
+        {name:"About Us",},
+        {name:"Contact Us",},
+        {name:"FAQs",},
+        {name:"Login/Register",},
+        {name:"Terms & Conditions",},
       ],
     },
     {

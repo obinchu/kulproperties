@@ -8,6 +8,7 @@ import Listings from "./pages/Listings";
 import PropertyDetails from "./pages/PropertyDetails";
 import Data from '../src/data/Data.json'
 import { createContext } from "react";
+import RentalListing from "./pages/RentalListing";
 
 export const AppContext = createContext()
 
@@ -23,6 +24,7 @@ function App() {
           <Route path="/kulproperties/*" element={<Home />} />
           <Route path="/kulproperties/propertydetails/:id" element={<PropertyDetails />} />
           <Route path="/kulproperties/listings" element={<Listings />} />
+          <Route path="/kulproperties/:category" element={<RentalListing />} />
         </Routes>
         <Footer />
       </Router>
