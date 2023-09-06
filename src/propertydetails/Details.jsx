@@ -3,12 +3,12 @@ import { useParams } from 'react-router-dom'
 import { AppContext } from '../App'
 
 const Details = () => {
-    const { id } = useParams();
+    const { slug } = useParams();
 
     const propertyDetails = useContext(AppContext)
     // console.log(propertyDetails[0].properties[0].title)
 
-  const selectedItem = propertyDetails[0].properties.find((item) => item.id == id);
+  const selectedItem = propertyDetails[0].properties.find((item) => item.slug == slug);
 //   console.log(selectedItem.id)
 
 

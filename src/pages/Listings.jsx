@@ -99,7 +99,7 @@ const Listings = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 w-full h-[100%] md:grid-rows-2 grid-rows-4 md:gap-1 gap-5 py-2 md:p-2">
                   {currentProperty.map((details, index) => (
                     <Link
-                      to={`/kulproperties/propertydetails/${details.id}`}
+                      to={`/kulproperties/propertydetails/${details.slug}`}
                       key={index}
                       className="flex flex-shrink w-[100%] md:w-[95%]  md:h-[90%]    rounded-md flex-col mx-auto md:mx-2"
                     >
@@ -139,13 +139,13 @@ const Listings = () => {
                         </div>
                       </div>
                       <div className="flex flex-col bg-white w-full rounded-b-md h-[40%] p-2 md:p-4">
-                        <span className="items-center  flex justify-between text-base text-red-500">
+                      <span className="items-center  flex justify-between text-base text-red-500">
                           {details.property_type}
                           <span className="text-sm">
                             {liked[details.id]
-                              ? details.likes + 1
-                              : details.likes}{" "}
-                            {details.likes == 1 ? (
+                              ? details.likes.length + 1
+                              : details.likes.length}
+                            {details.likes.length == 1 ? (
                               <span>like</span>
                             ) : (
                               <span>likes</span>

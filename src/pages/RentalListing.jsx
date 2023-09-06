@@ -104,7 +104,7 @@ const RentalListing = () => {
                   {currentProperty.map((details, index) => (
                     details.category == 'commercial' ?
                     <Link
-                      to={`/kulproperties/propertydetails/${details.id}`}
+                      to={`/kulproperties/propertydetails/${details.slug}`}
                       key={index}
                       className="flex flex-shrink w-[100%] md:w-[95%]  md:h-[90%]    rounded-md flex-col mx-auto md:mx-2"
                     >
@@ -138,7 +138,7 @@ const RentalListing = () => {
                             </span>
                             <span
                               onClick={(e) => handleLikeClick(e, details.id)}
-                              className="flex w-[50%] items-center justify-end text-tertiary"
+                              className="flex p-1 rounded items-center justify-end  text-xs bg-black/50 text-tertiary"
                             >
                               {!liked[details.id] ? (
                                 <AiOutlineHeart size={29} />
@@ -150,13 +150,13 @@ const RentalListing = () => {
                         </div>
                       </div>
                       <div className="flex flex-col bg-white w-full rounded-b-md h-[40%] p-2 md:p-4">
-                        <span className="items-center  flex justify-between text-base text-red-500">
+                      <span className="items-center  flex justify-between text-base text-red-500">
                           {details.property_type}
                           <span className="text-sm">
                             {liked[details.id]
-                              ? details.likes + 1
-                              : details.likes}{" "}
-                            {details.likes == 1 ? (
+                              ? details.likes.length + 1
+                              : details.likes.length}{" "}
+                            {details.likes.length == 1 ? (
                               <span>like</span>
                             ) : (
                               <span>likes</span>
@@ -182,7 +182,7 @@ const RentalListing = () => {
                     </Link>
                     :
                     <Link
-                      to={`/kulproperties/propertydetails/${details.id}`}
+                      to={`/kulproperties/propertydetails/${details.slug}`}
                       key={index}
                       className="flex flex-shrink w-[100%] md:w-[95%]  md:h-[90%]    rounded-md flex-col mx-auto md:mx-2"
                     >
@@ -215,7 +215,7 @@ const RentalListing = () => {
                             </span>
                             <span
                               onClick={(e) => handleLikeClick(e, details.id)}
-                              className="flex w-[50%] items-center justify-end text-tertiary"
+                              className="flex p-1 rounded items-center justify-end  text-xs bg-black/50 text-tertiary"
                             >
                               {!liked[details.id] ? (
                                 <AiOutlineHeart size={29} />
@@ -231,9 +231,9 @@ const RentalListing = () => {
                           {details.property_type}
                           <span className="text-sm">
                             {liked[details.id]
-                              ? details.likes + 1
-                              : details.likes}{" "}
-                            {details.likes == 1 ? (
+                              ? details.likes.length + 1
+                              : details.likes.length}{" "}
+                            {details.likes.length == 1 ? (
                               <span>like</span>
                             ) : (
                               <span>likes</span>

@@ -13,11 +13,11 @@ const Pagination = ({ PropertyPerPage, totalProperties, currentPage, setPage }) 
         {pageNumbers.map((number) => (
           <li
             key={number}
-            className={`flex border border-primary text-base mx-1 ${
+            className={`flex w-5 h-5 border border-primary items-center justify-center mx-1  rounded-full ${
               number === currentPage ? 'bg-primary text-white' : ''
             }`}
           >
-            <a className="p-2 mx-1" onClick={() => setPage(number)} href="#">
+            <a className="mx-1 p-1 text-sm" onClick={() => setPage(number)} href="#">
               {number}
             </a>
           </li>

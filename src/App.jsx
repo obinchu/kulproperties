@@ -22,7 +22,7 @@ function App() {
         <Header />
         <Routes>
           <Route path="/kulproperties/*" element={<Home />} />
-          <Route path="/kulproperties/propertydetails/:id" element={<PropertyDetails />} />
+          <Route path="/kulproperties/propertydetails/:slug" element={<PropertyDetails />} />
           <Route path="/kulproperties/listings" element={<Listings />} />
           <Route path="/kulproperties/:category" element={<RentalListing />} />
         </Routes>

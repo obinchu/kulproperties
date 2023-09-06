@@ -93,11 +93,11 @@ propertyDetails[0].properties.forEach((property) => {
     {
       item: "Pages",
       more: [
-        {name:"About Us",},
-        {name:"Contact Us",},
-        {name:"FAQs",},
-        {name:"Login/Register",},
-        {name:"Terms & Conditions",},
+        {path:"",name:"About Us",},
+        {path:"",name:"Contact Us",},
+        {path:"",name:"FAQs",},
+        {path:"",name:"Login/Register",},
+        {path:"",name:"Terms & Conditions",},
       ],
     },
     {
