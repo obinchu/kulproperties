@@ -30,11 +30,12 @@ propertyDetails[0].properties.forEach((property) => {
   const headerElements = [
     { item: "Home", path: "" },
     {
-      item: "Listing",
-      more: uniqueCategories.map((category) => ({
-        name: category,
-        path: category,
-      })),
+      
+        item: "Listing",
+        more: uniqueCategories.map((category) => ({
+          name: category,
+          path: `category/${category}`,
+        })),
       
       
 
