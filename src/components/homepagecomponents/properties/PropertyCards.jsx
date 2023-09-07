@@ -13,6 +13,24 @@ const PropertyCards = () => {
 
   const propertyData = useContext(AppContext);
 
+  const desiredStatuses = ["rent", "sell", "buy"];
+  const lastThreeProperties = [];
+
+  for (let i = propertyData[0].properties.length - 1; i >= 0; i--) {
+    const property = propertyData[0].properties[i];
+    if (
+      desiredStatuses.includes(property.status) &&
+      !lastThreeProperties.some((p) => p.status === property.status)
+    ) {
+      lastThreeProperties.push(property);
+    }
+    if (lastThreeProperties.length === 3) {
+      break; 
+    }
+  }
+
+  lastThreeProperties.reverse();
+
   const handleLikeClick = (e, id) => {
     e.preventDefault();
     setLiked((prevLiked) => ({
@@ -25,7 +43,7 @@ const PropertyCards = () => {
     <div className="w-full h-full md:h-[87%] flex flex-col rounded text-sm text-primary">
       <div className="flex flex-col relative w-full max-w-6xl m-auto h-full rounded">
         <div className="flex w-full h-full overflow-x-scroll no-scrollbar rounded p-1">
-          {propertyData[0].properties.map((details, index) => (
+          {lastThreeProperties.map((details, index) => (
             <Link
               to={`/kulproperties/propertydetails/${details.slug}`}
               key={index}

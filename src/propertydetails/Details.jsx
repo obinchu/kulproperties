@@ -6,10 +6,8 @@ const Details = () => {
     const { slug } = useParams();
 
     const propertyDetails = useContext(AppContext)
-    // console.log(propertyDetails[0].properties[0].title)
 
   const selectedItem = propertyDetails[0].properties.find((item) => item.slug == slug);
-//   console.log(selectedItem.id)
 
 
   return (
