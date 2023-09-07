@@ -62,19 +62,15 @@ const ListingFilter = () => {
     const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     const number = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     const years = [1999, 2000, 2001, 2002, 2005, 2010, 2019];
-    const realEstatePropertyTypes = [
-      "Single-Family Home",
-      "Condominium (Condo)",
-      "Townhouse",
-      "Duplex",
-      "Apartment Building",
-      "Multi-Family Home",
-      "Mobile Home",
-      "Vacation Home",
-      "Co-op (Cooperative)",
-      "Commercial Property",
-      "Industrial",
-    ];
+ 
+    const propertyTypes = new Set();
+  
+   
+  propertyDetails[0].properties.forEach((property) => {
+    propertyTypes.add(property.property_type);
+  });
+  
+    const uniquePropertyTypes =   [...propertyTypes]
   return (
     <div className="hidden md:flex flex-col w-full  md:w-[32%] h-full ">
     <div className="flex w-full rounded p-2 h-full">
@@ -98,7 +94,7 @@ const ListingFilter = () => {
             >
               Property Type
             </option>
-            {realEstatePropertyTypes.map((item) => (
+            {uniquePropertyTypes.map((item) => (
               <option key={item} value={item}>
                 {item}
               </option>

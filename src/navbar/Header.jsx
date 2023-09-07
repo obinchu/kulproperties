@@ -83,7 +83,7 @@ propertyDetails[0].properties.forEach((property) => {
       item: "Listing",
       more: uniqueCategories.map((category) => ({
         name: category,
-        path: category,
+        path: `category/${category}`,
       })),
       
       
@@ -94,9 +94,7 @@ propertyDetails[0].properties.forEach((property) => {
       item: "Pages",
       more: [
         {path:"about",name:"About Us",},
-        {path:"contact us",name:"Contact Us",},
-        {path:"faqs",name:"FAQs",},
-        {path:"login",name:"Login/Register",},
+      
         {path:"terms",name:"Terms & Conditions",},
       ],
     },

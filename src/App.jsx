@@ -11,6 +11,9 @@ import { createContext } from "react";
 import RentalListing from "./pages/RentalListing";
 import About from "./pages/About";
 import Error from "./pages/Error";
+import TermsAndConditions from "./pages/TermsAndConditions";
+import FilteredSearch from "./pages/FilteredSearch";
+
 
 export const AppContext = createContext()
 
@@ -25,9 +28,12 @@ function App() {
   <Routes>
     <Route path="/kulproperties/" element={<Home />} />
     <Route path="/kulproperties/propertydetails/:slug" element={<PropertyDetails />} />
+    {/* <Route path="/kulproperties/filteredsearch/:status" element={<FilteredSearch />} /> */}
     <Route path="/kulproperties/listings" element={<Listings />} />
     <Route path="/kulproperties/about" element={<About />} />
-    <Route path="/kulproperties/:category" element={<RentalListing />} />
+    <Route path="/kulproperties/terms" element={<TermsAndConditions />} />
+    <Route path="/kulproperties/category/:category" element={<RentalListing />} />
+  <Route path="/kulproperties/status/:status" element={<FilteredSearch />} />
     <Route path="*" element={<Error />} />
   </Routes>
   <Footer />

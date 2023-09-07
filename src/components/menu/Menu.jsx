@@ -44,9 +44,7 @@ propertyDetails[0].properties.forEach((property) => {
       item: "Pages",
       more: [
         {path:"about",name:"About Us",},
-        {path:"contact us",name:"Contact Us",},
-        {path:"faqs",name:"FAQs",},
-        {path:"login",name:"Login/Register",},
+     
         {path:"terms",name:"Terms & Conditions",},
       ],
     },
@@ -69,7 +67,7 @@ propertyDetails[0].properties.forEach((property) => {
   ];
 
   return (
-    <div className="w-[80%] pt-[15%]   h-full bg-primary backdrop-blur-sm text-white text-center block  fixed ">
+    <div className="w-[80%] pt-[15%] md:hidden   h-full bg-primary backdrop-blur-sm text-white text-center block  fixed ">
       <div className="w-full block h-full p-2   ">
         <div className="flex flex-col h-[100%]  my-auto  border-b- w-full overflow-y-auto ">
           <div className="  text-base h-full m-auto  w-full  ">
