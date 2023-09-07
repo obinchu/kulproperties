@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState,useEffect } from "react";
 import { FiGrid } from "react-icons/fi";
 import { TiThListOutline } from "react-icons/ti";
 import { CiLocationOn } from "react-icons/ci";
@@ -41,6 +41,34 @@ const Listings = () => {
   const setPage = (pageNumbers) => {
     setCurrentPage(pageNumbers);
   };
+  const [scrollPosition, setScrollPosition] = useState(0);
+    // Function to handle the scroll event
+    const handleScroll = () => {
+      // Update the scroll position when the user scrolls
+      setScrollPosition(window.scrollY);
+    };
+  
+    // Scroll to the top of the page when the component mounts
+    useEffect(() => {
+      window.scrollTo(0, 0); // Scroll to the top left corner
+    }, []); // Empty dependency array ensures this effect runs only once when the component mounts
+  
+    // Add a scroll event listener when the component mounts
+    useEffect(() => {
+      window.addEventListener('scroll', handleScroll);
+  
+      // Clean up the scroll event listener when the component unmounts
+      return () => {
+        window.removeEventListener('scroll', handleScroll);
+      };
+    }, []);
+  
+    // Function to scroll back to the top of the page
+    const scrollToTop = () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth', // Add smooth scrolling behavior
+      });}
   return (
     <div className="w-full h-[265vh]  md:h-[140vh] flex bg-other text-sm">
       <div className="flex md:max-w-6xl w-full h-[100%] m-auto rounded p-2 justify-center items-center">

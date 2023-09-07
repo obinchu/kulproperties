@@ -3,6 +3,7 @@ import { AppContext } from "../../App";
 import { Link } from "react-router-dom";
 import { RxCaretDown, RxCaretUp } from "react-icons/rx";
 import { BiPlus } from "react-icons/bi";
+import styles from "./Menu.module.css"
 
 const Menu = ({ action }) => {
   const [open, setOpen] = useState(null);
@@ -42,11 +43,11 @@ propertyDetails[0].properties.forEach((property) => {
     {
       item: "Pages",
       more: [
-        {name:"About Us",},
-        {name:"Contact Us",},
-        {name:"FAQs",},
-        {name:"Login/Register",},
-        {name:"Terms & Conditions",},
+        {path:"about",name:"About Us",},
+        {path:"contact us",name:"Contact Us",},
+        {path:"faqs",name:"FAQs",},
+        {path:"login",name:"Login/Register",},
+        {path:"terms",name:"Terms & Conditions",},
       ],
     },
     {
@@ -109,7 +110,8 @@ propertyDetails[0].properties.forEach((property) => {
                     )}
                   </li>
                   {element.more && element.more.length > 0 && open === i && (
-                    <ul className="flex flex-col mx-2 p-2">
+                    <ul className={`mx-2 p-1 flex-col flex  rounded ${styles.dropdown}`}>
+                      
                       {element.more.map((item, index) => (
                         <Link
                         onClick={action}
@@ -118,7 +120,7 @@ propertyDetails[0].properties.forEach((property) => {
                           key={index}
                           className={`m-1 text-base text-start flex flex-col p-2 hover:font-medium 
                                    
-                                  `}
+                          `}
                         >
                           {item.name}
                         </Link>

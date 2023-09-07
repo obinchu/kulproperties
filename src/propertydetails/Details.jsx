@@ -1,4 +1,4 @@
-import React,{useContext} from 'react'
+import React,{useContext,useState,useEffect} from 'react'
 import { useParams } from 'react-router-dom'
 import { AppContext } from '../App'
 
@@ -8,6 +8,36 @@ const Details = () => {
     const propertyDetails = useContext(AppContext)
 
   const selectedItem = propertyDetails[0].properties.find((item) => item.slug == slug);
+  // State to track the current scroll position
+  const [scrollPosition, setScrollPosition] = useState(0);
+
+  // Function to handle the scroll event
+  const handleScroll = () => {
+    // Update the scroll position when the user scrolls
+    setScrollPosition(window.scrollY);
+  };
+
+  // Scroll to the top of the page when the component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scroll to the top left corner
+  }, []); // Empty dependency array ensures this effect runs only once when the component mounts
+
+  // Add a scroll event listener when the component mounts
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+
+    // Clean up the scroll event listener when the component unmounts
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  // Function to scroll back to the top of the page
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth', // Add smooth scrolling behavior
+    });}
 
 
   return (
@@ -64,8 +94,8 @@ const Details = () => {
                 <span className='text-lg m-1 my-2'>Property Details</span>
                 <div className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-3 gap-2 h-[90%] m-1 p-2">
                 <span className='flex'>Property Type: <span className='font-medium mx-1'>{selectedItem.property_type}</span></span>
-                <span className='flex'>Property Price: <span className='font-medium mx-1'>{selectedItem.unit.price}</span></span>
-                <span className='flex'>Property Size: <span className='font-medium mx-1'>{selectedItem.unit.area}</span></span>
+                <span className='flex'>Property Price: <span className='font-medium mx-1'>KES {selectedItem.unit.price}</span></span>
+                <span className='flex'>Property Size: <span className='font-medium mx-1'>{selectedItem.unit.area} Sq ft</span></span>
                 <span className='flex'>No.of Bedrooms: <span className='font-medium mx-1'> {selectedItem.unit.bedrooms}</span></span>
                 <span className='flex'>No.of Bathrooms:<span className='font-medium mx-1'>{selectedItem.unit.bathrooms}</span></span>
                 <span className='flex'>Property Status: <span className='font-medium mx-1'>{selectedItem.status}</span></span>
