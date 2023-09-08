@@ -71,8 +71,8 @@ const Filter = () => {
     <option className='items-center justify-center' value="property">
       Property Type
     </option>
-    {uniquePropertyTypes.map(item => (
-      <option key={item} value={item}>{item}</option>
+    {uniquePropertyTypes.map((item,i) => (
+      <option key={i} value={item}>{item}</option>
     ))}
   </select>
 </label>
@@ -106,8 +106,8 @@ isActive ? 'border-primary' : 'border-gray-300'
 <option className='items-center justify-center' value="property">
 Property Type
 </option>
-{uniquePropertyTypes.map(item => (
-<option key={item} value={item}>{item}</option>
+{uniquePropertyTypes.map((item,i) => (
+<option key={i} value={item}>{item}</option>
 ))}
 </select>
 </label>
@@ -115,7 +115,7 @@ Property Type
 
 
       <div className='block w-full md:w-[20%] p-2 md:p-0   md:flex'>
-      <Link to="/kulproperties/status/rent" className='w-[80%] flex p-2 bg-secondary px-4 m-auto text-white justify-center items-center rounded md:m-1'>Search</Link>
+      <Link to="/kulproperties/status/Rent" className='w-[80%] flex p-2 bg-secondary px-4 m-auto text-white justify-center items-center rounded md:m-1'>Search</Link>
       </div>
           
 

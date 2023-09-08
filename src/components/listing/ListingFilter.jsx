@@ -81,8 +81,8 @@ const ListingFilter = () => {
             >
               Property Type
             </option>
-            {uniquePropertyTypes.map((item) => (
-              <option key={item} value={item}>
+            {uniquePropertyTypes.map((item,i) => (
+              <option key={i} value={item}>
                 {item}
               </option>
             ))}
@@ -98,8 +98,8 @@ const ListingFilter = () => {
             } focus:outline-none focus:border-primary bg-transparent `}
           >
             <option value="bathroom">Bathroom</option>
-            {numbers.map((item) => (
-              <option key={item} value={item}>
+            {numbers.map((item,i) => (
+              <option key={i} value={item}>
                 {item}
               </option>
             ))}
@@ -115,8 +115,8 @@ const ListingFilter = () => {
             } focus:outline-none focus:border-primary bg-transparent`}
           >
             <option value="bedroom">Bedrooms</option>
-            {number.map((item) => (
-              <option key={item} value={item}>
+            {number.map((item,i) => (
+              <option key={i} value={item}>
                 {item}
               </option>
             ))}
@@ -131,8 +131,8 @@ const ListingFilter = () => {
             } focus:outline-none focus:border-primary bg-transparent`}
           >
             <option value="year">Year built</option>
-            {years.map((item) => (
-              <option key={item} value={item}>
+            {years.map((item,i) => (
+              <option key={i} value={item}>
                 {item}
               </option>
             ))}
@@ -157,9 +157,9 @@ const ListingFilter = () => {
                 </div>
 
                 <div className="grid w-full h-[100%] grid-cols-2  grid-rows-6  gap-2 p-1">
-                  {uniqueAmenities.map((item) => (
+                  {uniqueAmenities.map((item,i) => (
                     <div
-                      key={item}
+                      key={i}
                       className="flex text-primary/50 items-center text-sm"
                     >
                       <input

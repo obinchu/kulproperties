@@ -175,7 +175,7 @@ propertyDetails[0].properties.forEach((property) => {
                            
                           <div className="flex justify-between">
                             <span className="text-white font-medium text-xl">
-                              KES {details.unit.price}
+                              KES {details.price}
                             </span>
                             <span
                               onClick={(e) => handleLikeClick(e, details.id)}
@@ -190,21 +190,21 @@ propertyDetails[0].properties.forEach((property) => {
                           </div>
                         </div>
                       </div>
-                      <div className="flex flex-col bg-white w-full rounded-b-md h-[40%] p-2 md:p-4">
+                      <div className="flex flex-col bg-white w-full rounded-b-md h-[50%] p-2 md:p-4">
                       <span className="items-center  flex justify-between text-base text-red-500">
                           {details.property_type}
                           <span className="text-sm">
-                            {liked[details.id]
-                              ? details.likes.length + 1
-                              : details.likes.length}{" "}
-                            {details.likes.length == 1 ? (
-                              <span>like</span>
+                          {liked[details.id]
+                              ? details.likes + 1
+                              : details.likes}
+                            {details.likes == 1 ? (
+                            <span>like</span>
                             ) : (
                               <span>likes</span>
                             )}
                           </span>
                         </span>
-                        <span className="items-center  flex text-lg font-medium">
+                        <span className="items-center  flex text-base font-medium">
                           {details.title}
                         </span>
                         <div className="flex items-center">
@@ -216,7 +216,7 @@ propertyDetails[0].properties.forEach((property) => {
                         <div className="grid grid-cols-2 grid-rows-2 gap-2 py-2">
                           <span className="flex items-center">
                             <TfiRulerAlt2 size={25} />
-                            {details.unit.area}Sq ft
+                            {details.area}Sq ft
                           </span>
                         </div>
                       </div>
@@ -267,21 +267,21 @@ propertyDetails[0].properties.forEach((property) => {
                           </div>
                         </div>
                       </div>
-                      <div className="flex flex-col bg-white w-full rounded-b-md h-[40%] p-2 md:p-4">
+                      <div className="flex flex-col bg-white w-full rounded-b-md h-[50%] p-2 md:p-4">
                         <span className="items-center  flex justify-between text-base text-red-500">
                           {details.property_type}
                           <span className="text-sm">
                             {liked[details.id]
-                              ? details.likes.length + 1
-                              : details.likes.length}{" "}
-                            {details.likes.length == 1 ? (
-                              <span>like</span>
+                              ? details.likes + 1
+                              : details.likes}
+                            {details.likes == 1 ? (
+                            <span>like</span>
                             ) : (
                               <span>likes</span>
                             )}
                           </span>
                         </span>
-                        <span className="items-center  flex text-lg font-medium">
+                        <span className="items-center  flex text-base font-medium">
                           {details.title}
                         </span>
                         <div className="flex items-center">

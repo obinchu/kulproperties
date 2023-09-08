@@ -74,9 +74,8 @@ propertyDetails[0].properties.forEach((property) => {
           <div className="  text-base h-full m-auto  w-full  ">
             {headerElements.map((element, i) => {
               return (
-                <div className="flex flex-col h-[80%">
+                <div key={i} className="flex flex-col h-[80%">
                   <li
-                    key={i}
                     className="flex mx-1 p-2  items-center text-white justify-between"
                   >
                     <Link

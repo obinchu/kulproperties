@@ -170,11 +170,11 @@ const Listings = () => {
                       <span className="items-center  flex justify-between text-base text-red-500">
                           {details.property_type}
                           <span className="text-sm">
-                            {liked[details.id]
-                              ? details.likes.length + 1
-                              : details.likes.length}
-                            {details.likes.length == 1 ? (
-                              <span>like</span>
+                          {liked[details.id]
+                              ? details.likes + 1
+                              : details.likes}
+                            {details.likes == 1 ? (
+                            <span>like</span>
                             ) : (
                               <span>likes</span>
                             )}
@@ -255,14 +255,14 @@ const Listings = () => {
                     <span className="items-center  flex justify-between text-base text-red-500">
                         {details.property_type}
                         <span className="text-sm">
-                          {liked[details.id]
-                            ? details.likes.length + 1
-                            : details.likes.length}
-                          {details.likes.length == 1 ? (
+                        {liked[details.id]
+                              ? details.likes + 1
+                              : details.likes}
+                            {details.likes == 1 ? (
                             <span>like</span>
-                          ) : (
-                            <span>likes</span>
-                          )}
+                            ) : (
+                              <span>likes</span>
+                            )}
                         </span>
                       </span>
                       <span className="items-center  flex text-base font-medium">

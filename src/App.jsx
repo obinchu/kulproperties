@@ -6,7 +6,6 @@ import Header from "./navbar/Header";
 import Footer from "./components/footer/Footer";
 import Listings from "./pages/Listings";
 import PropertyDetails from "./pages/PropertyDetails";
-// import Data from '../src/data/Data.json'
 import { createContext } from "react";
 import RentalListing from "./pages/RentalListing";
 import About from "./pages/About";
@@ -23,12 +22,10 @@ function App() {
     fetch("https://kulproperties-73b1dd21a039.herokuapp.com/api/properties")
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setData(data);
       });
   }, []);
 
-  // Check if data is still loading
   if (data === null) {
     return<main
     className='w-full h-[100vh] md:h-[100vh] flex bg-cover bg-center bg-no-repeat'
@@ -45,7 +42,6 @@ function App() {
   </main>;
   }
 
-  // Check if data[0] and data[0].properties exist
   if (!data[0] || !data[0].properties) {
     return<main
     className='w-full h-[100vh] md:h-[100vh] flex bg-cover bg-center bg-no-repeat'
@@ -62,9 +58,7 @@ function App() {
   </main>
   }
 
-  // Access properties once data is available
   const properties = data;
-  console.log(properties)
 
   return (
     <div className="text-primary">
