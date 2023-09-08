@@ -68,7 +68,7 @@ propertyDetails[0].properties.forEach((property) => {
   ];
 
   return (
-    <div className="w-[80%] pt-[15%] md:hidden   h-full bg-primary backdrop-blur-sm text-white text-center block  fixed ">
+    <div className="w-[80%] md:w-[50%] pt-[15%] lg:hidden   h-full bg-primary backdrop-blur-sm text-white text-center block  fixed ">
       <div className="w-full block h-full p-2   ">
         <div className="flex flex-col h-[100%]  my-auto  border-b- w-full overflow-y-auto ">
           <div className="  text-base h-full m-auto  w-full  ">
@@ -129,7 +129,7 @@ propertyDetails[0].properties.forEach((property) => {
                 </div>
               );
             })}
-            <div className="flex md:w-[40%] w-full h-[20%] items-center justify-center ">
+            <div className="flex lg:w-[40%] w-full h-[20%] items-center justify-center ">
               <button className="flex m-1 w-[80%]  hover:cursor-pointer text-white rounded-full justify-center p-2  ease-in-out items-center bg-secondary">
                 <BiPlus size={25} />
                 <span className="mx-1">Create Listing</span>

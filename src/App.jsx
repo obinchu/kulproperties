@@ -20,15 +20,20 @@ export const AppContext = createContext()
 
 
 function App() {
+  // useEffect(()=>{
+  //   fetch("https://kulproperties-73b1dd21a039.herokuapp.com/api/properties").then((res)=>res.json()).
+  //   then((data)=>{
+  //     console.log(data)
+  //   })
+  // },[])
   return (
-    <div>
+    <div className="text-primary">
       <AppContext.Provider value={Data}>
    
   <Header />
   <Routes>
     <Route path="/kulproperties/" element={<Home />} />
     <Route path="/kulproperties/propertydetails/:slug" element={<PropertyDetails />} />
-    {/* <Route path="/kulproperties/filteredsearch/:status" element={<FilteredSearch />} /> */}
     <Route path="/kulproperties/listings" element={<Listings />} />
     <Route path="/kulproperties/about" element={<About />} />
     <Route path="/kulproperties/terms" element={<TermsAndConditions />} />

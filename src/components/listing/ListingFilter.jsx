@@ -72,7 +72,7 @@ const ListingFilter = () => {
   
     const uniquePropertyTypes =   [...propertyTypes]
   return (
-    <div className="hidden md:flex flex-col w-full  md:w-[32%] h-full ">
+    <div className="hidden lg:flex flex-col w-full  md:w-[45%] lg:w-[32%] h-full ">
     <div className="flex w-full rounded p-2 h-full">
       <form
         action=""

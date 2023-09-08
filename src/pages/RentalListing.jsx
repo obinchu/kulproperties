@@ -96,7 +96,7 @@ propertyDetails[0].properties.forEach((property) => {
         }
   return (
     <div className="w-full h-[265vh]  md:h-[140vh] flex bg-other text-sm">
-      <div className="flex md:max-w-6xl w-full h-[100%] m-auto rounded p-2 justify-center items-center">
+      <div className="flex lg:max-w-6xl w-full h-[100%] m-auto rounded p-2 justify-center items-center">
         <div className=" w-full flex flex-col  h-[95%] mt-auto m-auto  justify-between">
           <div className="flex w-full h-[3%] md:h-[10%] p-2">
             <div className="flex w-full  justify-between mt-auto">
@@ -113,9 +113,9 @@ propertyDetails[0].properties.forEach((property) => {
               </div>
             </div>
           </div>
-          <div className="flex w-full h-[97%] md:h-[90%]  p-2">
+          <div className="flex w-full h-[97%] justify-between md:h-[90%]  p-2">
             <ListingFilter />
-            <div className="flex flex-col w-full md:w-[65%] h-full justify-between p-1 ">
+            <div className="flex flex-col w-full md:w-[100%] lg:w-[65%] h-full justify-between p-1 ">
               <div className="flex w-full  p-1 rouded h-[2.5%] md:h-[5%] my-1 justify-between bg-white rounded">
                 <span className="items-center p-1 w-[40%] flex">
                   {filteredData.length} results
@@ -126,14 +126,14 @@ propertyDetails[0].properties.forEach((property) => {
                   </span>
                   <span
                     onClick={() => setAdvanced(!advanced)}
-                    className="mx-2 w-[50%] justify-end items-center ms-auto flex md:hidden"
+                    className="mx-2 w-[50%] justify-end items-center ms-auto flex lg:hidden"
                   >
                     <GoFilter size={25} />
                     Filter
                   </span>
                   {advanced && (
-                    <div className="w-full md:hidden fixed overflow-y-auto  md:relative top-0 left-0 z-50   h-full flex rounded bg-white">
-                      <div className="h-[100%]  md:mt-0 md:h-[60%] ">
+                    <div className="w-full  lg:hidden fixed overflow-y-auto  lg:relative top-0 left-0 z-50   h-full flex rounded bg-white">
+                      <div className="h-[100%]  lg:mt-0 lg:h-[60%] md:w-[50%] flex flex-col mx-auto ">
                         <div className="flex">
                           <span
                             onClick={() => setAdvanced(false)}
@@ -149,7 +149,7 @@ propertyDetails[0].properties.forEach((property) => {
                 </div>
               </div>
               <div className="flex w-full flex-col h-[97%] md:h-[95%]">
-                <div className="grid grid-cols-1 md:grid-cols-2 w-full h-[100%] md:grid-rows-2 grid-rows-4 md:gap-1 gap-5 py-2 md:p-2">
+                <div className="grid grid-cols-1 md:grid-cols-2 w-full h-[100%] md:grid-rows-2 grid-rows-4 lg:gap-1 gap-5 py-2 md:p-2">
                   {currentProperty.map((details, index) => (
                     details.category == 'commercial' ?
                     <Link

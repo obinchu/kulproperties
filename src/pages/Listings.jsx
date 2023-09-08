@@ -146,9 +146,14 @@ const Listings = () => {
                             background: `linear-gradient(rgba(255, 255, 255, 0.1), rgba(0,0,0,0.3))`,
                           }}
                         >
+                           <div className="flex justify-between w-full">
                           <span className="rounded p-1 w-[23%] text-base justify-center bg-red-500 text-white flex">
                             {details.status}
                           </span>
+                          <span className="rounded p-1 w-[23%] text-xs items-center justify-center bg-primary text-white flex">
+                            {details.category}
+                          </span>
+                            </div>
                           <div className="flex justify-between">
                             <span className="text-white font-medium text-xl">
                               KES {details.unit.price}

@@ -117,14 +117,14 @@ propertyDetails[0].properties.forEach((property) => {
   ];
   return (
     <div className="flex flex-col w-full items-center  ">
-      <div className="flex fixed p-2 mx-auto w-full z-50 bg-white  backdrop-blur-sm md:p-3 text-black shadow-lg text-sm">
+      <div className="flex fixed p-2 mx-auto w-full z-50 bg-white  backdrop-blur-sm lg:p-3 text-black shadow-lg text-sm">
         <div className="w-full flex mx-auto max-w-7xl justify-between">
           <div className="flex items-center p-1">
             <span className="text-xl font-medium text-primary">
               KUL PROPERTIES
             </span>
           </div>
-          <div className="hidden md:flex ms-auto me-3 m-1">
+          <div className="hidden lg:flex ms-auto me-3 m-1">
             <ul className="flex items-center">
               {headerElements.map((element, i) => {
                 return (
@@ -181,25 +181,25 @@ propertyDetails[0].properties.forEach((property) => {
               className="flex m-1  hover:cursor-pointer text-primary hover:text-primary ease-in-out items-center "
             >
               <BiUser size={25} />
-              <span className="hidden md:flex my-auto mx-1">Account</span>
+              <span className="hidden lg:flex my-auto mx-1">Account</span>
             </div>
-            <button className="hidden md:flex m-1  hover:cursor-pointer text-white rounded p-1 hover:bg-primary ease-in-out items-center bg-secondary">
+            <button className="hidden lg:flex m-1  hover:cursor-pointer text-white rounded p-1 hover:bg-primary ease-in-out items-center bg-secondary">
               <BiPlus size={25} />
               <span className="mx-1">Create Listing</span>
             </button>
             <section
               onClick={openMenu}
               ref={humburgerRef}
-              className="flex md:hidden m-1  hover:cursor-pointer hover:text-orange-400 duration-700 ease-in-out"
+              className="flex lg:hidden m-1  hover:cursor-pointer hover:text-orange-400 duration-700 ease-in-out"
             >
               {hamburger ? (
                 <AiOutlineMenu
-                  className="md:flex my-auto m-1 duration-700 "
+                  className="lg:flex my-auto m-1 duration-700 "
                   size={25}
                 />
               ) : (
                 <AiOutlineClose
-                  className="md:flex my-auto m-1 duration-700"
+                  className="lg:flex my-auto m-1 duration-700"
                   size={25}
                 />
               )}
@@ -208,7 +208,7 @@ propertyDetails[0].properties.forEach((property) => {
         </div>
       </div>
       {userAccess && (
-        <div className="w-full h-screen z-50 md:h-[100vh] bg-black/70 backdrop-blur-lg justify-center fixed ">
+        <div className="w-full h-screen z-50 lg:h-[100vh] bg-black/70 backdrop-blur-lg justify-center fixed ">
           <UserLogin ref={userAccessRef} />
         </div>
       )}

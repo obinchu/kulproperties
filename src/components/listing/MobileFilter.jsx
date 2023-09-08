@@ -68,7 +68,7 @@ const MobileFilter = () => {
   
        <form
     action=""
-    className="w-full h-[100%] mt-[20%]] "
+    className=" w-full h-[100%] mt-[20%]] "
   >
     <FilterInput placeholder={"search..."} type={"input"} />
     <FilterLocation placeholder={"Location"} />
@@ -76,7 +76,7 @@ const MobileFilter = () => {
       <select
         value={value}
         onChange={handleChange}
-        className={`w-[95%] p-2 rounded my-2    border ${
+        className={`w-[95%] md:w-[85%] p-2 rounded my-2    border ${
           isActive ? "border-primary" : "border-gray-300"
         } focus:outline-none focus:border-primary bg-transparent`}
       >
@@ -98,7 +98,7 @@ const MobileFilter = () => {
       <select
         value={bathroom}
         onChange={handlebathroom}
-        className={`p-2 rounded m-1 w-[95%]  md:mx-2 border ${
+        className={`p-2 rounded m-1 w-[95%] md:w-[85%]  md:mx-2 border ${
           isActive ? "border-primary" : "border-gray-300"
         } focus:outline-none focus:border-primary bg-transparent `}
       >
@@ -114,7 +114,7 @@ const MobileFilter = () => {
       <select
         value={bedroom}
         onChange={handlebedroom}
-        className={`p-2 rounded m-1  md:mx-2 w-[95%] border ${
+        className={`p-2 rounded m-1  md:mx-2 w-[95%] md:w-[85%] border ${
           isActive ? "border-primary" : "border-gray-300"
         } focus:outline-none focus:border-primary bg-transparent`}
       >
@@ -130,7 +130,7 @@ const MobileFilter = () => {
       <select
         value={year}
         onChange={handleyear}
-        className={`p-2 rounded m-1 w-[95%] md:mx-2 border ${
+        className={`p-2 rounded m-1 w-[95%] md:w-[85%] md:mx-2 border ${
           isActive ? "border-primary" : "border-gray-300"
         } focus:outline-none focus:border-primary bg-transparent`}
       >
@@ -176,7 +176,7 @@ const MobileFilter = () => {
             </div>
           </div>
         </div>
-        <button className="w-[80%] flex p-2 bg-secondary px-4 m-auto text-white justify-center items-center rounded md:m-1">
+        <button className="w-[80%] md:w-[85%] flex p-2 bg-secondary px-4 m-auto text-white justify-center items-center rounded md:m-1">
           Search
         </button>
       </div>

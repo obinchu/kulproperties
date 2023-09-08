@@ -13,14 +13,14 @@ const PropertyCards = () => {
 
   const propertyData = useContext(AppContext);
 
-  const desiredStatuses = ["rent", "sell", "buy"];
+  const desiredStatuses = ["rental", "commercial","residential"];
   const lastThreeProperties = [];
 
   for (let i = propertyData[0].properties.length - 1; i >= 0; i--) {
     const property = propertyData[0].properties[i];
     if (
-      desiredStatuses.includes(property.status) &&
-      !lastThreeProperties.some((p) => p.status === property.status)
+      desiredStatuses.includes(property.category) &&
+      !lastThreeProperties.some((p) => p.category === property.category)
     ) {
       lastThreeProperties.push(property);
     }
@@ -65,9 +65,14 @@ const PropertyCards = () => {
                       "linear-gradient(rgba(255, 255, 255, 0.1), rgba(0,0,0,0.3))",
                   }}
                 >
-                  <span className="rounded p-1 w-[23%] text-base justify-center bg-red-500 text-white flex">
-                    For {details.status}
-                  </span>
+                    <div className="flex justify-between w-full">
+                          <span className="rounded p-1 w-[23%] text-base justify-center bg-red-500 text-white flex">
+                            {details.status}
+                          </span>
+                          <span className="rounded p-1 w-[23%] text-xs items-center justify-center bg-primary text-white flex">
+                            {details.category}
+                          </span>
+                            </div>
                   <div className="flex justify-between">
                     <span className="text-white font-medium text-xl">
                       KES {details.unit.price}
