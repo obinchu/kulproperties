@@ -34,7 +34,7 @@ function App() {
     className='w-full h-[100vh] md:h-[100vh] flex bg-cover bg-center bg-no-repeat'
    
   >
-    <section className='w-full h-full flex flex-col  items-center justify-center bg-black bg-opacity-30'>
+    <section className='w-full h-full flex flex-col  items-center justify-center'>
       <div className='flex flex-col md:mx-auto md:max-w-7xl w-full h-[100%] md:my-auto md:rounded items-center justify-center p-2 '>
        
       <div id="preloader">
@@ -51,7 +51,7 @@ function App() {
     className='w-full h-[100vh] md:h-[100vh] flex bg-cover bg-center bg-no-repeat'
    
   >
-    <section className='w-full h-full flex flex-col  items-center justify-center bg-black bg-opacity-30'>
+    <section className='w-full h-full flex flex-col  items-center justify-center'>
       <div className='flex flex-col md:mx-auto md:max-w-7xl w-full h-[100%] md:my-auto md:rounded items-center justify-center p-2 '>
        
       <div id="preloader">
