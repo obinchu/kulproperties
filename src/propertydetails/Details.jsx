@@ -143,8 +143,8 @@ const Details = () => {
     <div className="flex flex-col bg-white rounded w-[95%] h-[70%] md:h-[45%] mx-auto">
         <span className='text-primary text-xl m-2 p-2'>Schedule Appointment</span>
         <form className='flex flex-col p-2' action="">
-            <input className='border p-2 rounded m-2' type="date" name="" id="" />
-            <input className='border p-2 rounded m-2' type="time" name="" id="" placeholder='Time'/>
+            <input className='border p-2 rounded m-2 w-full' type="date" name="" id="" />
+            <input className='border p-2 rounded m-2 w-full' type="time" name="" id="" placeholder='Time'/>
             <input className='border p-2 rounded m-2' type="text" placeholder='Full Name' />
             <input className='border p-2 rounded m-2' type="number" placeholder='Phone Number' />
             <input className='border p-2 rounded m-2' type="email" name="" id="" placeholder='Email Address' />
