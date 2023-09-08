@@ -1,14 +1,11 @@
 import React,{useState,useContext} from 'react'
 import FormInput from '../../login/form/FormInput'
-// import Select from "react-dropdown-select";
 import LocationInput from '../../login/form/LocationInput';
-import {MdOutlineMoreVert} from 'react-icons/md'
 import { Link } from 'react-router-dom';
 import { AppContext } from '../../App';
 const Filter = () => {
     
     const [value, setValue] = useState('property');
-    const [advanced ,setAdvanced] = useState(false)
     const [isActive, setIsActive] = useState(false);
   
     const [buy,setBuy] = useState(true)

@@ -42,32 +42,26 @@ const Listings = () => {
     setCurrentPage(pageNumbers);
   };
   const [scrollPosition, setScrollPosition] = useState(0);
-    // Function to handle the scroll event
     const handleScroll = () => {
-      // Update the scroll position when the user scrolls
       setScrollPosition(window.scrollY);
     };
   
-    // Scroll to the top of the page when the component mounts
     useEffect(() => {
-      window.scrollTo(0, 0); // Scroll to the top left corner
-    }, []); // Empty dependency array ensures this effect runs only once when the component mounts
+      window.scrollTo(0, 0); 
+    }, []);
   
-    // Add a scroll event listener when the component mounts
     useEffect(() => {
       window.addEventListener('scroll', handleScroll);
   
-      // Clean up the scroll event listener when the component unmounts
       return () => {
         window.removeEventListener('scroll', handleScroll);
       };
     }, []);
   
-    // Function to scroll back to the top of the page
     const scrollToTop = () => {
       window.scrollTo({
         top: 0,
-        behavior: 'smooth', // Add smooth scrolling behavior
+        behavior: 'smooth',
       });}
   return (
     <div className="w-full h-[265vh]  md:h-[140vh] flex bg-other text-sm">
@@ -126,6 +120,7 @@ const Listings = () => {
               <div className="flex w-full flex-col h-[97%] md:h-[95%]">
                 <div className="grid grid-cols-1 md:grid-cols-2 w-full h-[100%] md:grid-rows-2 grid-rows-4 md:gap-1 gap-5 py-2 md:p-2">
                   {currentProperty.map((details, index) => (
+                    details.category=='commercial'?
                     <Link
                       to={`/kulproperties/propertydetails/${details.slug}`}
                       key={index}
@@ -156,7 +151,7 @@ const Listings = () => {
                             </div>
                           <div className="flex justify-between">
                             <span className="text-white font-medium text-xl">
-                              KES {details.unit.price}
+                              KES {details.price}
                             </span>
                             <span
                               onClick={(e) => handleLikeClick(e, details.id)}
@@ -171,7 +166,7 @@ const Listings = () => {
                           </div>
                         </div>
                       </div>
-                      <div className="flex flex-col bg-white w-full rounded-b-md h-[40%] p-2 md:p-4">
+                      <div className="flex flex-col bg-white w-full rounded-b-md h-[50%] p-2 md:p-4">
                       <span className="items-center  flex justify-between text-base text-red-500">
                           {details.property_type}
                           <span className="text-sm">
@@ -185,7 +180,7 @@ const Listings = () => {
                             )}
                           </span>
                         </span>
-                        <span className="items-center  flex text-lg font-medium">
+                        <span className="items-center  flex text-base font-medium">
                           {details.title}
                         </span>
                         <div className="flex items-center">
@@ -195,21 +190,106 @@ const Listings = () => {
                           <span className="ms-1">{details.location}</span>
                         </div>
                         <div className="grid grid-cols-2 grid-rows-2 gap-2 py-2">
-                          <span className="flex items-center">
+                          {/* <span className="flex items-center">
                             <BiBed size={25} />
                             {details.unit.bedrooms}Bedrooms
                           </span>
                           <span className="flex items-center">
                             <MdOutlineBathtub size={25} />
                             {details.unit.bathrooms}Bathrooms
-                          </span>
+                          </span> */}
                           <span className="flex items-center">
                             <TfiRulerAlt2 size={25} />
-                            {details.unit.area}Sq ft
+                            {details.area}Sq ft
                           </span>
                         </div>
                       </div>
                     </Link>
+                    :
+                    <Link
+                    to={`/kulproperties/propertydetails/${details.slug}`}
+                    key={index}
+                    className="flex flex-shrink w-[100%] md:w-[95%]  md:h-[90%]    rounded-md flex-col mx-auto md:mx-2"
+                  >
+                    <div
+                      key={index}
+                      className="flex w-full h-[60%]  rounded-t-md bg-cover bg-center bg-no-repeat"
+                      style={{
+                        backgroundImage: `url(${import.meta.env.BASE_URL}${
+                          details.cover_image
+                        })`,
+                      }}
+                    >
+                      <div
+                        className="flex flex-col p-2 w-full h-full justify-between"
+                        style={{
+                          background: `linear-gradient(rgba(255, 255, 255, 0.1), rgba(0,0,0,0.3))`,
+                        }}
+                      >
+                         <div className="flex justify-between w-full">
+                        <span className="rounded p-1 w-[23%] text-base justify-center bg-red-500 text-white flex">
+                          {details.status}
+                        </span>
+                        <span className="rounded p-1 w-[23%] text-xs items-center justify-center bg-primary text-white flex">
+                          {details.category}
+                        </span>
+                          </div>
+                        <div className="flex justify-between">
+                          <span className="text-white font-medium text-xl">
+                            KES {details.unit.price}
+                          </span>
+                          <span
+                            onClick={(e) => handleLikeClick(e, details.id)}
+                            className="flex w-[50%] items-center justify-end text-tertiary"
+                          >
+                            {!liked[details.id] ? (
+                              <AiOutlineHeart size={29} />
+                            ) : (
+                              <FcLike size={29} />
+                            )}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="flex flex-col bg-white w-full rounded-b-md h-[50%] p-2 md:p-4">
+                    <span className="items-center  flex justify-between text-base text-red-500">
+                        {details.property_type}
+                        <span className="text-sm">
+                          {liked[details.id]
+                            ? details.likes.length + 1
+                            : details.likes.length}
+                          {details.likes.length == 1 ? (
+                            <span>like</span>
+                          ) : (
+                            <span>likes</span>
+                          )}
+                        </span>
+                      </span>
+                      <span className="items-center  flex text-base font-medium">
+                        {details.title}
+                      </span>
+                      <div className="flex items-center">
+                        <span>
+                          <CiLocationOn size={20} />
+                        </span>
+                        <span className="ms-1">{details.location}</span>
+                      </div>
+                      <div className="grid grid-cols-2 grid-rows-2 gap-2 py-2">
+                        <span className="flex items-center">
+                          <BiBed size={25} />
+                          {details.unit.bedrooms}Bedrooms
+                        </span>
+                        <span className="flex items-center">
+                          <MdOutlineBathtub size={25} />
+                          {details.unit.bathrooms}Bathrooms
+                        </span>
+                        <span className="flex items-center">
+                          <TfiRulerAlt2 size={25} />
+                          {details.unit.area}Sq ft
+                        </span>
+                      </div>
+                    </div>
+                  </Link>
                   ))}
                 </div>
                 <div className="w-full flex mx-auto mt-auto md:mt-0 container p-1 m-1">

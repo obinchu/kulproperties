@@ -36,20 +36,7 @@ const ListingFilter = () => {
     };
   
     const propertyDetails = useContext(AppContext)
-    // const amenities = [
-    //   "Kitchen appliances",
-    //   "Laundry facilities",
-    //   "Garage or parking space",
-    //   "Outdoor space ",
-    //   "Security system",
-    //   "Fireplace",
-    //   "Walk-in closets",
-    //   "Hardwood floors",
-    //   "Energy-efficient features",
-    //   "Swimming pool",
-    //   "Home office space",
-    //   "WiFi",
-    // ];
+   
     const amenities = new Set();
 
     propertyDetails[0].properties.forEach((property) => {

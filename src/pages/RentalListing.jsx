@@ -47,32 +47,26 @@ const RentalListing = () => {
     setCurrentPage(pageNumbers);
   };
   const [scrollPosition, setScrollPosition] = useState(0);
-    // Function to handle the scroll event
     const handleScroll = () => {
-        // Update the scroll position when the user scrolls
         setScrollPosition(window.scrollY);
       };
     
-      // Scroll to the top of the page when the component mounts
       useEffect(() => {
-        window.scrollTo(0, 0); // Scroll to the top left corner
-      }, []); // Empty dependency array ensures this effect runs only once when the component mounts
+        window.scrollTo(0, 0);
+      }, []);
     
-      // Add a scroll event listener when the component mounts
       useEffect(() => {
         window.addEventListener('scroll', handleScroll);
     
-        // Clean up the scroll event listener when the component unmounts
         return () => {
           window.removeEventListener('scroll', handleScroll);
         };
       }, []);
     
-      // Function to scroll back to the top of the page
       const scrollToTop = () => {
         window.scrollTo({
           top: 0,
-          behavior: 'smooth', // Add smooth scrolling behavior
+          behavior: 'smooth',
         });}
         const categories = new Set();
 
@@ -83,19 +77,16 @@ propertyDetails[0].properties.forEach((property) => {
 
   const validCategories =   [...categories]
         const categoryIsValid = (category) => {
-            // Example: Check if category exists in a list of valid categories
-            // const validCategories = ["category1", "category2", "category3"];
+            
             return validCategories.includes(category);
           };
-        // Check if the category is valid (you can implement your own validation logic here)
         const isValidCategory = categoryIsValid(category);
       
         if (!isValidCategory) {
-          // Redirect or render the Error component if the category is not valid
           return <Error />;
         }
   return (
-    <div className="w-full h-[265vh]  md:h-[140vh] flex bg-other text-sm">
+    <div className="w-full h-[275vh]  md:h-[140vh] flex bg-other text-sm">
       <div className="flex lg:max-w-6xl w-full h-[100%] m-auto rounded p-2 justify-center items-center">
         <div className=" w-full flex flex-col  h-[95%] mt-auto m-auto  justify-between">
           <div className="flex w-full h-[3%] md:h-[10%] p-2">
@@ -183,7 +174,7 @@ propertyDetails[0].properties.forEach((property) => {
                            
                           <div className="flex justify-between">
                             <span className="text-white font-medium text-xl">
-                              KES {details.unit.price}
+                              KES {details.price}
                             </span>
                             <span
                               onClick={(e) => handleLikeClick(e, details.id)}
@@ -198,7 +189,7 @@ propertyDetails[0].properties.forEach((property) => {
                           </div>
                         </div>
                       </div>
-                      <div className="flex flex-col bg-white w-full rounded-b-md h-[40%] p-2 md:p-4">
+                      <div className="flex flex-col bg-white w-full rounded-b-md h-[50%] p-2 md:p-4">
                       <span className="items-center  flex justify-between text-base text-red-500">
                           {details.property_type}
                           <span className="text-sm">
@@ -212,7 +203,7 @@ propertyDetails[0].properties.forEach((property) => {
                             )}
                           </span>
                         </span>
-                        <span className="items-center  flex text-lg font-medium">
+                        <span className="items-center  flex text-base font-medium">
                           {details.title}
                         </span>
                         <div className="flex items-center">
@@ -224,7 +215,7 @@ propertyDetails[0].properties.forEach((property) => {
                         <div className="grid grid-cols-2 grid-rows-2 gap-2 py-2">
                           <span className="flex items-center">
                             <TfiRulerAlt2 size={25} />
-                            {details.unit.area}Sq ft
+                            {details.area}Sq ft
                           </span>
                         </div>
                       </div>
@@ -233,7 +224,7 @@ propertyDetails[0].properties.forEach((property) => {
                     <Link
                       to={`/kulproperties/propertydetails/${details.slug}`}
                       key={index}
-                      className="flex flex-shrink w-[100%] md:w-[95%]  md:h-[90%]    rounded-md flex-col mx-auto md:mx-2"
+                      className="flex flex-shrink w-[100%] md:w-[95%]  md:h-[90%] h-full   rounded-md flex-col mx-auto md:mx-2"
                     >
                       <div
                         key={index}
@@ -275,7 +266,7 @@ propertyDetails[0].properties.forEach((property) => {
                           </div>
                         </div>
                       </div>
-                      <div className="flex flex-col bg-white w-full rounded-b-md h-[40%] p-2 md:p-4">
+                      <div className="flex flex-col bg-white w-full rounded-b-md h-[50%] p-2 md:p-4">
                         <span className="items-center  flex justify-between text-base text-red-500">
                           {details.property_type}
                           <span className="text-sm">
@@ -289,7 +280,7 @@ propertyDetails[0].properties.forEach((property) => {
                             )}
                           </span>
                         </span>
-                        <span className="items-center  flex text-lg font-medium">
+                        <span className="items-center  flex text-base font-medium">
                           {details.title}
                         </span>
                         <div className="flex items-center">
