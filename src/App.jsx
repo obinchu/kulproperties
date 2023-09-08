@@ -30,7 +30,19 @@ function App() {
 
   // Check if data is still loading
   if (data === null) {
-    return <div>Loading...</div>;
+    return<main
+    className='w-full h-[100vh] md:h-[100vh] flex bg-cover bg-center bg-no-repeat'
+   
+  >
+    <section className='w-full h-full flex flex-col  items-center justify-center bg-black bg-opacity-30'>
+      <div className='flex flex-col md:mx-auto md:max-w-7xl w-full h-[100%] md:my-auto md:rounded items-center justify-center p-2 '>
+       
+      <div id="preloader">
+  <div id="loader"></div>
+</div>
+      </div>
+    </section>
+  </main>;
   }
 
   // Check if data[0] and data[0].properties exist
