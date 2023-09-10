@@ -1,51 +1,68 @@
 import React, { useContext, useState } from "react";
 import { AppContext } from "../../../App";
 import { useParams } from "react-router-dom";
+import {MdOutlineArrowForward} from 'react-icons/md'
+import {BiArrowBack} from 'react-icons/bi'
 
 const PropertyHero = () => {
   const propertyDetails = useContext(AppContext);
-
   const { slug } = useParams();
-
   const selectedItem = propertyDetails[0].properties.find(
-    (item) => item.slug == slug
+    (item) => item.slug === slug
   );
+  const images = selectedItem.images;
 
-  const imageUrl = selectedItem.cover_image;
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  const [background, setBackground] = useState(imageUrl);
+  const handleNextImage = () => {
+    if (currentImageIndex < images.length - 1) {
+      setCurrentImageIndex(currentImageIndex + 1);
+    }
+  };
+
+  const handleBackImage = () => {
+    if (currentImageIndex > 0) {
+      setCurrentImageIndex(currentImageIndex - 1);
+    }
+  };
 
   return (
-    <main className="w-full h-[80vh]  flex bg-other">
-      <section className="w-full h-full flex flex-col  items-center justify-center">
-        <div className="flex flex-col mt-[10%]  lg:flex-row lg:max-w-7xl w-full h-[90%] lg:my-auto lg:rounded justify-between p-2 ">
-          <div
-            className="flex  h-full md:h-[60%] lg:h-[90%] lg:my-auto w-full md:w-[95%] md:mx-auto lg:w-[75%]  bg-cover bg-center bg-no-repeat rounded"
-            style={{
-              backgroundImage: `url(${background})`,
-            }}
-          ></div>
-          <div className="flex lg:flex-col h-full md:h-[40%] lg:h-full w-full lg:w-[20%] rounded bg-white/50 backdrop-blur-lg p-2 my-2 overflow-x-scroll no-scrollbar lg:overflow-x-scroll">
-            {selectedItem.other_images.map((image) => {
-                const selectedItemBg = `${image}`;
-
-              return (
-                <span
-                onClick={()=>setBackground(selectedItemBg)}
-                  className="w-[80%] md:w-[35%] lg:w-[90%] lg:mx-auto hover:cursor-pointer flex-shrink-0 m-2 lg:my-2 bg-cover bg-center bg-no-repeat my-auto h-[80%] lg:h-[25%] rounded"
-                  style={{
-                    backgroundImage: `url(${selectedItemBg})`,
-                  }}
-                ></span>
-              );
-            })}
+    <main className="w-full h-[50vh] md:h-[80vh] flex bg-other">
+      <section className="w-full h-full flex flex-col items-center justify-center">
+        <div className="relative flex mt-[15%] lg:max-w-7xl w-full h-[90%] lg:my-auto md:rounded justify-between px-2 md:px-0">
+          {images.map((image, index) => {
+            return (
+              <div
+                key={index}
+                className="flex md:h-full w-full h-[80%] md:mx-auto bg-cover bg-center bg-no-repeat rounded"
+                style={{
+                  backgroundImage: `url(${image})`,
+                  display: index === currentImageIndex ? "block" : "none",
+                }}
+              ></div>
+            );
+          })}
+          <div className="absolute flex w-full h-full justify-center rounded items-center">
+            <div className="flex text-other justify-between w-full p-2 px-4">
+              <span
+                className="hover:cursor-pointer bg-black/50 p-2"
+                onClick={handleBackImage}
+              >
+                <BiArrowBack size={25}/>
+               
+              </span>
+              <span
+                className="hover:cursor-pointer text-other bg-black/50 p-2"
+                onClick={handleNextImage}
+              >
+                <MdOutlineArrowForward   size={25}/>
+              </span>
+            </div>
           </div>
         </div>
       </section>
     </main>
   );
 };
+
 export default PropertyHero;
-// style={{
-//   backgroundImage: `url(${details.cover_image})`,
-// }}

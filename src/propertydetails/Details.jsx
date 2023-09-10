@@ -1,6 +1,7 @@
 import React,{useContext,useState,useEffect} from 'react'
 import { useParams } from 'react-router-dom'
 import { AppContext } from '../App'
+import FormInput from '../login/form/FormInput';
 
 const Details = () => {
     const { slug } = useParams();
@@ -223,7 +224,7 @@ const Details = () => {
     }
     </div>
     <div className="flex flex-col w-full lg:w-[35%] h-full  p-1 ">
-    <div className="flex flex-col bg-white rounded w-[95%] h-[65%] md:h-[45%] mx-auto">
+    <div className="flex flex-col bg-white rounded w-[95%] h-[55%] md:h-[45%] mx-auto">
         <span className='text-primary text-xl m-2 p-2'>Schedule Appointment</span>
         <form className='flex flex-col p-2' action="">
             <input className='border p-2 rounded mx-auto w-[95%] my-2' type="date" name="" id="" />
