@@ -149,7 +149,7 @@ const Listings = () => {
                             </div>
                           <div className="flex justify-between">
                             <span className="text-white font-medium text-xl">
-                              KES {details.price}
+                            $ {details.price}
                             </span>
                             <span
                               onClick={(e) => handleLikeClick(e, details.id)}
@@ -188,14 +188,7 @@ const Listings = () => {
                           <span className="ms-1">{details.location}</span>
                         </div>
                         <div className="grid grid-cols-2 grid-rows-2 gap-2 py-2">
-                          {/* <span className="flex items-center">
-                            <BiBed size={25} />
-                            {details.unit.bedrooms}Bedrooms
-                          </span>
-                          <span className="flex items-center">
-                            <MdOutlineBathtub size={25} />
-                            {details.unit.bathrooms}Bathrooms
-                          </span> */}
+                       
                           <span className="flex items-center">
                             <TfiRulerAlt2 size={25} />
                             {details.area}Sq ft
@@ -232,7 +225,7 @@ const Listings = () => {
                           </div>
                         <div className="flex justify-between">
                           <span className="text-white font-medium text-xl">
-                            KES {details.unit.price}
+                          $ {details.unit.price}
                           </span>
                           <span
                             onClick={(e) => handleLikeClick(e, details.id)}

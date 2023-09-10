@@ -45,7 +45,7 @@ const Details = () => {
                     <span className='text-lg' >{selectedItem.title}</span>
             
 
-                <span className='lg:m-0.5 lg:p-2 text-lg'>KES {selectedItem.price}</span>
+                <span className='lg:m-0.5 lg:p-2 text-lg'>${selectedItem.price}</span>
 
             </div>
             <div className="flex w-[100%] items-center p-1">
@@ -83,7 +83,7 @@ const Details = () => {
                 <span className='text-lg m-1 my-2'>Property Details</span>
                 <div className="grid grid-cols-1 lg:grid-cols-3 lg:grid-rows-3 gap-2 h-[90%] m-1 p-2">
                 <span className='flex'>Property Type: <span className='font-medium mx-1'>{selectedItem.property_type}</span></span>
-                <span className='flex'>Property Price: <span className='font-medium mx-1'>KES {selectedItem.price}</span></span>
+                <span className='flex'>Property Price: <span className='font-medium mx-1'>$ {selectedItem.price}</span></span>
                 <span className='flex'>Property Size: <span className='font-medium mx-1'>{selectedItem.area} Sq ft</span></span>
                 <span className='flex'>Property Status: <span className='font-medium mx-1'>{selectedItem.status}</span></span>
                 </div>
@@ -176,7 +176,7 @@ const Details = () => {
             <span className='text-lg m-1 my-2'>Property Details</span>
             <div className="grid grid-cols-1 lg:grid-cols-3 lg:grid-rows-3 gap-2 h-[90%] m-1 p-2">
             <span className='flex'>Property Type: <span className='font-medium mx-1'>{selectedItem.property_type}</span></span>
-            <span className='flex'>Property Price: <span className='font-medium mx-1'>KES {selectedItem.unit.price}</span></span>
+            <span className='flex'>Property Price: <span className='font-medium mx-1'>$ {selectedItem.unit.price}</span></span>
             <span className='flex'>Property Size: <span className='font-medium mx-1'>{selectedItem.unit.area} Sq ft</span></span>
             <span className='flex'>No.of Bedrooms: <span className='font-medium mx-1'> {selectedItem.unit.bedrooms}</span></span>
             <span className='flex'>No.of Bathrooms:<span className='font-medium mx-1'>{selectedItem.unit.bathrooms}</span></span>

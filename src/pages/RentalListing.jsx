@@ -172,7 +172,7 @@ propertyDetails[0].properties.forEach((property) => {
                            
                           <div className="flex justify-between">
                             <span className="text-white font-medium text-xl">
-                              KES {details.price}
+                             $ {details.price}
                             </span>
                             <span
                               onClick={(e) => handleLikeClick(e, details.id)}
@@ -247,7 +247,7 @@ propertyDetails[0].properties.forEach((property) => {
                             </div>
                           <div className="flex justify-between">
                             <span className="text-white font-medium text-xl">
-                              KES {details.unit.price}
+                             $ {details.unit.price}
                             </span>
                             <span
                               onClick={(e) => handleLikeClick(e, details.id)}

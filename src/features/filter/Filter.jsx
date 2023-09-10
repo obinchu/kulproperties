@@ -115,7 +115,7 @@ Property Type
 
 
       <div className='block w-full md:w-[20%] p-2 md:p-0   md:flex'>
-      <Link to="/kulproperties/status/Rent" className='w-[80%] flex p-2 bg-secondary px-4 m-auto text-white justify-center items-center rounded md:m-1'>Search</Link>
+      <Link to="/kulproperties/status/rent" className='w-[80%] flex p-2 bg-secondary px-4 m-auto text-white justify-center items-center rounded md:m-1'>Search</Link>
       </div>
           
 
