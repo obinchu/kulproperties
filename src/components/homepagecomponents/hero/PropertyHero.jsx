@@ -42,23 +42,26 @@ const PropertyHero = () => {
               ></div>
             );
           })}
-          <div className="absolute flex w-full h-full justify-center rounded items-center">
-            <div className="flex text-other justify-between w-full p-2 px-4">
-              <span
-                className="hover:cursor-pointer bg-black/50 p-2"
-                onClick={handleBackImage}
-              >
-                <BiArrowBack size={25}/>
-               
-              </span>
-              <span
-                className="hover:cursor-pointer text-other bg-black/50 p-2"
-                onClick={handleNextImage}
-              >
-                <MdOutlineArrowForward   size={25}/>
-              </span>
-            </div>
-          </div>
+        <div className="absolute flex w-full h-full justify-center rounded items-center">
+  <div className="flex text-other justify-between w-full p-2 px-4">
+    <span
+      className={`hover:cursor-pointer me-auto bg-black/50 p-2 ${
+        currentImageIndex === 0 ? "hidden" : ""
+      }`}
+      onClick={handleBackImage}
+    >
+      <BiArrowBack size={25} />
+    </span>
+    <span
+      className={`hover:cursor-pointer text-other ms-auto bg-black/50 p-2 ${
+        currentImageIndex === images.length - 1 ? "hidden" : ""
+      }`}
+      onClick={handleNextImage}
+    >
+      <MdOutlineArrowForward size={25} />
+    </span>
+  </div>
+</div>
         </div>
       </section>
     </main>
