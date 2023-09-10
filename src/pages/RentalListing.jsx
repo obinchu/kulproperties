@@ -152,9 +152,7 @@ propertyDetails[0].properties.forEach((property) => {
                         key={index}
                         className="flex w-full h-[60%]  rounded-t-md bg-cover bg-center bg-no-repeat"
                         style={{
-                          backgroundImage: `url(${import.meta.env.BASE_URL}${
-                            details.cover_image
-                          })`,
+                          backgroundImage: `url(${details.cover_image})`,
                         }}
                       >
                         <div
@@ -230,9 +228,7 @@ propertyDetails[0].properties.forEach((property) => {
                         key={index}
                         className="flex w-full h-[60%]  rounded-t-md bg-cover bg-center bg-no-repeat"
                         style={{
-                          backgroundImage: `url(${import.meta.env.BASE_URL}${
-                            details.cover_image
-                          })`,
+                          backgroundImage: `url(${details.cover_image})`,
                         }}
                       >
                         <div

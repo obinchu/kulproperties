@@ -54,9 +54,7 @@ const PropertyCards = () => {
                 key={index}
                 className="flex w-full h-[60%]  rounded-t-md bg-cover bg-center bg-no-repeat"
                 style={{
-                  backgroundImage: `url(${import.meta.env.BASE_URL}${
-                    details.cover_image
-                  })`,
+                  backgroundImage: `url(${details.cover_image})`,
                 }}
               >
                 <div
@@ -105,7 +103,7 @@ const PropertyCards = () => {
                     )}
                   </span>
                 </span>
-                <span className="items-center  flex text-lg font-medium">
+                <span className="items-center  flex text-base font-medium">
                   {details.title}
                 </span>
                 <div className="flex items-center">
@@ -140,9 +138,7 @@ const PropertyCards = () => {
               key={index}
               className="flex w-full h-[60%]  rounded-t-md bg-cover bg-center bg-no-repeat"
               style={{
-                backgroundImage: `url(${import.meta.env.BASE_URL}${
-                  details.cover_image
-                })`,
+                backgroundImage: `url(${details.cover_image})`,
               }}
             >
               <div
@@ -191,7 +187,7 @@ const PropertyCards = () => {
                             )}
                 </span>
               </span>
-              <span className="items-center  flex text-lg font-medium">
+              <span className="items-center  flex text-base font-medium">
                 {details.title}
               </span>
               <div className="flex items-center">
@@ -201,14 +197,7 @@ const PropertyCards = () => {
                 <span className="ms-1">{details.location}</span>
               </div>
               <div className="grid grid-cols-2 grid-rows-2 gap-2 py-2">
-                {/* <span className="flex items-center">
-                  <BiBed size={25} />
-                  {details.unit.bedrooms} Bedrooms
-                </span>
-                <span className="flex items-center">
-                  <MdOutlineBathtub size={25} />
-                  {details.unit.bathrooms} Bathrooms
-                </span> */}
+             
                 <span className="flex items-center">
                   <TfiRulerAlt2 size={25} />
                   {details.area} Sq ft
