@@ -90,9 +90,9 @@ const Listings = () => {
                   {propertyDetails[0].properties.length} results
                 </span>
                 <div className="justify-center items-center flex w-[60%] ">
-                  <span className="mx-2 w-[50%] md:w-full h-full items-center  justify-end flex">
+                  {/* <span className="mx-2 w-[50%] md:w-full h-full items-center  justify-end flex">
                     status
-                  </span>
+                  </span> */}
                   <span
                     onClick={() => setAdvanced(!advanced)}
                     className="mx-2 w-[50%] justify-end items-center ms-auto flex md:hidden"
