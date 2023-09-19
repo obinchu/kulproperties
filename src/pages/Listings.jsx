@@ -76,21 +76,65 @@ const Listings = () => {
         const selectedValue = event.target.value;
         setValue(selectedValue);
         setIsActive(selectedValue.length > 0);
+        console.log(selectedValue)
       
         filterProperties(selectedValue, searchValue);
-        navigate('/kulproperties/filteredsearch');
+        // navigate('/kulproperties/filteredsearch');
       };
       const handleBathroom = (event) => {
         const selectedValue = event.target.value;
         setBathroom(selectedValue);
-        setIsActive(event.target.value.length > 0);
-        filterProperties(selectedValue, searchValue);
+      
+        // Filter the elements within propertyDetails[0].properties
+        const filteredProperties = propertyDetails[0].properties.filter((property) => {
+          // Check if the property category is not "commercial"
+          if (property.category !== 'commercial') {
+            // Check if the property has both the selected bedrooms and bathrooms
+            const matchesSearch =
+              property.unit.bathrooms == selectedValue &&
+              (bedroom === 'bedroom' || property.unit.bedrooms == bedroom); // Only match bathrooms if it's not empty
+            return matchesSearch;
+          } else {
+            // Exclude commercial properties
+            return false;
+          }
+        });
+      
+        setFilteredData(filteredProperties);
       };
+      const handleBedroom = (event) => {
+        const selectedValue = event.target.value;
+        setBedroom(selectedValue);
+      
+        // Filter the elements within propertyDetails[0].properties
+        const filteredProperties = propertyDetails[0].properties.filter((property) => {
+          // Check if the property category is not "commercial"
+          if (property.category !== 'commercial') {
+            // Check if the property has both the selected bedrooms and bathrooms
+            const matchesSearch =
+              property.unit.bedrooms == selectedValue &&
+              (bathroom === 'bathroom' || property.unit.bathrooms == bathroom); // Only match bathrooms if it's not empty
+            return matchesSearch;
+          } else {
+            // Exclude commercial properties
+            return false;
+          }
+        });
+      
+        setFilteredData(filteredProperties);
+      };
+      
+      
+      
+      
       // const handleBedroom = (event) => {
       //   const selectedValue = event.target.value;
       //   setBedroom(selectedValue);
       //   setIsActive(event.target.value.length > 0);
       //   filterProperties(selectedValue, searchValue);
+      //   // navigate('/kulproperties/filteredsearch');
+      //   console.log(selectedValue)
+
       // };
       
       const handleFilter = (event) => {
