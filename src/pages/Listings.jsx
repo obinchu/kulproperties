@@ -14,14 +14,29 @@ import ListingFilter from "../components/listing/ListingFilter";
 import { AiOutlineClose } from "react-icons/ai";
 import { AppContext } from "../App";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Listings = () => {
+  const propertyDetails = useContext(AppContext);
+
   const [currentPage, setCurrentPage] = useState(1);
+  const [filteredData, setFilteredData] = useState(propertyDetails[0].properties); 
+
   const [PropertyPerPage] = useState(4);
   const [advanced, setAdvanced] = useState(false);
   const [liked, setLiked] = useState({});
+  const [searchValue, setSearchValue] = useState('');
+  const [isActive, setIsActive] = useState(false);
+  const [value, setValue] = useState("Property Types");
+  const [bathroom, setBathroom] = useState("bathroom");
+  const [bedroom, setBedroom] = useState("bedroom");
+  const navigate = useNavigate();
 
-  const propertyDetails = useContext(AppContext);
+
+
+
+  
+
 
   const handleLikeClick = (e, id) => {
     e.preventDefault();
@@ -31,12 +46,6 @@ const Listings = () => {
     }));
   };
 
-  const indexOfLastProperty = currentPage * PropertyPerPage;
-  const indexOfFirstProperty = indexOfLastProperty - PropertyPerPage;
-  const currentProperty = propertyDetails[0].properties.slice(
-    indexOfFirstProperty,
-    indexOfLastProperty
-  );
 
   const setPage = (pageNumbers) => {
     setCurrentPage(pageNumbers);
@@ -63,6 +72,75 @@ const Listings = () => {
         top: 0,
         behavior: 'smooth',
       });}
+      const handleChange = (event) => {
+        const selectedValue = event.target.value;
+        setValue(selectedValue);
+        setIsActive(selectedValue.length > 0);
+      
+        filterProperties(selectedValue, searchValue);
+        navigate('/kulproperties/filteredsearch');
+      };
+      const handleBathroom = (event) => {
+        const selectedValue = event.target.value;
+        setBathroom(selectedValue);
+        setIsActive(event.target.value.length > 0);
+        filterProperties(selectedValue, searchValue);
+      };
+      // const handleBedroom = (event) => {
+      //   const selectedValue = event.target.value;
+      //   setBedroom(selectedValue);
+      //   setIsActive(event.target.value.length > 0);
+      //   filterProperties(selectedValue, searchValue);
+      // };
+      
+      const handleFilter = (event) => {
+        const newSearchValue = event.target.value.toLowerCase();
+        setSearchValue(newSearchValue);
+        setIsActive(newSearchValue.length > 0);
+      
+        filterProperties(newSearchValue);
+      
+        console.log(filteredData, "filtered Data");
+      };
+      
+      const filterProperties = (newSearchValue) => {
+        const filteredProperties = propertyDetails[0].properties.filter((property) => {
+          const matchesSearch =
+            property.title.toLowerCase().includes(newSearchValue) ||
+            property.description.toLowerCase().includes(newSearchValue) ||
+            property.location.toLowerCase().includes(newSearchValue) ||
+            property.category.toLowerCase().includes(newSearchValue) ||
+            property.status.toLowerCase().includes(newSearchValue);
+      
+          return matchesSearch;
+        });
+      
+        setFilteredData(filteredProperties);
+      };
+      
+      
+      
+      
+      
+      useEffect(() => {
+        console.log(searchValue);
+        console.log(filteredData)
+      }, [searchValue]); 
+
+  const indexOfLastProperty = currentPage * PropertyPerPage;
+  const indexOfFirstProperty = indexOfLastProperty - PropertyPerPage;
+  let currentProperty = [];
+
+  if (filteredData && filteredData.length > 0) {
+    currentProperty = filteredData.slice(
+      indexOfFirstProperty,
+      indexOfLastProperty
+    );
+  } else {
+    // Handle the case where there are no filtered properties.
+    // You can display a message or take some other appropriate action here.
+  }
+  
   return (
     <div className="w-full h-[265vh]  md:h-[140vh] flex bg-other text-sm">
       <div className="flex md:max-w-6xl w-full h-[100%] m-auto rounded p-2 justify-center items-center">
@@ -83,16 +161,14 @@ const Listings = () => {
             </div>
           </div>
           <div className="flex w-full h-[97%] md:h-[90%]  p-2">
-            <ListingFilter />
+            <ListingFilter handleFilter={()=>handleFilter(event)} handleChange={()=>handleChange(event)} handlebedroom={()=>handleBedroom(event)} handlebathroom={()=>handleBathroom(event)} value={value}  bathroom={bathroom} bedroom={bedroom} />
             <div className="flex flex-col w-full md:w-[65%] h-full justify-between p-1 ">
               <div className="flex w-full  p-1 rouded h-[2.5%] md:h-[5%] my-1 justify-between bg-white rounded">
                 <span className="items-center p-1 w-[40%] flex">
-                  {propertyDetails[0].properties.length} results
+                  {filteredData.length} results
                 </span>
                 <div className="justify-center items-center flex w-[60%] ">
-                  {/* <span className="mx-2 w-[50%] md:w-full h-full items-center  justify-end flex">
-                    status
-                  </span> */}
+                
                   <span
                     onClick={() => setAdvanced(!advanced)}
                     className="mx-2 w-[50%] justify-end items-center ms-auto flex md:hidden"
@@ -117,8 +193,9 @@ const Listings = () => {
                   )}
                 </div>
               </div>
-              <div className="flex w-full flex-col h-[97%] md:h-[95%]">
-                <div className="grid grid-cols-1 md:grid-cols-2 w-full h-[100%] md:grid-rows-2 grid-rows-4 md:gap-1 gap-5 py-2 md:p-2">
+              <section className="flex w-full flex-col h-[97%] md:h-[95%]">
+               {filteredData.length > 0 ? 
+               <div className="grid grid-cols-1 md:grid-cols-2 w-full h-[100%] md:grid-rows-2 grid-rows-4 md:gap-1 gap-5 py-2 md:p-2">
                   {currentProperty.map((details, index) => (
                     details.category=='commercial'?
                     <Link
@@ -281,15 +358,20 @@ const Listings = () => {
                   </Link>
                   ))}
                 </div>
+                :
+                <div>
+                  <span>No such property</span>
+                  </div>
+                  }
                 <div className="w-full flex mx-auto mt-auto md:mt-0 container p-1 m-1">
                   <Pagination
                     PropertyPerPage={PropertyPerPage}
-                    totalProperties={propertyDetails[0].properties.length}
+                    totalProperties={filteredData.length}
                     currentPage={currentPage}
                     setPage={setPage}
                   />
                 </div>
-              </div>
+              </section>
             </div>
           </div>
         </div>

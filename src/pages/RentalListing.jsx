@@ -112,9 +112,7 @@ propertyDetails[0].properties.forEach((property) => {
                   {filteredData.length} results
                 </span>
                 <div className="justify-center items-center flex w-[60%] ">
-                  {/* <span className="mx-2 w-[50%] md:w-full h-full items-center  justify-end flex">
-                    status
-                  </span> */}
+                
                   <span
                     onClick={() => setAdvanced(!advanced)}
                     className="mx-2 w-[50%] justify-end items-center ms-auto flex lg:hidden"
@@ -190,7 +188,7 @@ propertyDetails[0].properties.forEach((property) => {
                       <div className="flex flex-col bg-white w-full rounded-b-md h-[50%] p-2 md:p-4">
                       <span className="items-center  flex justify-between text-base text-red-500">
                           {details.property_type}
-                          <span className="text-sm">
+                          <span className="text-sm ms-auto">
                           {liked[details.id]
                               ? details.likes + 1
                               : details.likes}

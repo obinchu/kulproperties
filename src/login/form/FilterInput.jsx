@@ -1,10 +1,11 @@
 import React,{useState} from 'react'
 
-const FilterInput = ({placeholder,type}) => {
+const FilterInput = ({placeholder,type,onInputChange}) => {
     const [isActive, setIsActive] = useState(false);
 
     const handleInputChange = (event) => {
       setIsActive(event.target.value.length > 0);
+      onInputChange(event);
     };
   
     return (

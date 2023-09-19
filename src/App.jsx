@@ -16,46 +16,49 @@ import FilteredSearch from "./pages/FilteredSearch";
 export const AppContext = createContext();
 
 function App() {
-  const [data, setData] = useState('');
+  const [data, setData] = useState(localStorage.getItem("cachedData") || null);
 
   useEffect(() => {
-    fetch("https://kulproperties-73b1dd21a039.herokuapp.com/api/properties")
-      .then((res) => res.json())
-      .then((data) => {
-        setData(data);
-      });
+    const cachedData = localStorage.getItem("cachedData");
+
+    if (cachedData) {
+      setData(JSON.parse(cachedData));
+    } else {
+      fetch("https://kulproperties-73b1dd21a039.herokuapp.com/api/properties")
+        .then((res) => res.json())
+        .then((data) => {
+          localStorage.setItem("cachedData", JSON.stringify(data));
+          setData(data);
+        });
+    }
   }, []);
 
   if (data === null) {
-    return<main
-    className='w-full h-[100vh] md:h-[100vh] flex bg-cover bg-center bg-no-repeat'
-   
-  >
-    <section className='w-full h-full flex flex-col  items-center justify-center'>
-      <div className='flex flex-col md:mx-auto md:max-w-7xl w-full h-[100%] md:my-auto md:rounded items-center justify-center p-2 '>
-       
-      <div id="preloader">
-  <div id="loader"></div>
-</div>
-      </div>
-    </section>
-  </main>;
+    return (
+      <main className='w-full h-[100vh] md:h-[100vh] flex bg-cover bg-center bg-no-repeat'>
+        <section className='w-full h-full flex flex-col  items-center justify-center'>
+          <div className='flex flex-col md:mx-auto md:max-w-7xl w-full h-[100%] md:my-auto md:rounded items-center justify-center p-2 '>
+            <div id="preloader">
+              <div id="loader"></div>
+            </div>
+          </div>
+        </section>
+      </main>
+    );
   }
 
   if (!data[0] || !data[0].properties) {
-    return<main
-    className='w-full h-[100vh] md:h-[100vh] flex bg-cover bg-center bg-no-repeat'
-   
-  >
-    <section className='w-full h-full flex flex-col  items-center justify-center'>
-      <div className='flex flex-col md:mx-auto md:max-w-7xl w-full h-[100%] md:my-auto md:rounded items-center justify-center p-2 '>
-       
-      <div id="preloader">
-  <div id="loader"></div>
-</div>
-      </div>
-    </section>
-  </main>
+    return (
+      <main className='w-full h-[100vh] md:h-[100vh] flex bg-cover bg-center bg-no-repeat'>
+        <section className='w-full h-full flex flex-col  items-center justify-center'>
+          <div className='flex flex-col md:mx-auto md:max-w-7xl w-full h-[100%] md:my-auto md:rounded items-center justify-center p-2 '>
+            <div id="preloader">
+              <div id="loader"></div>
+            </div>
+          </div>
+        </section>
+      </main>
+    );
   }
 
   const properties = data;
@@ -72,14 +75,17 @@ function App() {
           />
           <Route path="/kulproperties/listings" element={<Listings />} />
           <Route path="/kulproperties/about" element={<About />} />
-          <Route path="/kulproperties/terms" element={<TermsAndConditions />} />
+          <Route
+            path="/kulproperties/terms"
+            element={<TermsAndConditions />}
+          />
           <Route
             path="/kulproperties/category/:category"
             element={<RentalListing />}
           />
           <Route
-            path="/kulproperties/status/:status"
-            element={<FilteredSearch />}
+            path="/kulproperties/filteredsearch"
+            element={<FilteredSearch/>}
           />
           <Route path="*" element={<Error />} />
         </Routes>
@@ -90,3 +96,4 @@ function App() {
 }
 
 export default App;
+ 
