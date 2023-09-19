@@ -107,7 +107,7 @@ const Listings = () => {
         const filteredProperties = propertyDetails[0].properties.filter((property) => {
           const matchesSearch =
             property.title.toLowerCase().includes(newSearchValue) ||
-            property.description.toLowerCase().includes(newSearchValue) ||
+            // property.description.toLowerCase().includes(newSearchValue) ||
             property.location.toLowerCase().includes(newSearchValue) ||
             property.category.toLowerCase().includes(newSearchValue) ||
             property.status.toLowerCase().includes(newSearchValue);
