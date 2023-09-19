@@ -4,7 +4,7 @@ import FilterInput from '../../login/form/FilterInput'
 import FilterLocation from '../../login/form/FilterLocation'
 import { AppContext } from '../../App'
 
-const ListingFilter = ({handleFilter,handleChange,handlebathroom,handlebedroom,value,bathroom,bedroom}) => {
+const FilteredData = ({handleFilter,handlebathroom,handlebedroom,value,bathroom,bedroom}) => {
 
   const propertyDetails = useContext(AppContext);
     const [filteredData,setFIlteredData]=useState(propertyDetails)
@@ -124,8 +124,8 @@ useEffect(() => {
         action=""
         className="bg-white h-[90%] py-4 w-full rounded"
       >
-        <FilterInput onInputChange={handleFilter} placeholder={"search..."} type={"input"} />
-        <div className="flex w-full  justify-center">
+        {/* <FilterInput onInputChange={handleFilter} placeholder={"search..."} type={"input"} /> */}
+        {/* <div className="flex w-full  justify-center">
           <select
             value={value}
             onChange={handleChange}
@@ -147,7 +147,7 @@ useEffect(() => {
               </option>
             ))}
           </select>
-        </div>
+        </div> */}
       
         <div className="flex w-full  justify-center">
           <select
@@ -251,5 +251,5 @@ useEffect(() => {
   )
 }
 
-export default ListingFilter
+export default FilteredData
 

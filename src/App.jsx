@@ -84,7 +84,7 @@ function App() {
             element={<RentalListing />}
           />
           <Route
-            path="/kulproperties/filteredsearch"
+            path="/kulproperties/filteredsearch/:property_type"
             element={<FilteredSearch/>}
           />
           <Route path="*" element={<Error />} />

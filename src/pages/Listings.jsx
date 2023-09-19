@@ -79,7 +79,7 @@ const Listings = () => {
         console.log(selectedValue)
       
         filterProperties(selectedValue, searchValue);
-        // navigate('/kulproperties/filteredsearch');
+        navigate(`/kulproperties/filteredsearch/${selectedValue}`);
       };
       const handleBathroom = (event) => {
         const selectedValue = event.target.value;
@@ -113,7 +113,7 @@ const Listings = () => {
             // Check if the property has both the selected bedrooms and bathrooms
             const matchesSearch =
               property.unit.bedrooms == selectedValue &&
-              (bathroom === 'bathroom' || property.unit.bathrooms == bathroom); // Only match bathrooms if it's not empty
+              (bathroom === 'bathroom' || property.unit.bathrooms == bathroom); 
             return matchesSearch;
           } else {
             // Exclude commercial properties
