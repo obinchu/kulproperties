@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const FormInput = ({placeholder, type,value}) => {
+const  MinValue = ({placeholder, type,value}) => {
   const [isActive, setIsActive] = useState(false);
 
   const handleInputChange = (event) => {
@@ -21,11 +21,7 @@ const FormInput = ({placeholder, type,value}) => {
         // setIsActive(true)
       />
       <label
-        className={`absolute left-2 top-3.5 text-base transition-all transform origin-top ${
-          isActive
-            ? 'text-primary bg-white text-sm -translate-y-5 -translate-x-1/10 px-1 duration-300'
-            : 'text-gray-400'
-        }`}
+        className={`absolute left-2 top-3.5 text-base transition-all transform origin-top text-primary bg-white  -translate-y-5 -translate-x-1/10 px-1 `}
         htmlFor="email"
       >
         {placeholder}
@@ -36,4 +32,4 @@ const FormInput = ({placeholder, type,value}) => {
   );
 };
 
-export default FormInput;
+export default MinValue;

@@ -3,6 +3,7 @@ import FormInput from '../../login/form/FormInput'
 import FilterInput from '../../login/form/FilterInput'
 import FilterLocation from '../../login/form/FilterLocation'
 import { AppContext } from '../../App'
+import MinValue from '../../login/form/MInValue'
 
 const ListingFilter = ({handleFilter,handleChange,handlebathroom,handlebedroom,value,bathroom,bedroom}) => {
 
@@ -108,7 +109,12 @@ const uniquePropertyTypes = [...propertyTypes];
 const uniqueBedrooms = [...bedrooms].sort((a, b) => a - b);
 const uniqueBathrooms = [...bathrooms].sort((a, b) => a - b);
 const uniqueAmenities =   [...amenities]
-// const uniquePrices = [...prices].sort((a, b) => a - b);
+// const lowestPrice = Math.min(...filteredData.map((property) => property.unit.price));
+
+const uniquePrices = [...prices].sort((a, b) => a - b);
+// const lowestPrice = uniquePrices.length > 0 ? uniquePrices[0] : 0;
+const lowestPrice = uniquePrices[0]; 
+console.log(lowestPrice)
 
 
 
@@ -207,7 +213,8 @@ useEffect(() => {
           </select>
         </div>
         <div className="flex w-full p-2  justify-center">
-          <FormInput placeholder={"Min Price"} type={"number"} />
+        <MinValue value={lowestPrice} disabled={true} placeholder={"Min Price"} type={"number"} />
+
           <FormInput placeholder={"Max Price"} type={"number"} />
         </div>
         <div className="flex w-full p-2  justify-center">

@@ -1,10 +1,11 @@
 import React,{useState} from 'react'
 
-const FilterInput = ({placeholder,type,onInputChange}) => {
+const FilterInput = ({placeholder,type,onInputChange }) => {
     const [isActive, setIsActive] = useState(false);
 
     const handleInputChange = (event) => {
       setIsActive(event.target.value.length > 0);
+
       onInputChange(event);
     };
   
@@ -18,6 +19,7 @@ const FilterInput = ({placeholder,type,onInputChange}) => {
           type={type}
           id="email"
           onChange={handleInputChange}
+      
         />
         <label
           className={`absolute left-2 top-3.5 text-base transition-all transform origin-top ${
