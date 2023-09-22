@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 const FormInput = ({placeholder, type,value}) => {
   const [isActive, setIsActive] = useState(false);
+  const [lower,setlower]= useState(false)
 
   const handleInputChange = (event) => {
     setIsActive(event.target.value.length > 0);
@@ -12,8 +13,8 @@ const FormInput = ({placeholder, type,value}) => {
         <div className="relative flex w-[80%] mx-auto">
             <input
         className={`p-2 rounded m-1 w-full mx-auto border ${
-          isActive ? 'border-primary' : 'border-gray-300'
-        } focus:outline-none focus:border-primary`}
+          isActive && !lower ? 'border-primary' : 'border-gray-300'
+        } focus:outline-none focus:border-red-500`}
         type={type}
         id="email"
         onChange={handleInputChange}

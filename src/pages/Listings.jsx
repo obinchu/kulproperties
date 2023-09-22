@@ -14,14 +14,15 @@ import ListingFilter from "../components/listing/ListingFilter";
 import { AiOutlineClose } from "react-icons/ai";
 import { AppContext } from "../App";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom"
+import Axios from 'axios'
 
 const Listings = () => {
   const propertyDetails = useContext(AppContext);
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [filteredData, setFilteredData] = useState(propertyDetails[0].properties); 
-
+  const [filteredData, setFilteredData] = useState([]); 
+  const [selectedAmenities,setSelectedAmenities] = useState([])
   const [PropertyPerPage] = useState(4);
   const [advanced, setAdvanced] = useState(false);
   const [liked, setLiked] = useState({});
@@ -30,8 +31,10 @@ const Listings = () => {
   const [value, setValue] = useState("Property Types");
   const [bathroom, setBathroom] = useState("bathroom");
   const [bedroom, setBedroom] = useState("bedroom");
-  const navigate = useNavigate();
+  const [checkedItems, setCheckedItems] = useState({}); // State to track checked items
+  const [isLoading,setIsLoading] = useState(true)
 
+  const navigate = useNavigate();
 
 
 
@@ -78,24 +81,18 @@ const Listings = () => {
         setIsActive(selectedValue.length > 0);
         console.log(selectedValue)
       
-        filterProperties(selectedValue, searchValue);
-        navigate(`/kulproperties/filteredsearch/${selectedValue}`);
       };
       const handleBathroom = (event) => {
         const selectedValue = event.target.value;
         setBathroom(selectedValue);
       
-        // Filter the elements within propertyDetails[0].properties
         const filteredProperties = propertyDetails[0].properties.filter((property) => {
-          // Check if the property category is not "commercial"
           if (property.category !== 'commercial') {
-            // Check if the property has both the selected bedrooms and bathrooms
             const matchesSearch =
               property.unit.bathrooms == selectedValue &&
               (bedroom === 'bedroom' || property.unit.bedrooms == bedroom); // Only match bathrooms if it's not empty
             return matchesSearch;
           } else {
-            // Exclude commercial properties
             return false;
           }
         });
@@ -106,17 +103,13 @@ const Listings = () => {
         const selectedValue = event.target.value;
         setBedroom(selectedValue);
       
-        // Filter the elements within propertyDetails[0].properties
         const filteredProperties = propertyDetails[0].properties.filter((property) => {
-          // Check if the property category is not "commercial"
           if (property.category !== 'commercial') {
-            // Check if the property has both the selected bedrooms and bathrooms
             const matchesSearch =
               property.unit.bedrooms == selectedValue &&
               (bathroom === 'bathroom' || property.unit.bathrooms == bathroom); 
             return matchesSearch;
           } else {
-            // Exclude commercial properties
             return false;
           }
         });
@@ -124,43 +117,98 @@ const Listings = () => {
         setFilteredData(filteredProperties);
       };
       
+      const handleCheckboxChange = (event,itemName) => {
+        const { checked } = event.target;
       
+        setCheckedItems((prevCheckedItems) => ({
+          ...prevCheckedItems,
+          [itemName]: checked,
+        }));
       
-      
-      // const handleBedroom = (event) => {
-      //   const selectedValue = event.target.value;
-      //   setBedroom(selectedValue);
-      //   setIsActive(event.target.value.length > 0);
-      //   filterProperties(selectedValue, searchValue);
-      //   // navigate('/kulproperties/filteredsearch');
-      //   console.log(selectedValue)
-
-      // };
+        if (checked) {
+          console.log(`${itemName} is checked`);
+        } else {
+          console.log(`${itemName} is unchecked`);
+        }
+      };
       
       const handleFilter = (event) => {
         const newSearchValue = event.target.value.toLowerCase();
         setSearchValue(newSearchValue);
         setIsActive(newSearchValue.length > 0);
       
-        filterProperties(newSearchValue);
       
         console.log(filteredData, "filtered Data");
       };
       
-      const filterProperties = (newSearchValue) => {
-        const filteredProperties = propertyDetails[0].properties.filter((property) => {
-          const matchesSearch =
-            property.title.toLowerCase().includes(newSearchValue) ||
-            // property.description.toLowerCase().includes(newSearchValue) ||
-            property.location.toLowerCase().includes(newSearchValue) ||
-            property.category.toLowerCase().includes(newSearchValue) ||
-            property.status.toLowerCase().includes(newSearchValue);
+      const handleAmenityChange = (event) => {
+        const amenity = event.target.value;
       
-          return matchesSearch;
-        });
-      
-        setFilteredData(filteredProperties);
+        if (event.target.checked) {
+          setSelectedAmenities((prevAmenities) => [...prevAmenities, amenity]);
+        } else {
+          setSelectedAmenities((prevAmenities) =>
+            prevAmenities.filter((item) => item !== amenity)
+          );
+        }
       };
+      
+      useEffect(() => {
+        console.log(selectedAmenities);
+      }, [selectedAmenities]);
+      
+      
+
+      useEffect(() => {
+        const fetchData = async () => {
+          try {
+            let apiUrl = `https://kulproperties-73b1dd21a039.herokuapp.com/api/search?category=residential`;
+      
+            if (value !== 'Property Types') {
+              apiUrl += `&property_type=${value}`;
+            }
+      
+            if (bedroom !== 'bedroom') {
+              apiUrl += `&bd=${bedroom}`;
+            }
+      
+            if (bathroom !== 'bathroom') {
+              apiUrl += `&bt=${bathroom}`;
+            }
+      
+            const response = await Axios.post(
+              apiUrl,
+              null, 
+              {
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                params: {
+                  selectedValue: value,
+                  searchValue,
+                },
+              }
+            );
+      
+            console.log(response.data, "res data");
+            setFilteredData(response.data);
+            setIsLoading(false); 
+          } catch (error) {
+            setIsLoading(false);
+          }
+        };
+      
+        fetchData();
+      }, [value, bedroom, bathroom, searchValue]);
+      
+      
+      
+      
+      
+      
+      
+      
+      
       
       
       
@@ -181,8 +229,7 @@ const Listings = () => {
       indexOfLastProperty
     );
   } else {
-    // Handle the case where there are no filtered properties.
-    // You can display a message or take some other appropriate action here.
+
   }
   
   return (
@@ -205,7 +252,8 @@ const Listings = () => {
             </div>
           </div>
           <div className="flex w-full h-[97%] md:h-[90%]  p-2">
-            <ListingFilter handleFilter={()=>handleFilter(event)} handleChange={()=>handleChange(event)} handlebedroom={()=>handleBedroom(event)} handlebathroom={()=>handleBathroom(event)} value={value}  bathroom={bathroom} bedroom={bedroom} />
+            <ListingFilter handleFilter={()=>handleFilter(event)} handleChange={()=>handleChange(event)} handleAmenityChange={()=>handleAmenityChange(event)} selectedAmenities={selectedAmenities}  handlebedroom={()=>handleBedroom(event)} handlebathroom={()=>handleBathroom(event)}  value={value} checkedItems={checkedItems}  bathroom={bathroom} bedroom={bedroom} />
+            
             <div className="flex flex-col w-full md:w-[65%] h-full justify-between p-1 ">
               <div className="flex w-full  p-1 rouded h-[2.5%] md:h-[5%] my-1 justify-between bg-white rounded">
                 <span className="items-center p-1 w-[40%] flex">
@@ -238,7 +286,8 @@ const Listings = () => {
                 </div>
               </div>
               <section className="flex w-full flex-col h-[97%] md:h-[95%]">
-               {filteredData.length > 0 ? 
+              {isLoading ? <span>Loading...</span> :
+               (filteredData.length > 0 ? 
                <div className="grid grid-cols-1 md:grid-cols-2 w-full h-[100%] md:grid-rows-2 grid-rows-4 md:gap-1 gap-5 py-2 md:p-2">
                   {currentProperty.map((details, index) => (
                     details.category=='commercial'?
@@ -406,7 +455,7 @@ const Listings = () => {
                 <div>
                   <span>No such property</span>
                   </div>
-                  }
+  )}
                 <div className="w-full flex mx-auto mt-auto md:mt-0 container p-1 m-1">
                   <Pagination
                     PropertyPerPage={PropertyPerPage}

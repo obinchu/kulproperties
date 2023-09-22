@@ -93,17 +93,7 @@ propertyDetails[0].properties.forEach((property) => {
         if (!isValidproperty_type) {
           return <Error />;
         }
-        // const handleChange = (event) => {
-        //   // window.location.reload();
-        //   const selectedValue = event.target.value;
-        //   setValue(selectedValue);
-        //   setIsActive(selectedValue.length > 0);
-        //   console.log(selectedValue)
-        
-        //   filterProperties(selectedValue, searchValue);
-        //   navigate(`/kulproperties/filteredsearch/${selectedValue}`);
-       
-        // };
+
         const handleBathroom = (event) => {
           const selectedValue = event.target.value;
           setBathroom(selectedValue);
@@ -147,18 +137,7 @@ propertyDetails[0].properties.forEach((property) => {
           setFilteredData(filteredProperties);
         };
         
-        
-        
-        
-        // const handleBedroom = (event) => {
-        //   const selectedValue = event.target.value;
-        //   setBedroom(selectedValue);
-        //   setIsActive(event.target.value.length > 0);
-        //   filterProperties(selectedValue, searchValue);
-        //   // navigate('/kulproperties/filteredsearch');
-        //   console.log(selectedValue)
-  
-        // };
+
         
         const handleFilter = (event) => {
           const newSearchValue = event.target.value.toLowerCase();
@@ -174,7 +153,6 @@ propertyDetails[0].properties.forEach((property) => {
           const filteredProperties = propertyDetails[0].properties.filter((property) => {
             const matchesSearch =
               property.title.toLowerCase().includes(newSearchValue) ||
-              // property.description.toLowerCase().includes(newSearchValue) ||
               property.location.toLowerCase().includes(newSearchValue) ||
               property.category.toLowerCase().includes(newSearchValue) ||
               property.status.toLowerCase().includes(newSearchValue);

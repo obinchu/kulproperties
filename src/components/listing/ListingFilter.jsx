@@ -4,8 +4,9 @@ import FilterInput from '../../login/form/FilterInput'
 import FilterLocation from '../../login/form/FilterLocation'
 import { AppContext } from '../../App'
 import MinValue from '../../login/form/MInValue'
+import MaxValue from '../../login/form/MaxValue'
 
-const ListingFilter = ({handleFilter,handleChange,handlebathroom,handlebedroom,value,bathroom,bedroom}) => {
+const ListingFilter = ({handleFilter,handleChange,handlebathroom,handleAmenityChange,handlebedroom,value,bathroom,bedroom}) => {
 
   const propertyDetails = useContext(AppContext);
     const [filteredData,setFIlteredData]=useState(propertyDetails)
@@ -14,6 +15,7 @@ const ListingFilter = ({handleFilter,handleChange,handlebathroom,handlebedroom,v
     // const [bathroom, setBathroom] = useState("bathroom");
     // const [bedroom, setBedroom] = useState("bedroom");
     const [year, setYear] = useState("year");
+    // const [selectedAmenities,setSelectedAmenities] = useState([])
     const [searchValue, setSearchValue] = useState('');
     
   
@@ -114,10 +116,23 @@ const uniqueAmenities =   [...amenities]
 const uniquePrices = [...prices].sort((a, b) => a - b);
 // const lowestPrice = uniquePrices.length > 0 ? uniquePrices[0] : 0;
 const lowestPrice = uniquePrices[0]; 
-console.log(lowestPrice)
+// console.log(lowestPrice)
 
 
+// const handleAmenityChange = (event) => {
+//   const amenity = event.target.value;
 
+//   // If the amenity is checked, add it to the selectedAmenities array
+//   if (event.target.checked) {
+//     setSelectedAmenities((prevAmenities) => [...prevAmenities, amenity]);
+//   } else {
+//     // If the amenity is unchecked, remove it from the selectedAmenities array
+//     setSelectedAmenities((prevAmenities) =>
+//       prevAmenities.filter((item) => item !== amenity)
+//     );
+//   }
+// };
+// console.log(selectedAmenities)
 
 useEffect(() => {
   console.log(searchValue);
@@ -214,8 +229,9 @@ useEffect(() => {
         </div>
         <div className="flex w-full p-2  justify-center">
         <MinValue value={lowestPrice} disabled={true} placeholder={"Min Price"} type={"number"} />
+        <MaxValue  placeholder={"Max Price"} type={"number"} />
 
-          <FormInput placeholder={"Max Price"} type={"number"} />
+          {/* <FormInput placeholder={"Max Price"} type={"number"} /> */}
         </div>
         <div className="flex w-full p-2  justify-center">
           <FormInput placeholder={"Min Area"} type={"number"} />
@@ -232,24 +248,23 @@ useEffect(() => {
                 </div>
 
                 <div className="grid w-full h-[100%] grid-cols-2  grid-rows-6  gap-2 p-1">
-                  {uniqueAmenities.map((item,i) => (
-                    <div
-                      key={i}
-                      className="flex text-primary/50 items-center text-sm"
-                    >
-                      <input
-                        className="w-5 h-5 mx-2"
-                        type="checkbox"
-                      />
-                      <label htmlFor="">{item}</label>
-                    </div>
-                  ))}
+                {uniqueAmenities.map((item, i) => (
+              <div key={i} className="flex text-primary/50 items-center text-sm">
+                <input
+                  className="w-5 h-5 mx-2"
+                  type="checkbox"
+                  value={item}
+                  onChange={handleAmenityChange} // Add the change handler
+                />
+                <label htmlFor="">{item}</label>
+              </div>
+            ))}
                 </div>
               </div>
             </div>
-            <button className="w-[80%] flex p-2 bg-secondary px-4 m-auto text-white justify-center items-center rounded md:m-1">
+            {/* <button className="w-[80%] flex p-2 bg-secondary px-4 m-auto text-white justify-center items-center rounded md:m-1">
               Search
-            </button>
+            </button> */}
           </div>
         </div>
       </form>

@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 
-const  MinValue = ({placeholder, type,value}) => {
+const MaxValue = ({placeholder, type,value}) => {
   const [isActive, setIsActive] = useState(false);
+  const [lower,setlower]= useState(false)
 
   const handleInputChange = (event) => {
     setIsActive(event.target.value.length > 0);
+    // setlower(true)
   };
 
   return (
@@ -12,15 +14,20 @@ const  MinValue = ({placeholder, type,value}) => {
         <div className="relative flex w-[80%] mx-auto">
             <input
         className={`p-2 rounded m-1 w-full mx-auto border ${
-          isActive ? 'border-primary' : 'border-gray-300'
-        } focus:outline-none focus:border-primary`}
+          isActive  ? 'border-primary' : 'border-gray-300'
+        } focus:outline-none focus:border-other`}
         type={type}
         id="email"
         onChange={handleInputChange}
         value={value}
+        // setIsActive(true)
       />
       <label
-        className={`absolute left-2 top-3.5 text-base transition-all transform origin-top text-primary bg-white  -translate-y-5 -translate-x-1/10 px-1 `}
+        className={`absolute left-2 top-3.5 text-base transition-all transform origin-top ${
+          isActive
+            ? 'text-primary bg-white text-sm -translate-y-5 -translate-x-1/10 px-1 duration-300'
+            : 'text-gray-400'
+        }`}
         htmlFor="email"
       >
         {placeholder}
@@ -31,4 +38,4 @@ const  MinValue = ({placeholder, type,value}) => {
   );
 };
 
-export default MinValue;
+export default MaxValue;

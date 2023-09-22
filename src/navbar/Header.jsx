@@ -78,7 +78,7 @@ propertyDetails[0].properties.forEach((property) => {
 
   const uniqueCategories =   [...categories]
   const headerElements = [
-    { item: "Home", path: "" },
+    { item: "Home", path: "/" },
     {
       item: "Listing",
       more: uniqueCategories.map((category) => ({
@@ -132,12 +132,13 @@ propertyDetails[0].properties.forEach((property) => {
                     key={i}
                     className="relative mx-1 p-2 flex items-center text-primary group hover:cursor-pointer"
                   >
-                    <Link
-                      to={`/kulproperties/${element.path}`}
-                      className="mx-2"
-                    >
-                      {element.item}
-                    </Link>
+                   {element.path ? (
+                  <Link to={`/kulproperties/${element.path}`} className="mx-2">
+                    {element.item}
+                  </Link>
+                ) : (
+                  <span className="mx-2">{element.item}</span>
+                )}
 
                     {element.more && element.more.length > 0 && (
                       <span>
@@ -148,23 +149,31 @@ propertyDetails[0].properties.forEach((property) => {
                           <RxCaretUp size={25} />
 
                           <ul className="bg-transparent absolute top-full w-[200px] h-[300px] right-1  ">
-                            <ul
-                              className={`bg-white mt-8 rounded ${styles.dropdown}`}
-                            >
-                              {element.more.map((item, index) => (
-                                <Link
-                                  to={`/kulproperties/${item.path}`}
-                                  key={index}
-                                  className={`m-1 text-base flex flex-col p-2 hover:font-medium ${
-                                    index !== element.more.length - 1
-                                      ? "border-b"
-                                      : ""
-                                  }`}
-                                >
-                                  {item.name}
-                                </Link>
-                              ))}
-                            </ul>
+                          <ul className={`bg-white mt-8 rounded ${styles.dropdown}`}>
+  {element.more.map((item, index) => (
+    <React.Fragment key={index}>
+      {item.path ? (
+        <Link
+          to={`/kulproperties/${item.path}`}
+          className={`m-1 text-base flex flex-col p-2 hover:font-medium ${
+            index !== element.more.length - 1 ? "border-b" : ""
+          }`}
+        >
+          {item.name}
+        </Link>
+      ) : (
+        <span
+          className={`m-1 text-base flex flex-col p-2 hover:font-medium ${
+            index !== element.more.length - 1 ? "border-b" : ""
+          }`}
+        >
+          {item.name}
+        </span>
+      )}
+    </React.Fragment>
+  ))}
+</ul>
+
                           </ul>
                         </span>
                       </span>

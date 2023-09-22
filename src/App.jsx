@@ -12,6 +12,8 @@ import About from "./pages/About";
 import Error from "./pages/Error";
 import TermsAndConditions from "./pages/TermsAndConditions";
 import FilteredSearch from "./pages/FilteredSearch";
+import axios, { Axios } from "axios";
+import CreateListing from "./pages/CreateListing";
 
 export const AppContext = createContext();
 
@@ -19,16 +21,22 @@ function App() {
   const [data, setData] = useState(localStorage.getItem("cachedData") || null);
 
   useEffect(() => {
-    const cachedData = localStorage.getItem("cachedData");
+    const cachedData = localStorage.getItem('cachedData');
 
     if (cachedData) {
       setData(JSON.parse(cachedData));
     } else {
-      fetch("https://kulproperties-73b1dd21a039.herokuapp.com/api/properties")
-        .then((res) => res.json())
-        .then((data) => {
-          localStorage.setItem("cachedData", JSON.stringify(data));
-          setData(data);
+      Axios.get('https://kulproperties-73b1dd21a039.herokuapp.com/api/properties')
+        .then((response) => {
+          const fetchedData = response.data;
+
+          localStorage.setItem('cachedData', JSON.stringify(fetchedData));
+
+          setData(fetchedData);
+          console.log(fetchedData);
+        })
+        .catch((error) => {
+          console.error('Error fetching data:', error);
         });
     }
   }, []);
@@ -78,6 +86,10 @@ function App() {
           <Route
             path="/kulproperties/terms"
             element={<TermsAndConditions />}
+          />
+           <Route
+            path="/kulproperties/createlisting"
+            element={<CreateListing/>}
           />
           <Route
             path="/kulproperties/category/:category"
