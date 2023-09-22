@@ -81,10 +81,10 @@ propertyDetails[0].properties.forEach((property) => {
     { item: "Home", path: "/" },
     {
       item: "Listing",
-      more: uniqueCategories.map((category) => ({
-        name: category,
-        path: `category/${category}`,
-      })),
+  more: uniqueCategories.map((category) => ({
+    name: category,
+    path: `listings?category=${category}`,
+  })),
       
       
 

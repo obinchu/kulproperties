@@ -81,7 +81,7 @@ function App() {
             path="/kulproperties/propertydetails/:slug"
             element={<PropertyDetails />}
           />
-          <Route path="/kulproperties/listings" element={<Listings />} />
+          {/* <Route path="/kulproperties/listings" element={<Listings />} /> */}
           <Route path="/kulproperties/about" element={<About />} />
           <Route
             path="/kulproperties/terms"
@@ -92,7 +92,7 @@ function App() {
             element={<CreateListing/>}
           />
           <Route
-            path="/kulproperties/category/:category"
+            path="/kulproperties/listings"
             element={<RentalListing />}
           />
           <Route

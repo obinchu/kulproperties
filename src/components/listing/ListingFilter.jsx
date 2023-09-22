@@ -75,6 +75,7 @@ const propertyTypes = new Set();
 const bedrooms = new Set();
 const bathrooms = new Set();
 const amenities = new Set();
+const categories = new Set()
 const prices =new Set()
 
 propertyDetails[0].properties.forEach((property) => {
@@ -94,6 +95,11 @@ propertyDetails[0].properties.forEach((property) => {
     propertyTypes.add(property.property_type);
   }
 });
+propertyDetails[0].properties.forEach((property) => {
+  if (property.categories !== undefined) {
+    categories.add(property.categories);
+  }
+});
 
 propertyDetails[0].properties.forEach((property) => {
   if (property.unit && property.unit.bedrooms !== undefined) {
@@ -108,6 +114,7 @@ propertyDetails[0].properties.forEach((property) => {
 });
 
 const uniquePropertyTypes = [...propertyTypes];
+const uniqueCategories = [...categories];
 const uniqueBedrooms = [...bedrooms].sort((a, b) => a - b);
 const uniqueBathrooms = [...bathrooms].sort((a, b) => a - b);
 const uniqueAmenities =   [...amenities]
@@ -145,7 +152,29 @@ useEffect(() => {
         action=""
         className="bg-white h-[90%] py-4 w-full rounded"
       >
-        <FilterInput onInputChange={handleFilter} placeholder={"search..."} type={"input"} />
+       <div className="flex w-full  justify-center">
+          <select
+            value={value}
+            onChange={handleChange}
+            className={`p-2 rounded m-1 md:mx-2 w-[85%] border ${
+               value == value ? "Property Types" : value
+                ? "border-primary"
+                : "border-gray-300"
+            } focus:outline-none focus:border-primary bg-transparent`}
+          >
+            <option
+              className="items-center justify-center"
+              value="Categories"
+            >
+            {value == value ? "Categories" : value}
+            </option>
+            {uniqueCategories.map((item,i) => (
+              <option key={i} value={item}>
+                {item}
+              </option>
+            ))}
+          </select>
+        </div>
         <div className="flex w-full  justify-center">
           <select
             value={value}
