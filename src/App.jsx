@@ -12,7 +12,7 @@ import About from "./pages/About";
 import Error from "./pages/Error";
 import TermsAndConditions from "./pages/TermsAndConditions";
 import FilteredSearch from "./pages/FilteredSearch";
-import axios, { Axios } from "axios";
+import Axios  from "axios";
 import CreateListing from "./pages/CreateListing";
 
 export const AppContext = createContext();

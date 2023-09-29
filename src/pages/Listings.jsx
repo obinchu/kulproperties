@@ -16,6 +16,7 @@ import { AppContext } from "../App";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom"
 import Axios from 'axios'
+import {BarLoader} from "react-spinners"
 
 const Listings = () => {
   const propertyDetails = useContext(AppContext);
@@ -200,20 +201,7 @@ const Listings = () => {
       
         fetchData();
       }, [value, bedroom, bathroom, searchValue]);
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
+
       useEffect(() => {
         console.log(searchValue);
         console.log(filteredData)
@@ -286,7 +274,7 @@ const Listings = () => {
                 </div>
               </div>
               <section className="flex w-full flex-col h-[97%] md:h-[95%]">
-              {isLoading ? <span>Loading...</span> :
+              {isLoading ? <BarLoader/> :
                (filteredData.length > 0 ? 
                <div className="grid grid-cols-1 md:grid-cols-2 w-full h-[100%] md:grid-rows-2 grid-rows-4 md:gap-1 gap-5 py-2 md:p-2">
                   {currentProperty.map((details, index) => (

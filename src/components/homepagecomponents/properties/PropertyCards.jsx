@@ -74,7 +74,7 @@ const PropertyCards = () => {
                     </div>
                     <div className="flex justify-between">
                       <span className="text-white font-medium text-xl">
-                        $ {details.unit.price}
+                        $ {details.price}
                       </span>
                       <span
                         onClick={(e) => handleLikeClick(e, details.id)}
@@ -113,15 +113,15 @@ const PropertyCards = () => {
                   <div className="grid grid-cols-2 grid-rows-2 gap-2 py-2">
                     <span className="flex items-center">
                       <BiBed size={25} />
-                      {details.unit.bedrooms} Bedrooms
+                      {details.bedrooms} Bedrooms
                     </span>
                     <span className="flex items-center">
                       <MdOutlineBathtub size={25} />
-                      {details.unit.bathrooms} Bathrooms
+                      {details.bathrooms} Bathrooms
                     </span>
                     <span className="flex items-center">
                       <TfiRulerAlt2 size={25} />
-                      {details.unit.area} Sq ft
+                      {details.area} Sq ft
                     </span>
                   </div>
                 </div>

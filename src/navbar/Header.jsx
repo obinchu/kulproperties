@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef,useContext } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { BiUser, BiPlus } from "react-icons/bi";
 import { RxCaretDown, RxCaretUp } from "react-icons/rx";
@@ -6,12 +6,14 @@ import { AppContext } from "../App";
 import UserLogin from "../login/UserLogin";
 import Menu from "../components/menu/Menu";
 import styles from "./Header.module.css";
-import { Link } from "react-router-dom";
-const Header = ({ timeline, ease }) => {
+import { Link, useSearchParams } from "react-router-dom";
+const Header = ({ onCategorySelect }) => {
   const [hamburger, setHamburger] = useState(true);
   const [userAccess, setUserAccess] = useState(false);
   const [menu, setMenu] = useState(false);
   const [give, setGive] = useState(true);
+  // const [selectedCategory, setSelectedCategory] = useState("All");
+  // const [categories,setCategories] = useSearchParams()
 
   function handleHamburgerClick() {
     setMenu(!menu);
@@ -32,6 +34,10 @@ const Header = ({ timeline, ease }) => {
     setHamburger(true);
     setGive(!give);
   }
+  const handleCategorySelect = (category) => {
+    setSelectedCategory(category);
+    onCategoryChange(category); // Notify the parent component
+  };
 
   const userAccessRef = useRef();
   const humburgerRef = useRef();
@@ -67,35 +73,30 @@ const Header = ({ timeline, ease }) => {
       handleHamburgerClick();
     }
   }
-  const propertyDetails = useContext(AppContext)
- 
+  const propertyDetails = useContext(AppContext);
+
   const categories = new Set();
 
- 
-propertyDetails[0].properties.forEach((property) => {
-  categories.add(property.category);
-});
+  propertyDetails[0].properties.forEach((property) => {
+    categories.add(property.category);
+  });
 
-  const uniqueCategories =   [...categories]
+  const uniqueCategories = [...categories];
   const headerElements = [
     { item: "Home", path: "/" },
     {
       item: "Listing",
-  more: uniqueCategories.map((category) => ({
-    name: category,
-    path: `listings?category=${category}`,
-  })),
-      
-      
-
+      more: uniqueCategories.map((category) => ({
+        name: category,
+        path: `listings?category=${category}`,
+      })),
     },
-    { item: "Property",path: "listings" },
     {
       item: "Pages",
       more: [
-        {path:"about",name:"About Us",},
-      
-        {path:"terms",name:"Terms & Conditions",},
+        { path: "about", name: "About Us" },
+
+        { path: "terms", name: "Terms & Conditions" },
       ],
     },
     {
@@ -132,13 +133,16 @@ propertyDetails[0].properties.forEach((property) => {
                     key={i}
                     className="relative mx-1 p-2 flex items-center text-primary group hover:cursor-pointer"
                   >
-                   {element.path ? (
-                  <Link to={`/kulproperties/${element.path}`} className="mx-2">
-                    {element.item}
-                  </Link>
-                ) : (
-                  <span className="mx-2">{element.item}</span>
-                )}
+                    {element.path ? (
+                      <Link
+                        to={`/kulproperties/${element.path}`}
+                        className="mx-2 "
+                      >
+                        {element.item}
+                      </Link>
+                    ) : (
+                      <span className="mx-2">{element.item}</span>
+                    )}
 
                     {element.more && element.more.length > 0 && (
                       <span>
@@ -149,31 +153,36 @@ propertyDetails[0].properties.forEach((property) => {
                           <RxCaretUp size={25} />
 
                           <ul className="bg-transparent absolute top-full w-[200px] h-[300px] right-1  ">
-                          <ul className={`bg-white mt-8 rounded ${styles.dropdown}`}>
-  {element.more.map((item, index) => (
-    <React.Fragment key={index}>
-      {item.path ? (
-        <Link
-          to={`/kulproperties/${item.path}`}
-          className={`m-1 text-base flex flex-col p-2 hover:font-medium ${
-            index !== element.more.length - 1 ? "border-b" : ""
-          }`}
-        >
-          {item.name}
-        </Link>
-      ) : (
-        <span
-          className={`m-1 text-base flex flex-col p-2 hover:font-medium ${
-            index !== element.more.length - 1 ? "border-b" : ""
-          }`}
-        >
-          {item.name}
-        </span>
-      )}
-    </React.Fragment>
-  ))}
-</ul>
-
+                            <ul
+                              className={`bg-white mt-8 rounded ${styles.dropdown}`}
+                            >
+                              {element.more.map((item, index) => (
+                                <React.Fragment key={index}>
+                                  {item.path ? (
+                                    <Link
+                                      to={`/kulproperties/${item.path}`}
+                                      className={`m-1 text-base flex flex-col p-2 hover:font-medium ${
+                                        index !== element.more.length - 1
+                                          ? "border-b"
+                                          : ""
+                                      }`}
+                                    >
+                                      {item.name}
+                                    </Link>
+                                  ) : (
+                                    <span
+                                      className={`m-1 text-base flex flex-col p-2 hover:font-medium ${
+                                        index !== element.more.length - 1
+                                          ? "border-b"
+                                          : ""
+                                      }`}
+                                    >
+                                      {item.name}
+                                    </span>
+                                  )}
+                                </React.Fragment>
+                              ))}
+                            </ul>
                           </ul>
                         </span>
                       </span>
