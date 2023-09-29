@@ -82,7 +82,7 @@ const filteredData = properties.filter((property) => {
   }
 });
 
-  console.log(filteredData,"data after filtra")
+  console.log(filteredData,"data after filtration")
   
 
   const handleLikeClick = (e, id) => {
