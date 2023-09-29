@@ -96,31 +96,7 @@ const ListingFilter = ({
     <div className="hidden lg:flex flex-col w-full  md:w-[45%] lg:w-[32%] h-full ">
       <div className="flex w-full rounded p-2 h-full">
         <form action="" className="bg-white h-[90%] py-4 w-full rounded">
-          <div className="flex w-full  justify-center">
-            <select
-              value={value}
-              onChange={handleChange}
-              className={`p-2 rounded m-1 md:mx-2 w-[85%] border ${
-                value == value
-                  ? "Property Types"
-                  : value
-                  ? "border-primary"
-                  : "border-gray-300"
-              } focus:outline-none focus:border-primary bg-transparent`}
-            >
-              <option
-                className="items-center justify-center"
-                value="Categories"
-              >
-                {value == value ? "Categories" : value}
-              </option>
-              {uniqueCategories.map((item, i) => (
-                <option key={i} value={item}>
-                  {item}
-                </option>
-              ))}
-            </select>
-          </div>
+       
           <div className="flex w-full  justify-center">
             <select
               value={value}
