@@ -166,7 +166,6 @@ const ListingFilter = ({
                   bedroom ? "border-primary" : "border-gray-300"
                 } focus:outline-none focus:border-primary bg-transparent`}
               >
-                <option>{bedroom}</option>
                 {uniqueBedrooms.map((item, i) => (
                   <option key={i} value={item}>
                     {item}
