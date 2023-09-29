@@ -33,7 +33,7 @@ function App() {
           localStorage.setItem('cachedData', JSON.stringify(fetchedData));
 
           setData(fetchedData);
-          console.log(fetchedData);
+          console.log(fetchedData,"fetched Data");
         })
         .catch((error) => {
           console.error('Error fetching data:', error);
