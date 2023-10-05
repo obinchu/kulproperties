@@ -255,7 +255,7 @@ const Details = () => {
                 <span className='text-lg'>{selectedItem.title}</span>
         
 
-            <span className='lg:m-0.5 lg:p-2 text-lg'>KES: {selectedItem.unit.price}</span>
+            <span className='lg:m-0.5 lg:p-2 text-lg'>KES: {selectedItem.price}</span>
 
         </div>
         <div className="flex w-[100%] items-center p-1">
@@ -267,12 +267,12 @@ const Details = () => {
             <div className="flex lg:hidden flex-col  p-2">
                 <div className="flex ">
                 <span className=' w-[50%] lg:w-[20%] justify-center flex rounded bg-other/30 p-2 m-2'>{selectedItem.property_type}</span>
-                <span className=' w-[50%] lg:w-[20%] justify-center flex rounded bg-other/30 p-2 m-2'>{selectedItem.unit.bathrooms} bathrooms</span>
+                <span className=' w-[50%] lg:w-[20%] justify-center flex rounded bg-other/30 p-2 m-2'>{selectedItem.bathrooms} bathrooms</span>
                 </div>
                
                 <div className="flex ">
-                <span className=' w-[50%] lg:w-[20%] justify-center flex rounded bg-other/30 p-2 m-2'>{selectedItem.unit.bedrooms} bedrooms</span>
-                <span className=' w-[50%] lg:w-[20%] justify-center flex rounded bg-other/30 p-2 m-2'>{selectedItem.unit.area}sq ft</span>
+                <span className=' w-[50%] lg:w-[20%] justify-center flex rounded bg-other/30 p-2 m-2'>{selectedItem.bedrooms} bedrooms</span>
+                <span className=' w-[50%] lg:w-[20%] justify-center flex rounded bg-other/30 p-2 m-2'>{selectedItem.area}sq ft</span>
                     </div>
                     
                    
@@ -280,9 +280,9 @@ const Details = () => {
             <div className="hidden lg:flex   p-2">
                 
                 <span className=' w-[50%] lg:w-[20%] justify-center flex rounded bg-other/30 p-2 m-2'>{selectedItem.property_type}</span>
-                <span className=' w-[50%] lg:w-[20%] justify-center flex rounded bg-other/30 p-2 m-2'>{selectedItem.unit.bathrooms} bathrooms</span>
-                <span className=' w-[50%] lg:w-[20%] justify-center flex rounded bg-other/30 p-2 m-2'>{selectedItem.unit.bedrooms} bedrooms</span>
-                <span className=' w-[50%] lg:w-[20%] justify-center flex rounded bg-other/30 p-2 m-2'>{selectedItem.unit.area}sq ft</span>
+                <span className=' w-[50%] lg:w-[20%] justify-center flex rounded bg-other/30 p-2 m-2'>{selectedItem.bathrooms} bathrooms</span>
+                <span className=' w-[50%] lg:w-[20%] justify-center flex rounded bg-other/30 p-2 m-2'>{selectedItem.bedrooms} bedrooms</span>
+                <span className=' w-[50%] lg:w-[20%] justify-center flex rounded bg-other/30 p-2 m-2'>{selectedItem.area}sq ft</span>
                  
                     
                    
@@ -298,10 +298,10 @@ const Details = () => {
             <span className='text-lg m-1 my-2'>Property Details</span>
             <div className="grid grid-cols-1 lg:grid-cols-3 lg:grid-rows-3 gap-2 h-[90%] m-1 p-2">
             <span className='flex'>Property Type: <span className='font-medium mx-1'>{selectedItem.property_type}</span></span>
-            <span className='flex'>Property Price: <span className='font-medium mx-1'>$ {selectedItem.unit.price}</span></span>
-            <span className='flex'>Property Size: <span className='font-medium mx-1'>{selectedItem.unit.area} Sq ft</span></span>
-            <span className='flex'>No.of Bedrooms: <span className='font-medium mx-1'> {selectedItem.unit.bedrooms}</span></span>
-            <span className='flex'>No.of Bathrooms:<span className='font-medium mx-1'>{selectedItem.unit.bathrooms}</span></span>
+            <span className='flex'>Property Price: <span className='font-medium mx-1'>$ {selectedItem.price}</span></span>
+            <span className='flex'>Property Size: <span className='font-medium mx-1'>{selectedItem.area} Sq ft</span></span>
+            <span className='flex'>No.of Bedrooms: <span className='font-medium mx-1'> {selectedItem.bedrooms}</span></span>
+            <span className='flex'>No.of Bathrooms:<span className='font-medium mx-1'>{selectedItem.bathrooms}</span></span>
             <span className='flex'>Property Status: <span className='font-medium mx-1'>{selectedItem.status}</span></span>
             </div>
         </section>

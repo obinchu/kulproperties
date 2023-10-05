@@ -79,9 +79,6 @@ const FilteredData = ({
   });
 
   const uniquePropertyTypes = [...propertyTypes];
-  // const uniqueCategories = [...categories];
-  // const uniqueBedrooms = [...bedrooms].sort((a, b) => a - b);
-  // const uniqueBathrooms = [...bathrooms].sort((a, b) => a - b);
   const uniqueAmenities = [...amenities];
   const uniqueFeatures = [...features];
 
@@ -113,7 +110,7 @@ const FilteredData = ({
                 className="items-center justify-center"
                 value="Property Types"
               >
-                {!value ? "Property Types" : value}
+                {value == value ? "Property Types" : value}
               </option>
               {uniquePropertyTypes.map((item, i) => (
                 <option key={i} value={item}>

@@ -45,19 +45,16 @@ const RentalListing = () => {
   const [bathroom, setBathroom] = useSearchParams(initialBathroomParams);
   const [bedroom, setBedroom] = useSearchParams(initialBedroomParams);
   const [checkedItems, setCheckedItems] = useState({}); // State to track checked items
-  // const { filteredData, isLoading } = useFetchData(value, bedroom, bathroom, searchValue);
   const [isLoading] = useState(false);
-  const selectedProperty = value.get("property type");
-  const selectedCategory = category.get("category");
-  const selectedBathroom = bathroom.get("bt");
-  const selectedBedroom = bedroom.get("br");
-  console.log(selectedCategory,"selected category")
-  // const navigate = useNavigate();
+  const selectedProperty = value.get("property type") || "Property Types";
 
-  // console.log(properties,"filteredData")
-  // const filteredData = properties.filter((property)=>{
-  //   return property.property_type == selectedProperty || property.bedrooms == selectedBedroom
-  // })
+  const selectedCategory = category.get("category");
+  const selectedBathroom = bathroom.get("bt") || "Bathrooms";
+  const selectedBedroom = bedroom.get("br") || "Bedrooms";
+  console.log(selectedCategory,"selected category")
+  console.log(selectedBathroom,"selected bt")
+  console.log(selectedBedroom,"selected br")
+
 const filteredData = properties.filter((property) => {
   // Check if the property category is 'residential'
   if (property.category === selectedCategory && selectedCategory === 'residential') {
@@ -71,10 +68,8 @@ const filteredData = properties.filter((property) => {
     const matchesBathroom =
       selectedBathroom === "Bathrooms" || property.bathrooms == selectedBathroom;
 
-    // Return true if the property matches all selected criteria
     return matchesPropertyType && matchesBedroom && matchesBathroom;
   } else {
-    // For non-residential properties, return false to exclude them from the filtered results
       const matchesPropertyType =
       selectedProperty === 'Property Types' || property.property_type === selectedProperty;
 
@@ -83,7 +78,7 @@ const filteredData = properties.filter((property) => {
 });
 
   console.log(filteredData,"data after filtration")
-  
+console.log(selectedProperty,"selectedPropertyType")  
 
   const handleLikeClick = (e, id) => {
     e.preventDefault();
@@ -302,7 +297,7 @@ console.log(commercialProperties,"this concreete")
               <section className="flex w-full flex-col h-[97%] md:h-[95%]">
                 {isLoading ? (
                   <BarLoader />
-                ) : filteredData.length > 0 ? (
+                ) : filteredData.length > 0 || null ? (
               <div className="grid grid-cols-1 md:grid-cols-2 w-full h-[100%] md:grid-rows-2 grid-rows-4 md:gap-1 gap-5 py-2 md:p-2">
                     {currentProperty.map((details, index) =>
                       details.category == "commercial" ? 

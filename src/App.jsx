@@ -33,14 +33,14 @@ function App() {
           localStorage.setItem('cachedData', JSON.stringify(fetchedData));
 
           setData(fetchedData);
-          // console.log(fetchedData,"fetched Data");
+          console.log(fetchedData,"fetched Data");
         })
         .catch((error) => {
           console.error('Error fetching data:', error);
         });
     }
   }, []);
-
+// console.log(data,"fetched data now")
   if (data === null) {
     return (
       <main className='w-full h-[100vh] md:h-[100vh] flex bg-cover bg-center bg-no-repeat'>

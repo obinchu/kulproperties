@@ -115,7 +115,7 @@ const ListingFilter = ({
                 className="items-center justify-center"
                 value="Property Types"
               >
-                {!value ? "Property Types" : value}
+                {value==value ? "Property Types" : value}
               </option>
               {uniquePropertyTypes.map((item, i) => (
                 <option key={i} value={item}>
@@ -142,6 +142,11 @@ const ListingFilter = ({
                 } focus:outline-none focus:border-primary bg-transparent`}
               >
                 {/* <option value="bathroom">{bathroom}</option> */}
+                <option
+                className="items-center justify-center"
+                value="Property Types"
+              >{bathroom == bathroom ? 0 : bathroom}</option>
+                
                 {uniqueBathrooms.map((item, i) => (
                   <option key={i} value={item}>
                     {item}
@@ -166,6 +171,10 @@ const ListingFilter = ({
                   bedroom ? "border-primary" : "border-gray-300"
                 } focus:outline-none focus:border-primary bg-transparent`}
               >
+                  <option
+                className="items-center justify-center"
+                value="Property Types"
+              >{bedroom == bedroom ? 0 : bedroom}</option>
                 {uniqueBedrooms.map((item, i) => (
                   <option key={i} value={item}>
                     {item}
