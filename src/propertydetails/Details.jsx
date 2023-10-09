@@ -129,7 +129,6 @@ const Details = () => {
 
       if (response.ok) {
         setFormStatus({ success: resData.user_email.message, error: null });
-<<<<<<< Updated upstream
         setFormData({
           property: selectedItem.id,
           date: "",
@@ -145,11 +144,6 @@ const Details = () => {
             setFormStatus({ error: nonFieldErrors})
         } else {
             setFormStatus({ error: `${resData.error}` });
-=======
-      } else {
-        if (response.status === 400) {
-          setFormStatus({ error: `${resData.error.non_field_errors}` });
->>>>>>> Stashed changes
         }
         setFormData((prevFormData) => ({
           ...prevFormData,
