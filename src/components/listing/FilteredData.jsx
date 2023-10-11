@@ -110,7 +110,7 @@ const FilteredData = ({
                 className="items-center justify-center"
                 value="Property Types"
               >
-                {value == value ? "Property Types" : value}
+               {value==value? "Property Types" : value}
               </option>
               {uniquePropertyTypes.map((item, i) => (
                 <option key={i} value={item}>
@@ -121,24 +121,7 @@ const FilteredData = ({
           </div>
 
        
-          <div className="flex w-full  justify-center">
-            <select
-              value={year}
-              onChange={handleyear}
-              className={`p-2 rounded m-1 md:mx-2 w-[85%] border ${
-                !isNaN(year) && year.length > 0
-                  ? "border-primary"
-                  : "border-gray-300"
-              } focus:outline-none focus:border-primary bg-transparent`}
-            >
-              <option value="year">Year built</option>
-              {years.map((item, i) => (
-                <option key={i} value={item}>
-                  {item}
-                </option>
-              ))}
-            </select>
-          </div>
+
           <div className="flex w-full p-2  justify-center">
             <MinValue
               value={lowestPrice}

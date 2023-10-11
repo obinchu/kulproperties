@@ -115,7 +115,7 @@ const ListingFilter = ({
                 className="items-center justify-center"
                 value="Property Types"
               >
-                {value==value ? "Property Types" : value}
+                {value==value? "Property Types" : value}
               </option>
               {uniquePropertyTypes.map((item, i) => (
                 <option key={i} value={item}>
@@ -141,12 +141,7 @@ const ListingFilter = ({
                   bathroom ? "border-primary" : "border-gray-300"
                 } focus:outline-none focus:border-primary bg-transparent`}
               >
-                {/* <option value="bathroom">{bathroom}</option> */}
-                <option
-                className="items-center justify-center"
-                value="Property Types"
-              >{bathroom == bathroom ? 0 : bathroom}</option>
-                
+                 <option value="bathroom">{bathroom!= 0 ? 0: bathroom}</option>
                 {uniqueBathrooms.map((item, i) => (
                   <option key={i} value={item}>
                     {item}
@@ -156,32 +151,31 @@ const ListingFilter = ({
             </div>
           </div>
           <div className="flex w-full justify-center">
-            <div className="flex justify-center relative w-full">
-              <label
-                className={`absolute left-7 top-3 text-base transition-all transform origin-top text-primary bg-white -translate-y-5 -translate-x-1/10 px-1 `}
-                htmlFor="bedroom"
-              >
-                Bedrooms
-              </label>
-              <select
-                id="bedroom"
-                value={bedroom}
-                onChange={handlebedroom}
-                className={`p-2 rounded m-1 md:mx-2 w-[85%]  border ${
-                  bedroom ? "border-primary" : "border-gray-300"
-                } focus:outline-none focus:border-primary bg-transparent`}
-              >
-                  <option
-                className="items-center justify-center"
-                value="Property Types"
-              >{bedroom == bedroom ? 0 : bedroom}</option>
-                {uniqueBedrooms.map((item, i) => (
-                  <option key={i} value={item}>
-                    {item}
-                  </option>
-                ))}
-              </select>
-            </div>
+          <div className="flex justify-center relative w-full">
+  <label
+    className={`absolute left-7 top-3 text-base transition-all transform origin-top text-primary bg-white -translate-y-5 -translate-x-1/10 px-1 `}
+    htmlFor="bedroom"
+  >
+    Bedrooms
+  </label>
+  <select
+    id="bedroom"
+    value={bedroom}
+    onChange={handlebedroom}
+    className={`p-2 rounded m-1 md:mx-2 w-[85%]  border ${
+      bedroom ? "border-primary" : "border-gray-300"
+    } focus:outline-none focus:border-primary bg-transparent`}
+  >
+    {/* Add the initial value as the first option */}
+    <option value="bedroom">{bedroom==bedroom? 0 : bedroom}</option>
+    {uniqueBedrooms.map((item, i) => (
+      <option key={i} value={item}>
+        {item}
+      </option>
+    ))}
+  </select>
+</div>
+
           </div>
 
           <div className="flex w-full p-2  justify-center">

@@ -14,18 +14,19 @@ import ListingFilter from "../components/listing/ListingFilter";
 import { AiOutlineClose } from "react-icons/ai";
 import { AppContext } from "../App";
 import { Link, useSearchParams } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
-import Axios from "axios";
-import useFetchData from "../hooks/useFetchData";
+// import { useNavigate } from "react-router-dom";
+// import Axios from "axios";
+// import useFetchData from "../hooks/useFetchData";
 import { BarLoader } from "react-spinners";
 import FilteredData from "../components/listing/FilteredData";
 // import {useSearchParams} from 'react-router-dom'
 
 const RentalListing = () => {
   const propertyDetails = useContext(AppContext);
-  const properties = propertyDetails[0].properties;
 
   // console.log(propertyDetails,"this is are the details")
+  // const [properties, setProperties] = useState([]);
+  // const [filteredData, setFilteredData] = useState(localStorage.getItem("cachedData") || null);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedAmenities, setSelectedAmenities] = useState([]);
@@ -37,48 +38,83 @@ const RentalListing = () => {
   const initialSearchParams = new URLSearchParams();
   const initialBedroomParams = new URLSearchParams();
   const initialBathroomParams = new URLSearchParams();
-  initialBedroomParams.set("br", "Bedrooms");
-  initialBathroomParams.set("bt", "Bathrooms");
+  initialBedroomParams.set("br", 0);
+  initialBathroomParams.set("bt", 0);
   initialSearchParams.set("property type", "Property Types");
-  const [category,setCategory] = useSearchParams()
+  const [category, setCategory] = useSearchParams();
   const [value, setValue] = useSearchParams(initialSearchParams);
   const [bathroom, setBathroom] = useSearchParams(initialBathroomParams);
   const [bedroom, setBedroom] = useSearchParams(initialBedroomParams);
   const [checkedItems, setCheckedItems] = useState({}); // State to track checked items
   const [isLoading] = useState(false);
-  const selectedProperty = value.get("property type") || "Property Types";
-
+  const selectedProperty = value.get("property type");
   const selectedCategory = category.get("category");
-  const selectedBathroom = bathroom.get("bt") || "Bathrooms";
-  const selectedBedroom = bedroom.get("br") || "Bedrooms";
-  console.log(selectedCategory,"selected category")
-  console.log(selectedBathroom,"selected bt")
-  console.log(selectedBedroom,"selected br")
+  const selectedBathroom = bathroom.get("bt");
+  const selectedBedroom = bedroom.get("br");
+  console.log(selectedCategory, "selected category");
 
-const filteredData = properties.filter((property) => {
-  // Check if the property category is 'residential'
-  if (property.category === selectedCategory && selectedCategory === 'residential') {
-    // Check if the property matches the selected criteria
-    const matchesPropertyType =
-      selectedProperty === 'Property Types' || property.property_type === selectedProperty;
+  // useEffect(() => {
+  //   const cachedData = localStorage.getItem("cachedData");
 
-    const matchesBedroom =
-      selectedBedroom === 'Bedrooms' || property.bedrooms == selectedBedroom;
+  //   if (cachedData) {
+  //     setProperties(JSON.parse(cachedData));
+  //   } else {
+  //     Axios.get(
+  //       "https://kulproperties-73b1dd21a039.herokuapp.com/api/properties"
+  //     )
+  //       .then((response) => {
+  //         const fetchedData = response.data;
 
-    const matchesBathroom =
-      selectedBathroom === "Bathrooms" || property.bathrooms == selectedBathroom;
+  //         localStorage.setItem("cachedData", JSON.stringify(fetchedData));
 
-    return matchesPropertyType && matchesBedroom && matchesBathroom;
-  } else {
+  //         setProperties(fetchedData);
+  //         // console.log(fetchedData,"fetched Data");
+  //       })
+  //       .catch((error) => {
+  //         console.error("Error fetching data:", error);
+  //       });
+  //   }
+  // }, []);
+  // console.log(properties, "this are properties in the listing");
+  const properties = propertyDetails[0].properties;
+
+  // const navigate = useNavigate();
+
+  // console.log(properties,"filteredData")
+  // const filteredData = properties.filter((property)=>{
+  //   return property.property_type == selectedProperty || property.bedrooms == selectedBedroom
+  // })
+  const filteredData = properties.filter((property) => {
+    // Check if the property category is 'residential'
+    if (
+      property.category === selectedCategory &&
+      selectedCategory === "residential"
+    ) {
+      // Check if the property matches the selected criteria
       const matchesPropertyType =
-      selectedProperty === 'Property Types' || property.property_type === selectedProperty;
+        selectedProperty === "Property Types" ||
+        property.property_type === selectedProperty;
 
-    return matchesPropertyType;
-  }
-});
+      const matchesBedroom =
+        selectedBedroom === "Bedrooms" || property.bedrooms == selectedBedroom;
 
-  console.log(filteredData,"data after filtration")
-console.log(selectedProperty,"selectedPropertyType")  
+      const matchesBathroom =
+        selectedBathroom === "Bathrooms" ||
+        property.bathrooms == selectedBathroom;
+
+      // Return true if the property matches all selected criteria
+      return matchesPropertyType && matchesBedroom && matchesBathroom;
+    } else {
+      // For non-residential properties, return false to exclude them from the filtered results
+      const matchesPropertyType =
+        selectedProperty === "Property Types" ||
+        property.property_type === selectedProperty;
+
+      return matchesPropertyType;
+    }
+  });
+
+  console.log(filteredData, "data after filtration");
 
   const handleLikeClick = (e, id) => {
     e.preventDefault();
@@ -206,20 +242,24 @@ console.log(selectedProperty,"selectedPropertyType")
     console.log(searchValue);
     console.log(filteredData);
   }, [searchValue]);
-  const commercialProperties = filteredData.filter((property) => property.category === "commercial");
-  const residentialProperties = filteredData.filter((property) => property.category === "residential");
+  const commercialProperties = filteredData.filter(
+    (property) => property.category === "commercial"
+  );
+  const residentialProperties = filteredData.filter(
+    (property) => property.category === "residential"
+  );
 
-console.log(commercialProperties,"this concreete")
+  console.log(commercialProperties, "this concreete");
   const indexOfLastProperty = currentPage * PropertyPerPage;
   const indexOfFirstProperty = indexOfLastProperty - PropertyPerPage;
   let currentProperty = [];
-  let data = selectedCategory == "commercial" ? commercialProperties : residentialProperties
+  let data =
+    selectedCategory == "commercial"
+      ? commercialProperties
+      : residentialProperties;
 
   if (filteredData && filteredData.length > 0) {
-    currentProperty = data.slice(
-      indexOfFirstProperty,
-      indexOfLastProperty
-    );
+    currentProperty = data.slice(indexOfFirstProperty, indexOfLastProperty);
   } else {
   }
 
@@ -243,31 +283,34 @@ console.log(commercialProperties,"this concreete")
             </div>
           </div>
           <div className="flex w-full h-[97%] md:h-[90%]  p-2">
-            {selectedCategory==="residential" ?<ListingFilter
-              handleFilter={() => handleFilter(event)}
-              handleChange={() => handleChange(event)}
-              handleAmenityChange={() => handleAmenityChange(event)}
-              selectedAmenities={selectedAmenities}
-              handlebedroom={() => handleBedroom(event)}
-              handlebathroom={() => handleBathroom(event)}
-              value={selectedProperty}
-              checkedItems={checkedItems}
-              bathroom={selectedBathroom}
-              bedroom={selectedBedroom}
-            />:
-            <FilteredData
-              handleFilter={() => handleFilter(event)}
-              handleChange={() => handleChange(event)}
-              handleAmenityChange={() => handleAmenityChange(event)}
-              selectedAmenities={selectedAmenities}
-              value={selectedProperty}
-              checkedItems={checkedItems}
-            />}
+            {selectedCategory === "residential" ? (
+              <ListingFilter
+                handleFilter={() => handleFilter(event)}
+                handleChange={() => handleChange(event)}
+                handleAmenityChange={() => handleAmenityChange(event)}
+                selectedAmenities={selectedAmenities}
+                handlebedroom={() => handleBedroom(event)}
+                handlebathroom={() => handleBathroom(event)}
+                value={selectedProperty}
+                checkedItems={checkedItems}
+                bathroom={selectedBathroom}
+                bedroom={selectedBedroom}
+              />
+            ) : (
+              <FilteredData
+                handleFilter={() => handleFilter(event)}
+                handleChange={() => handleChange(event)}
+                handleAmenityChange={() => handleAmenityChange(event)}
+                selectedAmenities={selectedAmenities}
+                value={selectedProperty}
+                checkedItems={checkedItems}
+              />
+            )}
 
             <div className="flex flex-col w-full md:w-[65%] h-full justify-between p-1 ">
               <div className="flex w-full  p-1 rouded h-[2.5%] md:h-[5%] my-1 justify-between bg-white rounded">
                 <span className="items-center p-1 w-[40%] flex">
-                {data.length} results
+                  {data.length} results
                 </span>
                 <div className="justify-center items-center flex w-[60%] ">
                   <span
@@ -297,10 +340,10 @@ console.log(commercialProperties,"this concreete")
               <section className="flex w-full flex-col h-[97%] md:h-[95%]">
                 {isLoading ? (
                   <BarLoader />
-                ) : filteredData.length > 0 || null ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 w-full h-[100%] md:grid-rows-2 grid-rows-4 md:gap-1 gap-5 py-2 md:p-2">
+                ) : filteredData.length > 0 ? (
+                  <div className="grid grid-cols-1 md:grid-cols-2 w-full h-[100%] md:grid-rows-2 grid-rows-4 md:gap-1 gap-5 py-2 md:p-2">
                     {currentProperty.map((details, index) =>
-                      details.category == "commercial" ? 
+                      details.category == "commercial" ? (
                         <Link
                           to={`/kulproperties/propertydetails/${details.slug}`}
                           key={index}
@@ -377,7 +420,7 @@ console.log(commercialProperties,"this concreete")
                             </div>
                           </div>
                         </Link>
-                       : 
+                      ) : (
                         <Link
                           to={`/kulproperties/propertydetails/${details.slug}`}
                           key={index}
@@ -462,11 +505,25 @@ console.log(commercialProperties,"this concreete")
                             </div>
                           </div>
                         </Link>
-                      
+                      )
                     )}
-                  </div>) : (
+                  </div>
+                ) : (
                   <div>
-                    <span>No such property</span>
+                    {selectedCategory == "residential" ? (
+                      <span>
+                        Sorry a {selectedCategory}{" "}
+                        {selectedProperty === null
+                          ? "Property Type"
+                          : selectedProperty}{" "}
+                        with {selectedBathroom === null ? 0 : selectedBathroom}{" "}
+                        Bathrooms and{" "}
+                        {selectedBedroom === null ? 0 : selectedBedroom}{" "}
+                        Bedrooms is not available{" "}
+                      </span>
+                    ) : (
+                      <span>not found</span>
+                    )}
                   </div>
                 )}
                 <div className="w-full flex mx-auto mt-auto md:mt-0 container p-1 m-1">
