@@ -129,28 +129,33 @@ const Details = () => {
 
       if (response.ok) {
         setFormStatus({ success: resData.user_email.message, error: null });
-      } else {
-        if (response.status === 400) {
-          setFormStatus({ error: `${resData.error}` });
+        setFormData({
+          property: selectedItem.id,
+          date: "",
+          time: "",
+          full_name: "",
+          phone_number: "",
+          email: "",
+          message: "",
+        });
+    } else {
+        if (response.status === 400 && resData.error && resData.error.non_field_errors) {
+            const nonFieldErrors = resData.error.non_field_errors;
+            setFormStatus({ error: nonFieldErrors})
+        } else {
+            setFormStatus({ error: `${resData.error}` });
         }
-      }
+        setFormData((prevFormData) => ({
+          ...prevFormData,
+          date: "",
+          time: "",
+        }));
+    }
+    
     } catch (error) {
       console.log("Error submitting form", error);
     } finally {
-        setFormData({
-        property: selectedItem.id,
-        date: "",
-        time: "",
-        full_name: "",
-        phone_number: "",
-        email: "",
-        message: "",
-      });
       setLoading(false);
-
-      // setTimeout(() => {
-      //   setFormStatus({ error: null, success: null });
-      // }, 2000);
     }
   };
     
